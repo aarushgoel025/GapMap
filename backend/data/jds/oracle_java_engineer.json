@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "source_type": "jd",
+  "source_file": "oracle_java_engineer.pdf",
+  "company": "Oracle Financial Services Software",
+  "role": "Enterprise Java Application Developer",
+  "skills": [
+    {
+      "skill_name": "Java",
+      "category_code": "COD",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Spring Boot",
+      "category_code": "SWE",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "SQL",
+      "category_code": "SQL",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Object-Oriented Design",
+      "category_code": "OOD",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "REST API",
+      "category_code": "SWE",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "nice_to_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Oracle",
+      "category_code": "SQL",
+      "evidence": "",
+      "confidence": "medium",
+      "importance": "nice_to_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Git",
+      "category_code": "SWE",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "nice_to_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Microservices",
+      "category_code": "SYSD",
+      "evidence": "",
+      "confidence": "medium",
+      "importance": "nice_to_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    }
+  ],
+  "extras": {}
+}

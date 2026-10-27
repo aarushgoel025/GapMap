@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.0",
+  "profile_id": "candidate_2_data_analyst",
+  "name": "Priya Patel (Data & AI Analyst)",
+  "email": "priya.patel@example.com",
+  "education": "M.S. in Data Science, Tech Institute",
+  "github_url": "https://github.com/priyapatel-data",
+  "skills": [
+    {
+      "skill_name": "Python",
+      "category_code": "COD",
+      "evidence": "",
+      "confidence": "high",
+      "importance": null,
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "SQL",
+      "category_code": "SQL",
+      "evidence": "",
+      "confidence": "high",
+      "importance": null,
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "PostgreSQL",
+      "category_code": "SQL",
+      "evidence": "",
+      "confidence": "high",
+      "importance": null,
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Pandas",
+      "category_code": "AI",
+      "evidence": "",
+      "confidence": "high",
+      "importance": null,
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "NumPy",
+      "category_code": "AI",
+      "evidence": "",
+      "confidence": "high",
+      "importance": null,
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Machine Learning",
+      "category_code": "AI",
+      "evidence": "",
+      "confidence": "high",
+      "importance": null,
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Deep Learning",
+      "category_code": "AI",
+      "evidence": "",
+      "confidence": "medium",
+      "importance": null,
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Statistics",
+      "category_code": "APTI",
+      "evidence": "",
+      "confidence": "high",
+      "importance": null,
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "BigQuery",
+      "category_code": "CLOUD",
+      "evidence": "",
+      "confidence": "medium",
+      "importance": null,
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "NLP",
+      "category_code": "AI",
+      "evidence": "",
+      "confidence": "medium",
+      "importance": null,
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Data Structures",
+      "category_code": "DSA",
+      "evidence": "",
+      "confidence": "medium",
+      "importance": null,
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Git",
+      "category_code": "SWE",
+      "evidence": "",
+      "confidence": "medium",
+      "importance": null,
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    }
+  ],
+  "hackathons": [],
+  "internships": [],
+  "certifications": [],
+  "preferred_roles": [
+    "Data Engineer",
+    "Machine Learning Engineer"
+  ],
+  "cv_file": ""
+}

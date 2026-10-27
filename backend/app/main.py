@@ -3,10 +3,13 @@ from pathlib import Path
 
 # Ensure project root is in sys.path so modules like shared, db, profile can be imported
 ROOT_DIR = Path(__file__).resolve().parent.parent.parent
+BACKEND_DIR = ROOT_DIR / "backend"
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
+if str(BACKEND_DIR) not in sys.path:
+    sys.path.insert(0, str(BACKEND_DIR))
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import APIRouter, FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -80,6 +83,14 @@ app.include_router(jd_router)
 app.include_router(resume_router)
 app.include_router(talent_check_router)
 app.include_router(skill_matching_router)
+
+legacy_matching_router = APIRouter(prefix="/api/skill-matching", tags=["skill_matching"])
+
+@legacy_matching_router.get("/status")
+def legacy_matching_status():
+    return {"module": "skill_matching", "status": "initialized"}
+
+app.include_router(legacy_matching_router)
 
 
 # ---------------------------------------------------------------------------

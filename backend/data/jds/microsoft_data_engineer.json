@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "source_type": "jd",
+  "source_file": "microsoft_data_engineer.pdf",
+  "company": "Microsoft",
+  "role": "Senior Data Platform Engineer",
+  "skills": [
+    {
+      "skill_name": "Python",
+      "category_code": "COD",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "SQL",
+      "category_code": "SQL",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Azure",
+      "category_code": "CLOUD",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Machine Learning",
+      "category_code": "AI",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Pandas",
+      "category_code": "AI",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "nice_to_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "NumPy",
+      "category_code": "AI",
+      "evidence": "",
+      "confidence": "medium",
+      "importance": "nice_to_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Data Structures",
+      "category_code": "DSA",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "nice_to_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Statistics",
+      "category_code": "APTI",
+      "evidence": "",
+      "confidence": "medium",
+      "importance": "nice_to_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    }
+  ],
+  "extras": {}
+}

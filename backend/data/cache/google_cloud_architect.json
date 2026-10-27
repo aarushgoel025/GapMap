@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "source_type": "jd",
+  "source_file": "google_cloud_architect.pdf",
+  "company": "Google",
+  "role": "Cloud Infrastructure Architect",
+  "skills": [
+    {
+      "skill_name": "Google Cloud",
+      "category_code": "CLOUD",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Kubernetes",
+      "category_code": "CLOUD",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Docker",
+      "category_code": "CLOUD",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Computer Networks",
+      "category_code": "NETW",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Terraform",
+      "category_code": "CLOUD",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "nice_to_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Linux",
+      "category_code": "OS",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "nice_to_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Python",
+      "category_code": "COD",
+      "evidence": "",
+      "confidence": "medium",
+      "importance": "nice_to_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Microservices",
+      "category_code": "SYSD",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "nice_to_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    }
+  ],
+  "extras": {}
+}

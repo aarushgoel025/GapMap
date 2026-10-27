@@ -22,11 +22,15 @@ htmlcov/
 # Local data & logs
 *.log
 backend/data/profiles/*.json
-backend/data/runs/*.json
-backend/data/jds/*.json
 !backend/data/profiles/.gitkeep
+!backend/data/profiles/candidate_*.json
+backend/data/runs/*.json
 !backend/data/runs/.gitkeep
+backend/data/jds/*.json
 !backend/data/jds/.gitkeep
+!backend/data/jds/google_*.json
+!backend/data/jds/microsoft_*.json
+!backend/data/jds/oracle_*.json
 
 # Frontend build & dependencies
 node_modules/

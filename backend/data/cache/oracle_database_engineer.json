@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "source_type": "jd",
+  "source_file": "oracle_database_engineer.pdf",
+  "company": "Oracle Financial Services Software",
+  "role": "Database Infrastructure Engineer",
+  "skills": [
+    {
+      "skill_name": "SQL",
+      "category_code": "SQL",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Oracle",
+      "category_code": "SQL",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "DBMS",
+      "category_code": "SQL",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Linux",
+      "category_code": "OS",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Computer Networks",
+      "category_code": "NETW",
+      "evidence": "",
+      "confidence": "medium",
+      "importance": "nice_to_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Java",
+      "category_code": "COD",
+      "evidence": "",
+      "confidence": "medium",
+      "importance": "nice_to_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Operating Systems",
+      "category_code": "OS",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "nice_to_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    },
+    {
+      "skill_name": "Communication",
+      "category_code": "COMM",
+      "evidence": "",
+      "confidence": "high",
+      "importance": "nice_to_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": null
+    }
+  ],
+  "extras": {}
+}

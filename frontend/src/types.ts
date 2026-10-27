@@ -141,3 +141,21 @@ export interface MatchMatrix {
   companies: string[];
   grid: number[][]; // 4 x 6 score grid
 }
+
+export interface CandidateMeta {
+  id: string;
+  name: string;
+}
+
+export interface JDMeta {
+  id: string;
+  company: string;
+  role: string;
+  source_file: string;
+}
+
+export interface MatrixResponse {
+  resumes: CandidateMeta[];
+  jds: JDMeta[];
+  matrix: number[][];
+}

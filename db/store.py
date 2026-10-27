@@ -98,6 +98,15 @@ def load_profile(profile_id: str) -> Optional[Dict[str, Any]]:
     if file_path.exists():
         with open(file_path, "r", encoding="utf-8") as f:
             return json.load(f)
+    
+    # Check if matching by partial filename or ID in stem
+    for p in sorted(PROFILES_DIR.glob("*.json")):
+        if profile_id.lower() in p.stem.lower():
+            try:
+                with open(p, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            except Exception:
+                continue
     return None
 
 
@@ -113,7 +122,7 @@ def list_profiles() -> List[Dict[str, Any]]:
 
     # JSON fallback
     profiles = []
-    for file_path in PROFILES_DIR.glob("*.json"):
+    for file_path in sorted(PROFILES_DIR.glob("*.json")):
         try:
             with open(file_path, "r", encoding="utf-8") as f:
                 profiles.append(json.load(f))
@@ -179,7 +188,38 @@ def load_jd(jd_id: str) -> Optional[Dict[str, Any]]:
     if file_path.exists():
         with open(file_path, "r", encoding="utf-8") as f:
             return json.load(f)
+
+    # Search by partial / stem match
+    clean_id = jd_id.lower().replace(".pdf", "").replace(".docx", "").replace(".json", "")
+    for p in sorted(JDS_DIR.glob("*.json")):
+        if clean_id in p.stem.lower() or clean_id in p.name.lower() or jd_id.lower() in p.name.lower():
+            try:
+                with open(p, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            except Exception:
+                continue
+
     return None
+
+
+def list_jds() -> List[Dict[str, Any]]:
+    """List all JD extraction documents from Supabase or JSON fallback."""
+    if _supabase_client:
+        try:
+            resp = _supabase_client.table("jds").select("*").execute()
+            if resp.data is not None:
+                return resp.data
+        except Exception as exc:
+            logger.warning("Supabase list_jds error: %s. Falling back to JSON.", exc)
+
+    jds = []
+    for file_path in sorted(JDS_DIR.glob("*.json")):
+        try:
+            with open(file_path, "r", encoding="utf-8") as f:
+                jds.append(json.load(f))
+        except Exception as exc:
+            logger.warning("Failed reading JD file %s: %s", file_path, exc)
+    return jds
 
 
 # ---------------------------------------------------------------------------

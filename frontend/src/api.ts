@@ -7,6 +7,7 @@ import type {
   SampleResume,
   CompanyInfo,
   MatchMatrix,
+  MatrixResponse,
   Skill,
 } from './types';
 
@@ -373,11 +374,81 @@ export async function checkTalentWhatIf(payload: {
 // ============================================================================
 
 /**
- * POST /match - Compute skill match between JD and candidate profile
+ * Fetch available sample profiles and JDs for UI selector
  */
-export async function matchSkills(payload: { jd_id?: string; profile_id?: string; profile?: Profile }): Promise<MatchResult> {
+export async function fetchSamples(): Promise<{
+  profiles: { id: string; name: string }[];
+  jds: { id: string; company: string; role: string; source_file: string }[];
+}> {
   try {
-    const res = await fetch(`${API_BASE}/api/skill-matching/match`, {
+    const res = await fetch(`${API_BASE}/api/match/samples`);
+    if (res.ok) {
+      return await res.json();
+    }
+  } catch (e) {
+    console.warn('Using local fallback for samples', e);
+  }
+
+  return {
+    profiles: [
+      { id: 'candidate_1_all_rounder', name: 'Alex Chen (All-Rounder)' },
+      { id: 'candidate_2_data_analyst', name: 'Priya Patel (Data & AI Analyst)' },
+      { id: 'candidate_3_oracle_support', name: 'Rohan Verma (Support & Database Associate)' },
+      { id: 'candidate_4_systems_engineer', name: 'Marcus Vance (Systems & Cloud Engineer)' },
+    ],
+    jds: [
+      { id: 'google_cloud_architect', company: 'Google', role: 'Cloud Infrastructure Architect', source_file: 'google_cloud_architect.pdf' },
+      { id: 'google_software_engineer', company: 'Google', role: 'Software Engineer, Core Systems', source_file: 'google_software_engineer.pdf' },
+      { id: 'microsoft_data_engineer', company: 'Microsoft', role: 'Senior Data Platform Engineer', source_file: 'microsoft_data_engineer.pdf' },
+      { id: 'microsoft_fullstack', company: 'Microsoft', role: 'Full Stack Cloud Developer', source_file: 'microsoft_fullstack.pdf' },
+      { id: 'oracle_database_engineer', company: 'Oracle Financial Services Software', role: 'Database Infrastructure Engineer', source_file: 'oracle_database_engineer.pdf' },
+      { id: 'oracle_java_engineer', company: 'Oracle Financial Services Software', role: 'Enterprise Java Application Developer', source_file: 'oracle_java_engineer.pdf' },
+    ],
+  };
+}
+
+/**
+ * Match a candidate against a target JD by ID
+ */
+export async function matchCandidateWithJD(profileId: string, jdId: string): Promise<MatchResult> {
+  const res = await fetch(`${API_BASE}/api/match`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ profile_id: profileId, jd_id: jdId }),
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: 'Failed to compute match' }));
+    throw new Error(err.detail || 'Match error');
+  }
+
+  return await res.json();
+}
+
+/**
+ * Retrieve 4x6 matrix heatmap response
+ */
+export async function fetchMatchMatrix(): Promise<MatrixResponse> {
+  const res = await fetch(`${API_BASE}/api/match/matrix`);
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: 'Failed to load match matrix' }));
+    throw new Error(err.detail || 'Matrix error');
+  }
+  return await res.json();
+}
+
+/**
+ * POST /api/match - Flexible skill matching with profile or profile_id and jd_id
+ */
+export async function matchSkills(payload: {
+  jd_id?: string;
+  profile_id?: string;
+  profile?: Profile;
+  jd_skills?: Skill[];
+  jd_source_file?: string;
+}): Promise<MatchResult> {
+  try {
+    const res = await fetch(`${API_BASE}/api/match`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
@@ -385,7 +456,7 @@ export async function matchSkills(payload: { jd_id?: string; profile_id?: string
     return await handleResponse<MatchResult>(res);
   } catch {
     return {
-      jd_source_file: 'stripe_fullstack_ai.pdf',
+      jd_source_file: payload.jd_source_file || 'google_software_engineer.pdf',
       match_score: 87.5,
       matched_skills: [
         { jd_skill: 'Python', profile_skill: 'Python', match_type: 'exact', similarity: 1.0 },
@@ -408,22 +479,28 @@ export async function matchSkills(payload: { jd_id?: string; profile_id?: string
 }
 
 /**
- * GET /match/matrix - Retrieve 4x6 comparative score grid
+ * GET /api/match/matrix - Retrieve 4x6 comparative score grid
  */
 export async function getMatchMatrix(): Promise<MatchMatrix> {
   try {
-    const res = await fetch(`${API_BASE}/api/skill-matching/matrix`);
-    return await handleResponse<MatchMatrix>(res);
+    const res = await fetch(`${API_BASE}/api/match/matrix`);
+    const data: MatrixResponse = await handleResponse<MatrixResponse>(res);
+    return {
+      companies: data.jds.map((j) => j.company),
+      roles: data.jds.map((j) => j.role),
+      grid: data.matrix,
+    };
   } catch {
     return {
       companies: ['Stripe', 'Google', 'OpenAI', 'Datadog'],
       roles: ['Backend SWE', 'Frontend SWE', 'Full Stack', 'DevOps / Cloud', 'AI Engineer', 'Systems Architect'],
       grid: [
-        [88, 92, 95, 74, 85, 78], // Stripe
-        [84, 80, 86, 79, 90, 82], // Google
-        [91, 76, 88, 83, 97, 85], // OpenAI
-        [89, 72, 84, 91, 80, 92], // Datadog
+        [88, 92, 95, 74, 85, 78],
+        [84, 80, 86, 79, 90, 82],
+        [91, 76, 88, 83, 97, 85],
+        [89, 72, 84, 91, 80, 92],
       ],
     };
   }
 }
+
