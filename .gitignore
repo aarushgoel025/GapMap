@@ -1,0 +1,41 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Python cache & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local data & logs
+*.log
+backend/data/profiles/*.json
+backend/data/runs/*.json
+backend/data/jds/*.json
+!backend/data/profiles/.gitkeep
+!backend/data/runs/.gitkeep
+!backend/data/jds/.gitkeep
+
+# Frontend build & dependencies
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
