@@ -340,7 +340,11 @@ export async function checkTalent(payload: { company: string; profile_id?: strin
 /**
  * POST /talent-check/whatif - Simulate readiness score impact if specific skills are acquired
  */
-export async function checkTalentWhatIf(payload: { company: string; profile: Profile; additional_skills: string[] }): Promise<TalentCheckResult> {
+export async function checkTalentWhatIf(payload: {
+  company: string;
+  profile: Profile;
+  changes: { category_code: string; new_level: number }[];
+}): Promise<TalentCheckResult> {
   try {
     const res = await fetch(`${API_BASE}/api/talent-check/whatif`, {
       method: 'POST',
