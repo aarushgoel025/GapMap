@@ -220,3 +220,41 @@ def test_teammate_routers_mounted(client):
         resp = client.get(f"/api/{mod}/status")
         assert resp.status_code == 200
         assert resp.json().get("status") == "initialized"
+
+
+def test_github_verification_and_audit(client, setup_json_fallback_store):
+    """Test POST /api/resume/verify-github verifies skills and creates an audit log entry."""
+    payload = {
+        "github_url": "https://github.com/aarushgoel025",
+        "skills": [
+            {
+                "skill_name": "Python",
+                "category_code": "COD",
+                "confidence": "high",
+                "level_estimate": 8,
+            }
+        ],
+    }
+    resp = client.post("/api/resume/verify-github", json=payload)
+    assert resp.status_code == 200
+    data = resp.json()
+    assert "verified_skills" in data
+    assert "github" in data["verified_skills"][0]["verified_by"]
+
+    # Verify audit log entry
+    runs_dir = setup_json_fallback_store["runs_dir"]
+    audit_file = runs_dir / "audit_log.json"
+    assert audit_file.exists()
+
+    with open(audit_file, "r", encoding="utf-8") as f:
+        audit_entries = json.load(f)
+
+    actions = [e["action"] for e in audit_entries]
+    assert "github_check" in actions
+
+    # Ensure personal text was NOT logged (governance requirement)
+    github_entry = next(e for e in audit_entries if e["action"] == "github_check")
+    assert "details" in github_entry
+    assert "skills_count" in github_entry["details"]
+    assert "personal_text" not in str(github_entry)
+

@@ -1,0 +1,2956 @@
+{
+  "metadata": {
+    "source_file": "staging_company_skill_levels_rows.csv",
+    "source_table": "staging_company_skill_levels (Supabase export)",
+    "identifier_column": "id",
+    "company_column": "companies",
+    "skill_columns": [
+      "coding",
+      "data_structures_and_algorithms",
+      "object_oriented_programming_and_design",
+      "aptitude_and_problem_solving",
+      "communication_skills",
+      "ai_native_engineering",
+      "devops_and_cloud",
+      "sql_and_design",
+      "software_engineering",
+      "system_design_and_architecture",
+      "computer_networking",
+      "operating_system"
+    ],
+    "record_count": 117,
+    "conversion_notes": [
+      "Skill values are raw strings copied verbatim (e.g. '5-AP', '5 - AP'); suffixes and internal spacing preserved.",
+      "Company names copied verbatim, including trailing whitespace and any encoding artefacts.",
+      "Empty CSV cells became null; 'processed' became boolean; all other values are unchanged strings.",
+      "No rows merged, removed, or reordered. Duplicate company names remain as separate records."
+    ]
+  },
+  "records": [
+    {
+      "source_id": 1,
+      "source_row_number": 1,
+      "company": "Accenture plc",
+      "skill_levels_raw": {
+        "coding": "5-AP",
+        "data_structures_and_algorithms": "4-AP",
+        "object_oriented_programming_and_design": "3-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "4-AP",
+        "devops_and_cloud": "4-CU",
+        "sql_and_design": "4-CU",
+        "software_engineering": "5 - AP",
+        "system_design_and_architecture": "3-CU",
+        "computer_networking": "3-CU",
+        "operating_system": "3-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 2,
+      "source_row_number": 2,
+      "company": "Fractal Analytics Private Limited",
+      "skill_levels_raw": {
+        "coding": "6-AS",
+        "data_structures_and_algorithms": "6-AS",
+        "object_oriented_programming_and_design": "4-AS",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "6-AS",
+        "devops_and_cloud": "6-AP",
+        "sql_and_design": "6-AS",
+        "software_engineering": "6 - AS",
+        "system_design_and_architecture": "6-AS",
+        "computer_networking": "2-AP",
+        "operating_system": "3-AP"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 3,
+      "source_row_number": 3,
+      "company": "Oracle India Private Limited",
+      "skill_levels_raw": {
+        "coding": "7-EV",
+        "data_structures_and_algorithms": "6-AP",
+        "object_oriented_programming_and_design": "6-EV",
+        "aptitude_and_problem_solving": "6-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "5-AP",
+        "devops_and_cloud": "5-CU",
+        "sql_and_design": "6-AP",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "5-AP",
+        "computer_networking": "5-AS",
+        "operating_system": "6-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 4,
+      "source_row_number": 4,
+      "company": "Google LLC (Subsidiary of Alphabet Inc.)",
+      "skill_levels_raw": {
+        "coding": "8-CR",
+        "data_structures_and_algorithms": "9-CR",
+        "object_oriented_programming_and_design": "8-CR",
+        "aptitude_and_problem_solving": "9-CR",
+        "communication_skills": "7-EV",
+        "ai_native_engineering": "7-EV",
+        "devops_and_cloud": "9-EV",
+        "sql_and_design": "8-EV",
+        "software_engineering": "9 - EV",
+        "system_design_and_architecture": "4-AS",
+        "computer_networking": "9-CR",
+        "operating_system": "9-CR"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 5,
+      "source_row_number": 5,
+      "company": "Apple Inc.",
+      "skill_levels_raw": {
+        "coding": "8-CR",
+        "data_structures_and_algorithms": "8-EV",
+        "object_oriented_programming_and_design": "8-CR",
+        "aptitude_and_problem_solving": "8-EV",
+        "communication_skills": "7-EV",
+        "ai_native_engineering": "8-EV",
+        "devops_and_cloud": "7-AS",
+        "sql_and_design": "7-EV",
+        "software_engineering": "9 - EV",
+        "system_design_and_architecture": "5-EV",
+        "computer_networking": "8-EV",
+        "operating_system": "10-EV"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 6,
+      "source_row_number": 6,
+      "company": "Mitsubishi UFJ Financial Group, Inc.",
+      "skill_levels_raw": {
+        "coding": "5-AS",
+        "data_structures_and_algorithms": "4-AP",
+        "object_oriented_programming_and_design": "3-AP",
+        "aptitude_and_problem_solving": "4-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "5-AS",
+        "devops_and_cloud": "3-CU",
+        "sql_and_design": "5-AS",
+        "software_engineering": "6 - AP",
+        "system_design_and_architecture": "6-CR",
+        "computer_networking": "4-CU",
+        "operating_system": "4-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 7,
+      "source_row_number": 7,
+      "company": "Commonwealth Bank of Australia",
+      "skill_levels_raw": {
+        "coding": "5-AS",
+        "data_structures_and_algorithms": "5-AS",
+        "object_oriented_programming_and_design": "3-AP",
+        "aptitude_and_problem_solving": "4-AP",
+        "communication_skills": "6-EV",
+        "ai_native_engineering": "6-AS",
+        "devops_and_cloud": "6-AS",
+        "sql_and_design": "7-AS",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "5-EV",
+        "computer_networking": "5-AS",
+        "operating_system": "5-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 8,
+      "source_row_number": 8,
+      "company": "KALVI CAREER EDUCATION PRIVATE LIMITED",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "3-CU",
+        "object_oriented_programming_and_design": "2-CU",
+        "aptitude_and_problem_solving": "3-CU",
+        "communication_skills": "4-AP",
+        "ai_native_engineering": "3-CU",
+        "devops_and_cloud": "2-CU",
+        "sql_and_design": "3-AP",
+        "software_engineering": "3 - CU",
+        "system_design_and_architecture": "1-CU",
+        "computer_networking": "3-CU",
+        "operating_system": "2-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 9,
+      "source_row_number": 9,
+      "company": "Larsen & Toubro Infotech Limited",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "5-AP",
+        "object_oriented_programming_and_design": "4-AS",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "4-AP",
+        "devops_and_cloud": "4-AP",
+        "sql_and_design": "5-CU",
+        "software_engineering": "5 - AP",
+        "system_design_and_architecture": "2-CU",
+        "computer_networking": "3-CU",
+        "operating_system": "3-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 10,
+      "source_row_number": 10,
+      "company": "Tata Consultancy Services Limited",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "4-AP",
+        "object_oriented_programming_and_design": "3-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "3-AP",
+        "devops_and_cloud": "4-CU",
+        "sql_and_design": "4-CU",
+        "software_engineering": "4 - AP",
+        "system_design_and_architecture": "3-AP",
+        "computer_networking": "2-CU",
+        "operating_system": "2-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 11,
+      "source_row_number": 11,
+      "company": "Infosys Limited",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "5-AP",
+        "object_oriented_programming_and_design": "3-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "3-AP",
+        "devops_and_cloud": "4-CU",
+        "sql_and_design": "3-CU",
+        "software_engineering": "4 - AP",
+        "system_design_and_architecture": "2-CU",
+        "computer_networking": "2-CU",
+        "operating_system": "2-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 12,
+      "source_row_number": 12,
+      "company": "Cloudera Data Platform India Private Limited",
+      "skill_levels_raw": {
+        "coding": "6-AS",
+        "data_structures_and_algorithms": "7-AS",
+        "object_oriented_programming_and_design": "5-EV",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "7-AS",
+        "ai_native_engineering": "7-AS",
+        "devops_and_cloud": "6-AP",
+        "sql_and_design": "7-AS",
+        "software_engineering": "8 - AS",
+        "system_design_and_architecture": "7-EV",
+        "computer_networking": "6-AS",
+        "operating_system": "7-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 13,
+      "source_row_number": 13,
+      "company": "Guidewire Software, Inc.",
+      "skill_levels_raw": {
+        "coding": "5-AP",
+        "data_structures_and_algorithms": "6-AS",
+        "object_oriented_programming_and_design": "6-AS",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "6-AS",
+        "devops_and_cloud": "5-AS",
+        "sql_and_design": "5-AP",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "6-CR",
+        "computer_networking": "4-AP",
+        "operating_system": "4-AP"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 14,
+      "source_row_number": 14,
+      "company": "Amazon.com, Inc.",
+      "skill_levels_raw": {
+        "coding": "6-AP",
+        "data_structures_and_algorithms": "9-EV",
+        "object_oriented_programming_and_design": "8-CR",
+        "aptitude_and_problem_solving": "9-CR",
+        "communication_skills": "7-EV",
+        "ai_native_engineering": "7-EV",
+        "devops_and_cloud": "6-EV",
+        "sql_and_design": "8-EV",
+        "software_engineering": "9 - EV",
+        "system_design_and_architecture": "5-AS",
+        "computer_networking": "7-EV",
+        "operating_system": "8-EV"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 15,
+      "source_row_number": 15,
+      "company": "Llama Logisol Private Limited",
+      "skill_levels_raw": {
+        "coding": "3-AP",
+        "data_structures_and_algorithms": "3-AP",
+        "object_oriented_programming_and_design": "2-CU",
+        "aptitude_and_problem_solving": "4-AP",
+        "communication_skills": "4-AP",
+        "ai_native_engineering": "4-AP",
+        "devops_and_cloud": "4-AP",
+        "sql_and_design": "4-AP",
+        "software_engineering": "5 - AP",
+        "system_design_and_architecture": "1-CU",
+        "computer_networking": "4-AS",
+        "operating_system": "5-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 16,
+      "source_row_number": 16,
+      "company": "Swiggy Limited",
+      "skill_levels_raw": {
+        "coding": "6-AS",
+        "data_structures_and_algorithms": "7-AS",
+        "object_oriented_programming_and_design": "5-EV",
+        "aptitude_and_problem_solving": "7-AS",
+        "communication_skills": "6-EV",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "6-AS",
+        "sql_and_design": "7-AS",
+        "software_engineering": "8 - EV",
+        "system_design_and_architecture": "6-CR",
+        "computer_networking": "4-AS",
+        "operating_system": "6-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 17,
+      "source_row_number": 17,
+      "company": "Leap Finance Private Limited",
+      "skill_levels_raw": {
+        "coding": "4-AS",
+        "data_structures_and_algorithms": "5-AP",
+        "object_oriented_programming_and_design": "3-AS",
+        "aptitude_and_problem_solving": "4-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "5-AS",
+        "devops_and_cloud": "5-AP",
+        "sql_and_design": "5-AP",
+        "software_engineering": "6 - AS",
+        "system_design_and_architecture": "3-AP",
+        "computer_networking": "3-AP",
+        "operating_system": "3-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 18,
+      "source_row_number": 18,
+      "company": "Cisco Systems, Inc.",
+      "skill_levels_raw": {
+        "coding": "6-AP",
+        "data_structures_and_algorithms": "7-EV",
+        "object_oriented_programming_and_design": "7-EV",
+        "aptitude_and_problem_solving": "7-AS",
+        "communication_skills": "7-AS",
+        "ai_native_engineering": "7-AS",
+        "devops_and_cloud": "5-AS",
+        "sql_and_design": "6-AS",
+        "software_engineering": "8 - AS",
+        "system_design_and_architecture": "6-EV",
+        "computer_networking": "6-EV",
+        "operating_system": "4-AP"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 19,
+      "source_row_number": 19,
+      "company": "Volvo Group",
+      "skill_levels_raw": {
+        "coding": "5-AS",
+        "data_structures_and_algorithms": "5-AS",
+        "object_oriented_programming_and_design": "3-AP",
+        "aptitude_and_problem_solving": "4-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "6-AS",
+        "devops_and_cloud": "4-CU",
+        "sql_and_design": "4-CU",
+        "software_engineering": "6 - AP",
+        "system_design_and_architecture": "6-EV",
+        "computer_networking": "3-CU",
+        "operating_system": "3-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 20,
+      "source_row_number": 20,
+      "company": "Amadeus IT Group",
+      "skill_levels_raw": {
+        "coding": "5-AP",
+        "data_structures_and_algorithms": "6-AP",
+        "object_oriented_programming_and_design": "5-AS",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "7-EV",
+        "ai_native_engineering": "7-EV",
+        "devops_and_cloud": "5-AP",
+        "sql_and_design": "6-AP",
+        "software_engineering": "8 - AS",
+        "system_design_and_architecture": "5-AS",
+        "computer_networking": "4-AS",
+        "operating_system": "4-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 21,
+      "source_row_number": 21,
+      "company": "NielsenIQ",
+      "skill_levels_raw": {
+        "coding": "5-AS",
+        "data_structures_and_algorithms": "6-AS",
+        "object_oriented_programming_and_design": "4-AS",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "6-AS",
+        "devops_and_cloud": "4-CU",
+        "sql_and_design": "6-AS",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "4-AP",
+        "computer_networking": "3-CU",
+        "operating_system": "3-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 22,
+      "source_row_number": 22,
+      "company": "Snowflake Inc.",
+      "skill_levels_raw": {
+        "coding": "6-AS",
+        "data_structures_and_algorithms": "8-AS",
+        "object_oriented_programming_and_design": "7-CR",
+        "aptitude_and_problem_solving": "7-EV",
+        "communication_skills": "7-EV",
+        "ai_native_engineering": "8-EV",
+        "devops_and_cloud": "7-AS",
+        "sql_and_design": "9-EV",
+        "software_engineering": "9 - EV",
+        "system_design_and_architecture": "7-EV",
+        "computer_networking": "7-AS",
+        "operating_system": "8-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 23,
+      "source_row_number": 23,
+      "company": "Palantir Technologies",
+      "skill_levels_raw": {
+        "coding": "7-EV",
+        "data_structures_and_algorithms": "9-CR",
+        "object_oriented_programming_and_design": "8-CR",
+        "aptitude_and_problem_solving": "9-CR",
+        "communication_skills": "8-EV",
+        "ai_native_engineering": "8-CR",
+        "devops_and_cloud": "9-EV",
+        "sql_and_design": "8-CR",
+        "software_engineering": "9 - CR",
+        "system_design_and_architecture": "8-CR",
+        "computer_networking": "8-CR",
+        "operating_system": "9-EV"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 24,
+      "source_row_number": 24,
+      "company": "Oracle Financial Services Software Limited",
+      "skill_levels_raw": {
+        "coding": "5-AP",
+        "data_structures_and_algorithms": "6-AP",
+        "object_oriented_programming_and_design": "6-EV",
+        "aptitude_and_problem_solving": "6-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "6-AS",
+        "devops_and_cloud": "5-AP",
+        "sql_and_design": "6-AP",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "5-CR",
+        "computer_networking": "5-AP",
+        "operating_system": "5-AP"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 25,
+      "source_row_number": 25,
+      "company": "International Business Machines Corporation ",
+      "skill_levels_raw": {
+        "coding": "6-AP",
+        "data_structures_and_algorithms": "8-EV",
+        "object_oriented_programming_and_design": "7-AS",
+        "aptitude_and_problem_solving": "7-EV",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "7-AS",
+        "devops_and_cloud": "5-CU",
+        "sql_and_design": "5-CU",
+        "software_engineering": "8 - AS",
+        "system_design_and_architecture": "6-AS",
+        "computer_networking": "4-CU",
+        "operating_system": "4-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 26,
+      "source_row_number": 26,
+      "company": "Barclays PLC ",
+      "skill_levels_raw": {
+        "coding": "5-AS",
+        "data_structures_and_algorithms": "6-AS",
+        "object_oriented_programming_and_design": "4-EV",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "7-EV",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "6-AS",
+        "sql_and_design": "7-AS",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "5-EV",
+        "computer_networking": "4-AS",
+        "operating_system": "4-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 27,
+      "source_row_number": 27,
+      "company": "Schneider Electric",
+      "skill_levels_raw": {
+        "coding": "5-AP",
+        "data_structures_and_algorithms": "5-AP",
+        "object_oriented_programming_and_design": "4-AS",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "5-AS",
+        "devops_and_cloud": "4-AP",
+        "sql_and_design": "4-AP",
+        "software_engineering": "6 - AP",
+        "system_design_and_architecture": "4-AS",
+        "computer_networking": "5-AP",
+        "operating_system": "5-AP"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 28,
+      "source_row_number": 28,
+      "company": "Blink Commerce Private Limited ",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "5-AP",
+        "object_oriented_programming_and_design": "4-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "4-AP",
+        "ai_native_engineering": "5-AP",
+        "devops_and_cloud": "6-AP",
+        "sql_and_design": "6-AS",
+        "software_engineering": "5 - AP",
+        "system_design_and_architecture": "3-AP",
+        "computer_networking": "4-AS",
+        "operating_system": "5-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 29,
+      "source_row_number": 29,
+      "company": "Zerodha Broking Limited ",
+      "skill_levels_raw": {
+        "coding": "6-AS",
+        "data_structures_and_algorithms": "7-AS",
+        "object_oriented_programming_and_design": "6-AS",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "7-EV",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "8-EV",
+        "sql_and_design": "8-EV",
+        "software_engineering": "8 - EV",
+        "system_design_and_architecture": "6-CR",
+        "computer_networking": "5-EV",
+        "operating_system": "6-EV"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 30,
+      "source_row_number": 30,
+      "company": "Myntra Designs Private Limited",
+      "skill_levels_raw": {
+        "coding": "6-AP",
+        "data_structures_and_algorithms": "7-AP",
+        "object_oriented_programming_and_design": "5-EV",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "6-EV",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "7-AS",
+        "sql_and_design": "7-AP",
+        "software_engineering": "8 - EV",
+        "system_design_and_architecture": "5-EV",
+        "computer_networking": "4-AS",
+        "operating_system": "5-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 31,
+      "source_row_number": 31,
+      "company": "Nurix Therapeutics, Inc.",
+      "skill_levels_raw": {
+        "coding": "6-AS",
+        "data_structures_and_algorithms": "6-AS",
+        "object_oriented_programming_and_design": "3-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "7-EV",
+        "devops_and_cloud": "3-CU",
+        "sql_and_design": "3-AP",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "4-AP",
+        "computer_networking": "2-CU",
+        "operating_system": "2-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 32,
+      "source_row_number": 32,
+      "company": "Citigroup Inc.",
+      "skill_levels_raw": {
+        "coding": "5-AP",
+        "data_structures_and_algorithms": "6-AS",
+        "object_oriented_programming_and_design": "4-EV",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "7-EV",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "6-AS",
+        "sql_and_design": "7-AS",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "6-EV",
+        "computer_networking": "4-AS",
+        "operating_system": "4-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 33,
+      "source_row_number": 33,
+      "company": "ZS Associates, Inc.",
+      "skill_levels_raw": {
+        "coding": "5-AS",
+        "data_structures_and_algorithms": "6-AP",
+        "object_oriented_programming_and_design": "5-AS",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "7-AS",
+        "ai_native_engineering": "6-AS",
+        "devops_and_cloud": "4-AP",
+        "sql_and_design": "6-AP",
+        "software_engineering": "6 - AS",
+        "system_design_and_architecture": "5-AS",
+        "computer_networking": "3-AP",
+        "operating_system": "3-AP"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 34,
+      "source_row_number": 34,
+      "company": "FLAM Gaming Private Limited",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "5-AP",
+        "object_oriented_programming_and_design": "3-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "4-AP",
+        "ai_native_engineering": "5-AP",
+        "devops_and_cloud": "4-CU",
+        "sql_and_design": "5-AP",
+        "software_engineering": "5 - AP",
+        "system_design_and_architecture": "2-CU",
+        "computer_networking": "4-AP",
+        "operating_system": "6-AP"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 35,
+      "source_row_number": 35,
+      "company": "SAP Labs India Private Limited",
+      "skill_levels_raw": {
+        "coding": "6-AP",
+        "data_structures_and_algorithms": "7-AP",
+        "object_oriented_programming_and_design": "6-EV",
+        "aptitude_and_problem_solving": "6-AP",
+        "communication_skills": "7-AS",
+        "ai_native_engineering": "7-AS",
+        "devops_and_cloud": "6-AP",
+        "sql_and_design": "6-AS",
+        "software_engineering": "8 - AS",
+        "system_design_and_architecture": "6-CR",
+        "computer_networking": "4-AS",
+        "operating_system": "4-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 36,
+      "source_row_number": 36,
+      "company": "Xperi Inc.",
+      "skill_levels_raw": {
+        "coding": "5-AS",
+        "data_structures_and_algorithms": "6-AS",
+        "object_oriented_programming_and_design": "5-AS",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "6-AS",
+        "devops_and_cloud": "5-AP",
+        "sql_and_design": "5-CU",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "5-EV",
+        "computer_networking": "3-CU",
+        "operating_system": "3-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 37,
+      "source_row_number": 37,
+      "company": "Consilio LLC",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "5-AP",
+        "object_oriented_programming_and_design": "3-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "5-AS",
+        "devops_and_cloud": "4-CU",
+        "sql_and_design": "4-AP",
+        "software_engineering": "6 - AP",
+        "system_design_and_architecture": "3-AP",
+        "computer_networking": "4-AP",
+        "operating_system": "3-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 38,
+      "source_row_number": 38,
+      "company": "BT Group plc",
+      "skill_levels_raw": {
+        "coding": "6-AS",
+        "data_structures_and_algorithms": "6-AP",
+        "object_oriented_programming_and_design": "4-AS",
+        "aptitude_and_problem_solving": "6-AP",
+        "communication_skills": "6-EV",
+        "ai_native_engineering": "6-AS",
+        "devops_and_cloud": "5-AS",
+        "sql_and_design": "6-CU",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "5-AS",
+        "computer_networking": "6-EV",
+        "operating_system": "5-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 39,
+      "source_row_number": 39,
+      "company": "Capgemini",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "4-AP",
+        "object_oriented_programming_and_design": "3-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "3-AP",
+        "devops_and_cloud": "4-CU",
+        "sql_and_design": "4-CU",
+        "software_engineering": "4 - AP",
+        "system_design_and_architecture": "4-AP",
+        "computer_networking": "2-CU",
+        "operating_system": "3-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 40,
+      "source_row_number": 40,
+      "company": "The Bank of New York Mellon Corporation",
+      "skill_levels_raw": {
+        "coding": "5-AP",
+        "data_structures_and_algorithms": "6-AS",
+        "object_oriented_programming_and_design": "4-EV",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "7-EV",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "6-AS",
+        "sql_and_design": "7-EV",
+        "software_engineering": "8 - AS",
+        "system_design_and_architecture": "6-EV",
+        "computer_networking": "5-AS",
+        "operating_system": "5-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 41,
+      "source_row_number": 41,
+      "company": "Fidelity Investments",
+      "skill_levels_raw": {
+        "coding": "5-AS",
+        "data_structures_and_algorithms": "6-EV",
+        "object_oriented_programming_and_design": "4-AS",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "7-AS",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "4-AP",
+        "sql_and_design": "5-AP",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "5-AS",
+        "computer_networking": "4-CU",
+        "operating_system": "3-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 42,
+      "source_row_number": 42,
+      "company": "JPMorgan Chase & Co.",
+      "skill_levels_raw": {
+        "coding": "5-AP",
+        "data_structures_and_algorithms": "7-EV",
+        "object_oriented_programming_and_design": "5-EV",
+        "aptitude_and_problem_solving": "7-EV",
+        "communication_skills": "7-EV",
+        "ai_native_engineering": "7-EV",
+        "devops_and_cloud": "3-CU",
+        "sql_and_design": "4-CU",
+        "software_engineering": "8 - AS",
+        "system_design_and_architecture": "7-EV",
+        "computer_networking": "5-EV",
+        "operating_system": "5-EV"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 43,
+      "source_row_number": 43,
+      "company": "Airbus SE",
+      "skill_levels_raw": {
+        "coding": "5-AS",
+        "data_structures_and_algorithms": "5-AS",
+        "object_oriented_programming_and_design": "5-AS",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "7-AS",
+        "devops_and_cloud": "5-AS",
+        "sql_and_design": "5-AS",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "6-CR",
+        "computer_networking": "5-AS",
+        "operating_system": "4-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 44,
+      "source_row_number": 44,
+      "company": "Wells Fargo & Company",
+      "skill_levels_raw": {
+        "coding": "5-AP",
+        "data_structures_and_algorithms": "6-AS",
+        "object_oriented_programming_and_design": "4-EV",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "7-EV",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "4-CU",
+        "sql_and_design": "5-AP",
+        "software_engineering": "7 - AP",
+        "system_design_and_architecture": "6-EV",
+        "computer_networking": "4-AS",
+        "operating_system": "4-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 45,
+      "source_row_number": 45,
+      "company": "Atlassian Corporation",
+      "skill_levels_raw": {
+        "coding": "7-AS",
+        "data_structures_and_algorithms": "8-EV",
+        "object_oriented_programming_and_design": "7-CR",
+        "aptitude_and_problem_solving": "8-EV",
+        "communication_skills": "7-AS",
+        "ai_native_engineering": "8-EV",
+        "devops_and_cloud": "7-EV",
+        "sql_and_design": "8-EV",
+        "software_engineering": "8 - EV",
+        "system_design_and_architecture": "8-CR",
+        "computer_networking": "7-CR",
+        "operating_system": "8-CR"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 46,
+      "source_row_number": 46,
+      "company": "Nutanix, Inc.",
+      "skill_levels_raw": {
+        "coding": "6-AS",
+        "data_structures_and_algorithms": "7-AS",
+        "object_oriented_programming_and_design": "6-EV",
+        "aptitude_and_problem_solving": "7-AS",
+        "communication_skills": "7-AS",
+        "ai_native_engineering": "8-EV",
+        "devops_and_cloud": "6-AS",
+        "sql_and_design": "7-AS",
+        "software_engineering": "8 - EV",
+        "system_design_and_architecture": "7-EV",
+        "computer_networking": "8-AS",
+        "operating_system": "8-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 47,
+      "source_row_number": 47,
+      "company": "DeepMind",
+      "skill_levels_raw": {
+        "coding": "8-EV",
+        "data_structures_and_algorithms": "10-CR",
+        "object_oriented_programming_and_design": "9-CR",
+        "aptitude_and_problem_solving": "9-CR",
+        "communication_skills": "8-CR",
+        "ai_native_engineering": "9-CR",
+        "devops_and_cloud": "9-CR",
+        "sql_and_design": "9-CR",
+        "software_engineering": "10 - CR",
+        "system_design_and_architecture": "9-CR",
+        "computer_networking": "4-CU",
+        "operating_system": "4-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 48,
+      "source_row_number": 48,
+      "company": "Akamai Technologies India Pvt. Ltd.",
+      "skill_levels_raw": {
+        "coding": "6-AP",
+        "data_structures_and_algorithms": "8-EV",
+        "object_oriented_programming_and_design": "6-AS",
+        "aptitude_and_problem_solving": "7-AS",
+        "communication_skills": "7-AS",
+        "ai_native_engineering": "7-AS",
+        "devops_and_cloud": "6-EV",
+        "sql_and_design": "6-AS",
+        "software_engineering": "8 - EV",
+        "system_design_and_architecture": "7-EV",
+        "computer_networking": "9-EV",
+        "operating_system": "9-EV"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 49,
+      "source_row_number": 49,
+      "company": "Adobe Inc.",
+      "skill_levels_raw": {
+        "coding": "7-AS",
+        "data_structures_and_algorithms": "8-CR",
+        "object_oriented_programming_and_design": "8-CR",
+        "aptitude_and_problem_solving": "8-EV",
+        "communication_skills": "7-EV",
+        "ai_native_engineering": "8-EV",
+        "devops_and_cloud": "6-AP",
+        "sql_and_design": "6-AP",
+        "software_engineering": "9 - EV",
+        "system_design_and_architecture": "8-CR",
+        "computer_networking": "4-AP",
+        "operating_system": "4-AP"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 50,
+      "source_row_number": 50,
+      "company": "Genpact Ltd.",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "4-AP",
+        "object_oriented_programming_and_design": "3-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "4-AP",
+        "devops_and_cloud": "4-CU",
+        "sql_and_design": "3-CU",
+        "software_engineering": "5 - AP",
+        "system_design_and_architecture": "3-AP",
+        "computer_networking": "2-CU",
+        "operating_system": "2-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 51,
+      "source_row_number": 51,
+      "company": "Uber Technologies, Inc.",
+      "skill_levels_raw": {
+        "coding": "7-AP",
+        "data_structures_and_algorithms": "8-EV",
+        "object_oriented_programming_and_design": "7-CR",
+        "aptitude_and_problem_solving": "8-EV",
+        "communication_skills": "7-EV",
+        "ai_native_engineering": "8-EV",
+        "devops_and_cloud": "7-EV",
+        "sql_and_design": "7-EV",
+        "software_engineering": "9 - EV",
+        "system_design_and_architecture": "6-CR",
+        "computer_networking": "7-AS",
+        "operating_system": "7-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 52,
+      "source_row_number": 52,
+      "company": "Dell Technologies Inc.",
+      "skill_levels_raw": {
+        "coding": "5-AS",
+        "data_structures_and_algorithms": "6-AP",
+        "object_oriented_programming_and_design": "5-EV",
+        "aptitude_and_problem_solving": "6-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "6-AS",
+        "devops_and_cloud": "4-AP",
+        "sql_and_design": "4-CU",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "5-AS",
+        "computer_networking": "5-AP",
+        "operating_system": "5-AP"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 53,
+      "source_row_number": 53,
+      "company": "Even Healthcare Private Limited",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "4-AP",
+        "object_oriented_programming_and_design": "4-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "4-CU",
+        "sql_and_design": "5-AP",
+        "software_engineering": "6 - AS",
+        "system_design_and_architecture": "4-AP",
+        "computer_networking": "3-CU",
+        "operating_system": "3-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 54,
+      "source_row_number": 54,
+      "company": "Groww Invest Tech Pvt. Ltd.",
+      "skill_levels_raw": {
+        "coding": "5-AS",
+        "data_structures_and_algorithms": "6-AS",
+        "object_oriented_programming_and_design": "5-AS",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "6-AS",
+        "sql_and_design": "6-AS",
+        "software_engineering": "8 - EV",
+        "system_design_and_architecture": "5-EV",
+        "computer_networking": "4-AS",
+        "operating_system": "4-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 55,
+      "source_row_number": 55,
+      "company": "MintAir Corp",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "5-AP",
+        "object_oriented_programming_and_design": "3-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "5-AS",
+        "devops_and_cloud": "5-AP",
+        "sql_and_design": "4-AP",
+        "software_engineering": "5 - AP",
+        "system_design_and_architecture": "1-CU",
+        "computer_networking": "5-AP",
+        "operating_system": "5-AP"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 56,
+      "source_row_number": 56,
+      "company": "OpenAI, Inc.",
+      "skill_levels_raw": {
+        "coding": "8-EV",
+        "data_structures_and_algorithms": "9-CR",
+        "object_oriented_programming_and_design": "9-CR",
+        "aptitude_and_problem_solving": "9-CR",
+        "communication_skills": "8-CR",
+        "ai_native_engineering": "10-CR",
+        "devops_and_cloud": "9-CR",
+        "sql_and_design": "9-CR",
+        "software_engineering": "10 - CR",
+        "system_design_and_architecture": "8-CR",
+        "computer_networking": "9-CR",
+        "operating_system": "9-CR"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 57,
+      "source_row_number": 57,
+      "company": "Skyhigh Security",
+      "skill_levels_raw": {
+        "coding": "6-AS",
+        "data_structures_and_algorithms": "7-AS",
+        "object_oriented_programming_and_design": "6-EV",
+        "aptitude_and_problem_solving": "7-AS",
+        "communication_skills": "7-AS",
+        "ai_native_engineering": "7-AS",
+        "devops_and_cloud": "6-AS",
+        "sql_and_design": "6-EV",
+        "software_engineering": "8 - AS",
+        "system_design_and_architecture": "6-EV",
+        "computer_networking": "6-EV",
+        "operating_system": "7-EV"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 58,
+      "source_row_number": 58,
+      "company": "Space Exploration Technologies Corp.",
+      "skill_levels_raw": {
+        "coding": "7-EV",
+        "data_structures_and_algorithms": "8-EV",
+        "object_oriented_programming_and_design": "9-CR",
+        "aptitude_and_problem_solving": "8-EV",
+        "communication_skills": "8-EV",
+        "ai_native_engineering": "9-CR",
+        "devops_and_cloud": "8-EV",
+        "sql_and_design": "8-AS",
+        "software_engineering": "9 - CR",
+        "system_design_and_architecture": "7-EV",
+        "computer_networking": "8-EV",
+        "operating_system": "9-EV"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 59,
+      "source_row_number": 59,
+      "company": "Walmart Inc.",
+      "skill_levels_raw": {
+        "coding": "6-AP",
+        "data_structures_and_algorithms": "7-AP",
+        "object_oriented_programming_and_design": "5-AS",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "7-EV",
+        "devops_and_cloud": "5-AP",
+        "sql_and_design": "7-AP",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "6-AS",
+        "computer_networking": "5-AS",
+        "operating_system": "5-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 60,
+      "source_row_number": 60,
+      "company": "Zepto Technologies Private Limited",
+      "skill_levels_raw": {
+        "coding": "5-AS",
+        "data_structures_and_algorithms": "7-AS",
+        "object_oriented_programming_and_design": "5-EV",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "6-AS",
+        "sql_and_design": "7-AS",
+        "software_engineering": "8 - EV",
+        "system_design_and_architecture": "6-CR",
+        "computer_networking": "4-AS",
+        "operating_system": "4-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 61,
+      "source_row_number": 61,
+      "company": "DevRev Cloud India Private Limited",
+      "skill_levels_raw": {
+        "coding": "5-AS",
+        "data_structures_and_algorithms": "7-AP",
+        "object_oriented_programming_and_design": "6-AS",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "7-EV",
+        "devops_and_cloud": "6-AS",
+        "sql_and_design": "7-AS",
+        "software_engineering": "8 - EV",
+        "system_design_and_architecture": "5-AS",
+        "computer_networking": "4-AS",
+        "operating_system": "5-AP"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 62,
+      "source_row_number": 62,
+      "company": "Increff Technologies Private Limited",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "6-AS",
+        "object_oriented_programming_and_design": "4-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "4-AP",
+        "sql_and_design": "5-AP",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "4-AP",
+        "computer_networking": "3-AP",
+        "operating_system": "3-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 63,
+      "source_row_number": 63,
+      "company": "MoveInSync Technologies Private Limited",
+      "skill_levels_raw": {
+        "coding": "5-AP",
+        "data_structures_and_algorithms": "6-AP",
+        "object_oriented_programming_and_design": "5-AS",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "5-AS",
+        "devops_and_cloud": "4-AP",
+        "sql_and_design": "4-AP",
+        "software_engineering": "6 - AP",
+        "system_design_and_architecture": "5-EV",
+        "computer_networking": "4-AS",
+        "operating_system": "4-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 64,
+      "source_row_number": 64,
+      "company": "NVIDIA Corporation",
+      "skill_levels_raw": {
+        "coding": "7-EV",
+        "data_structures_and_algorithms": "9-EV",
+        "object_oriented_programming_and_design": "9-CR",
+        "aptitude_and_problem_solving": "8-EV",
+        "communication_skills": "7-EV",
+        "ai_native_engineering": "9-CR",
+        "devops_and_cloud": "7-EV",
+        "sql_and_design": "8-EV",
+        "software_engineering": "9 - EV",
+        "system_design_and_architecture": "7-EV",
+        "computer_networking": "6-EV",
+        "operating_system": "7-EV"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 65,
+      "source_row_number": 65,
+      "company": "ServiceNow, Inc.",
+      "skill_levels_raw": {
+        "coding": "6-AS",
+        "data_structures_and_algorithms": "7-EV",
+        "object_oriented_programming_and_design": "7-EV",
+        "aptitude_and_problem_solving": "7-AS",
+        "communication_skills": "7-AS",
+        "ai_native_engineering": "8-EV",
+        "devops_and_cloud": "6-AP",
+        "sql_and_design": "6-AP",
+        "software_engineering": "8 - AS",
+        "system_design_and_architecture": "6-CR",
+        "computer_networking": "5-AS",
+        "operating_system": "4-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 66,
+      "source_row_number": 66,
+      "company": "Tredence Inc.",
+      "skill_levels_raw": {
+        "coding": "5-AS",
+        "data_structures_and_algorithms": "6-AS",
+        "object_oriented_programming_and_design": "4-AS",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "6-AS",
+        "devops_and_cloud": "5-AS",
+        "sql_and_design": "7-AS",
+        "software_engineering": "6 - AS",
+        "system_design_and_architecture": "5-AS",
+        "computer_networking": "3-CU",
+        "operating_system": "3-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 67,
+      "source_row_number": 67,
+      "company": "CME Group Inc.",
+      "skill_levels_raw": {
+        "coding": "6-AP",
+        "data_structures_and_algorithms": "6-AS",
+        "object_oriented_programming_and_design": "5-EV",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "7-EV",
+        "ai_native_engineering": "7-EV",
+        "devops_and_cloud": "5-AS",
+        "sql_and_design": "7-EV",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "6-EV",
+        "computer_networking": "5-EV",
+        "operating_system": "6-EV"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 68,
+      "source_row_number": 68,
+      "company": "HCL Technologies Limited",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "5-AP",
+        "object_oriented_programming_and_design": "3-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "4-AP",
+        "devops_and_cloud": "4-CU",
+        "sql_and_design": "4-CU",
+        "software_engineering": "5 - AP",
+        "system_design_and_architecture": "3-AP",
+        "computer_networking": "2-CU",
+        "operating_system": "2-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 69,
+      "source_row_number": 69,
+      "company": "Freshworks Inc.",
+      "skill_levels_raw": {
+        "coding": "6-AS",
+        "data_structures_and_algorithms": "7-AP",
+        "object_oriented_programming_and_design": "6-AS",
+        "aptitude_and_problem_solving": "6-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "7-EV",
+        "devops_and_cloud": "5-AP",
+        "sql_and_design": "6-AS",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "6-CR",
+        "computer_networking": "4-AS",
+        "operating_system": "4-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 70,
+      "source_row_number": 70,
+      "company": "HP Inc.",
+      "skill_levels_raw": {
+        "coding": "5-AP",
+        "data_structures_and_algorithms": "6-AP",
+        "object_oriented_programming_and_design": "5-AS",
+        "aptitude_and_problem_solving": "6-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "6-AS",
+        "devops_and_cloud": "4-CU",
+        "sql_and_design": "4-CU",
+        "software_engineering": "6 - AP",
+        "system_design_and_architecture": "5-EV",
+        "computer_networking": "4-AP",
+        "operating_system": "5-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 71,
+      "source_row_number": 71,
+      "company": "Koninklijke Philips N.V.",
+      "skill_levels_raw": {
+        "coding": "5-AS",
+        "data_structures_and_algorithms": "5-AS",
+        "object_oriented_programming_and_design": "5-AS",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "7-AS",
+        "devops_and_cloud": "4-CU",
+        "sql_and_design": "5-CU",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "5-AS",
+        "computer_networking": "3-CU",
+        "operating_system": "3-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 72,
+      "source_row_number": 72,
+      "company": "Warner Bros. Discovery, Inc.",
+      "skill_levels_raw": {
+        "coding": "5-AP",
+        "data_structures_and_algorithms": "5-AP",
+        "object_oriented_programming_and_design": "4-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "6-AS",
+        "devops_and_cloud": "5-AP",
+        "sql_and_design": "7-AS",
+        "software_engineering": "6 - AP",
+        "system_design_and_architecture": "6-EV",
+        "computer_networking": "4-AS",
+        "operating_system": "5-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 73,
+      "source_row_number": 73,
+      "company": "HyperVerge Technologies Private Limited",
+      "skill_levels_raw": {
+        "coding": "5-AS",
+        "data_structures_and_algorithms": "6-AS",
+        "object_oriented_programming_and_design": "5-EV",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "8-EV",
+        "devops_and_cloud": "6-AS",
+        "sql_and_design": "6-AS",
+        "software_engineering": "8 - EV",
+        "system_design_and_architecture": "4-AP",
+        "computer_networking": "4-AP",
+        "operating_system": "4-AP"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 74,
+      "source_row_number": 74,
+      "company": "Motorq Technologies Private Limited",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "6-AP",
+        "object_oriented_programming_and_design": "4-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "6-AS",
+        "sql_and_design": "8-EV",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "5-EV",
+        "computer_networking": "5-AS",
+        "operating_system": "6-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 75,
+      "source_row_number": 75,
+      "company": "Autodesk",
+      "skill_levels_raw": {
+        "coding": "6-AS",
+        "data_structures_and_algorithms": "7-EV",
+        "object_oriented_programming_and_design": "8-CR",
+        "aptitude_and_problem_solving": "7-EV",
+        "communication_skills": "7-AS",
+        "ai_native_engineering": "8-EV",
+        "devops_and_cloud": "7-EV",
+        "sql_and_design": "7-EV",
+        "software_engineering": "8 - EV",
+        "system_design_and_architecture": "6-CR",
+        "computer_networking": "4-AS",
+        "operating_system": "5-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 76,
+      "source_row_number": 76,
+      "company": "Electronic Arts",
+      "skill_levels_raw": {
+        "coding": "6-AP",
+        "data_structures_and_algorithms": "7-EV",
+        "object_oriented_programming_and_design": "7-EV",
+        "aptitude_and_problem_solving": "7-AS",
+        "communication_skills": "7-AS",
+        "ai_native_engineering": "7-EV",
+        "devops_and_cloud": "6-AP",
+        "sql_and_design": "7-AS",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "6-EV",
+        "computer_networking": "4-AP",
+        "operating_system": "4-AP"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 77,
+      "source_row_number": 77,
+      "company": "Morgan Stanley",
+      "skill_levels_raw": {
+        "coding": "6-AS",
+        "data_structures_and_algorithms": "7-EV",
+        "object_oriented_programming_and_design": "5-EV",
+        "aptitude_and_problem_solving": "7-EV",
+        "communication_skills": "7-EV",
+        "ai_native_engineering": "7-EV",
+        "devops_and_cloud": "5-AS",
+        "sql_and_design": "7-EV",
+        "software_engineering": "8 - AS",
+        "system_design_and_architecture": "7-EV",
+        "computer_networking": "5-AS",
+        "operating_system": "5-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 78,
+      "source_row_number": 78,
+      "company": "Microsoft Corporation",
+      "skill_levels_raw": {
+        "coding": "6-AS",
+        "data_structures_and_algorithms": "9-EV",
+        "object_oriented_programming_and_design": "8-CR",
+        "aptitude_and_problem_solving": "8-EV",
+        "communication_skills": "7-EV",
+        "ai_native_engineering": "8-EV",
+        "devops_and_cloud": "7-EV",
+        "sql_and_design": "8-AS",
+        "software_engineering": "9 - EV",
+        "system_design_and_architecture": "8-CR",
+        "computer_networking": "8-EV",
+        "operating_system": "8-EV"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 79,
+      "source_row_number": 79,
+      "company": "Darwinbox Digital Solutions Private Limited",
+      "skill_levels_raw": {
+        "coding": "5-AP",
+        "data_structures_and_algorithms": "6-AP",
+        "object_oriented_programming_and_design": "5-EV",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "4-AP",
+        "sql_and_design": "6-AP",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "5-AS",
+        "computer_networking": "3-AP",
+        "operating_system": "3-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 80,
+      "source_row_number": 80,
+      "company": "Epifi Technologies Private Limited",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "6-AS",
+        "object_oriented_programming_and_design": "4-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "6-AS",
+        "sql_and_design": "7-AP",
+        "software_engineering": "8 - EV",
+        "system_design_and_architecture": "5-EV",
+        "computer_networking": "4-AS",
+        "operating_system": "4-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 81,
+      "source_row_number": 81,
+      "company": "Juspay Technologies Private Limited",
+      "skill_levels_raw": {
+        "coding": "6-AS",
+        "data_structures_and_algorithms": "7-AS",
+        "object_oriented_programming_and_design": "6-AS",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "7-EV",
+        "devops_and_cloud": "6-AS",
+        "sql_and_design": "7-EV",
+        "software_engineering": "8 - EV",
+        "system_design_and_architecture": "6-CR",
+        "computer_networking": "5-EV",
+        "operating_system": "6-EV"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 82,
+      "source_row_number": 82,
+      "company": "Flipkart Internet Private Limited",
+      "skill_levels_raw": {
+        "coding": "6-AP",
+        "data_structures_and_algorithms": "7-AP",
+        "object_oriented_programming_and_design": "6-EV",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "7-EV",
+        "devops_and_cloud": "7-EV",
+        "sql_and_design": "6-AS",
+        "software_engineering": "8 - EV",
+        "system_design_and_architecture": "5-AS",
+        "computer_networking": "7-AS",
+        "operating_system": "6-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 83,
+      "source_row_number": 83,
+      "company": "Optum",
+      "skill_levels_raw": {
+        "coding": "5-AS",
+        "data_structures_and_algorithms": "6-AS",
+        "object_oriented_programming_and_design": "5-AS",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "4-AP",
+        "sql_and_design": "5-AP",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "5-AS",
+        "computer_networking": "4-CU",
+        "operating_system": "3-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 84,
+      "source_row_number": 84,
+      "company": "PayPal Holdings, Inc.",
+      "skill_levels_raw": {
+        "coding": "6-AS",
+        "data_structures_and_algorithms": "8-EV",
+        "object_oriented_programming_and_design": "7-EV",
+        "aptitude_and_problem_solving": "7-EV",
+        "communication_skills": "7-EV",
+        "ai_native_engineering": "7-EV",
+        "devops_and_cloud": "6-AS",
+        "sql_and_design": "6-AP",
+        "software_engineering": "8 - EV",
+        "system_design_and_architecture": "7-EV",
+        "computer_networking": "6-AS",
+        "operating_system": "5-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 85,
+      "source_row_number": 85,
+      "company": "Bajaj Finserv Health Ltd.",
+      "skill_levels_raw": {
+        "coding": "5-AP",
+        "data_structures_and_algorithms": "5-AP",
+        "object_oriented_programming_and_design": "4-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "5-AP",
+        "sql_and_design": "5-AS",
+        "software_engineering": "6 - AS",
+        "system_design_and_architecture": "3-AP",
+        "computer_networking": "3-CU",
+        "operating_system": "3-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 86,
+      "source_row_number": 86,
+      "company": "Bain Capability Network",
+      "skill_levels_raw": {
+        "coding": "5-AS",
+        "data_structures_and_algorithms": "5-AS",
+        "object_oriented_programming_and_design": "4-AS",
+        "aptitude_and_problem_solving": "7-AS",
+        "communication_skills": "7-EV",
+        "ai_native_engineering": "6-AS",
+        "devops_and_cloud": "4-CU",
+        "sql_and_design": "4-AP",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "2-CU",
+        "computer_networking": "2-CU",
+        "operating_system": "2-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 87,
+      "source_row_number": 87,
+      "company": "Proactively Inc.",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "6-AP",
+        "object_oriented_programming_and_design": "5-AS",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "5-AS",
+        "devops_and_cloud": "3-AP",
+        "sql_and_design": "3-CU",
+        "software_engineering": "6 - AP",
+        "system_design_and_architecture": "1-CU",
+        "computer_networking": "3-AP",
+        "operating_system": "2-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 88,
+      "source_row_number": 88,
+      "company": "Samsung PRISM",
+      "skill_levels_raw": {
+        "coding": "6-AP",
+        "data_structures_and_algorithms": "6-AP",
+        "object_oriented_programming_and_design": "6-AS",
+        "aptitude_and_problem_solving": "6-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "6-AS",
+        "devops_and_cloud": "5-AS",
+        "sql_and_design": "4-AS",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "4-AP",
+        "computer_networking": "4-CU",
+        "operating_system": "4-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 89,
+      "source_row_number": 89,
+      "company": "Acko General Insurance Limited",
+      "skill_levels_raw": {
+        "coding": "5-AS",
+        "data_structures_and_algorithms": "6-AS",
+        "object_oriented_programming_and_design": "5-EV",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "6-AP",
+        "sql_and_design": "6-EV",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "4-AS",
+        "computer_networking": "4-AS",
+        "operating_system": "4-AP"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 90,
+      "source_row_number": 90,
+      "company": "Robert Bosch GmbH",
+      "skill_levels_raw": {
+        "coding": "5-AP",
+        "data_structures_and_algorithms": "6-AP",
+        "object_oriented_programming_and_design": "6-EV",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "7-AS",
+        "devops_and_cloud": "5-AP",
+        "sql_and_design": "4-CU",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "5-EV",
+        "computer_networking": "5-AP",
+        "operating_system": "5-AP"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 91,
+      "source_row_number": 91,
+      "company": "Concentrix Corporation",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "4-AP",
+        "object_oriented_programming_and_design": "3-AP",
+        "aptitude_and_problem_solving": "4-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "3-AP",
+        "devops_and_cloud": "3-CU",
+        "sql_and_design": "2-CU",
+        "software_engineering": "4 - AP",
+        "system_design_and_architecture": "3-AP",
+        "computer_networking": "2-CU",
+        "operating_system": "2-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 92,
+      "source_row_number": 92,
+      "company": "Dunzo Digital Private Limited",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "6-AS",
+        "object_oriented_programming_and_design": "4-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "6-AS",
+        "sql_and_design": "6-AP",
+        "software_engineering": "7 - EV",
+        "system_design_and_architecture": "5-AS",
+        "computer_networking": "4-AS",
+        "operating_system": "4-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 93,
+      "source_row_number": 93,
+      "company": "Byju's",
+      "skill_levels_raw": {
+        "coding": "4-AS",
+        "data_structures_and_algorithms": "4-CU",
+        "object_oriented_programming_and_design": "3-CU",
+        "aptitude_and_problem_solving": "4-CU",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "5-AS",
+        "devops_and_cloud": "4-AP",
+        "sql_and_design": "4-AP",
+        "software_engineering": "6 - AP",
+        "system_design_and_architecture": "4-AS",
+        "computer_networking": "3-CU",
+        "operating_system": "3-CU"
+      },
+      "source_metadata": {
+        "processed": false,
+        "processed_at": null,
+        "error_message": "null value in column \"company_id\" of relation \"companies\" violates not-null constraint",
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 94,
+      "source_row_number": 94,
+      "company": "Cleartrip",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "5-AP",
+        "object_oriented_programming_and_design": "4-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "5-AS",
+        "sql_and_design": "7-AS",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "6-CR",
+        "computer_networking": "4-AS",
+        "operating_system": "4-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 95,
+      "source_row_number": 95,
+      "company": "Cognizant Technology Solutions Corporation",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "4-AP",
+        "object_oriented_programming_and_design": "3-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "4-AP",
+        "devops_and_cloud": "4-CU",
+        "sql_and_design": "5-CU",
+        "software_engineering": "5 - AP",
+        "system_design_and_architecture": "3-AP",
+        "computer_networking": "2-CU",
+        "operating_system": "3-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 96,
+      "source_row_number": 96,
+      "company": "DXC Technology Company",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "4-AP",
+        "object_oriented_programming_and_design": "3-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "4-AP",
+        "devops_and_cloud": "4-CU",
+        "sql_and_design": "4-CU",
+        "software_engineering": "5 - AP",
+        "system_design_and_architecture": "3-AP",
+        "computer_networking": "3-AP",
+        "operating_system": "3-AP"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 97,
+      "source_row_number": 97,
+      "company": "PhysicsWallah Private Limited",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "3-CU",
+        "object_oriented_programming_and_design": "2-CU",
+        "aptitude_and_problem_solving": "4-CU",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "5-AS",
+        "devops_and_cloud": "5-AP",
+        "sql_and_design": "6-AP",
+        "software_engineering": "6 - AP",
+        "system_design_and_architecture": "6-EV",
+        "computer_networking": "4-AS",
+        "operating_system": "4-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 98,
+      "source_row_number": 98,
+      "company": "Udemy, Inc.",
+      "skill_levels_raw": {
+        "coding": "4-AS",
+        "data_structures_and_algorithms": "4-AP",
+        "object_oriented_programming_and_design": "3-AS",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "7-EV",
+        "devops_and_cloud": "6-EV",
+        "sql_and_design": "6-AS",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "5-AS",
+        "computer_networking": "5-AS",
+        "operating_system": "6-EV"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 99,
+      "source_row_number": 99,
+      "company": "NTT DATA",
+      "skill_levels_raw": {
+        "coding": "5-AP",
+        "data_structures_and_algorithms": "5-AP",
+        "object_oriented_programming_and_design": "4-AS",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "4-AP",
+        "devops_and_cloud": "4-AP",
+        "sql_and_design": "5-AP",
+        "software_engineering": "6 - AP",
+        "system_design_and_architecture": "4-AP",
+        "computer_networking": "3-CU",
+        "operating_system": "3-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 100,
+      "source_row_number": 100,
+      "company": "Virtusa Corporation",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "5-AP",
+        "object_oriented_programming_and_design": "3-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "4-AP",
+        "devops_and_cloud": "4-AP",
+        "sql_and_design": "5-CU",
+        "software_engineering": "5 - AP",
+        "system_design_and_architecture": "4-AP",
+        "computer_networking": "3-CU",
+        "operating_system": "3-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 101,
+      "source_row_number": 101,
+      "company": "upGrad Education Private Limited",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "4-CU",
+        "object_oriented_programming_and_design": "3-CU",
+        "aptitude_and_problem_solving": "4-CU",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "5-AS",
+        "devops_and_cloud": "5-AS",
+        "sql_and_design": "5-AP",
+        "software_engineering": "6 - AP",
+        "system_design_and_architecture": "4-AS",
+        "computer_networking": "4-AS",
+        "operating_system": "4-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 102,
+      "source_row_number": 102,
+      "company": "ZS Associates, Inc.",
+      "skill_levels_raw": {
+        "coding": "5-AS",
+        "data_structures_and_algorithms": "6-AP",
+        "object_oriented_programming_and_design": "5-AS",
+        "aptitude_and_problem_solving": "6-AS",
+        "communication_skills": "7-AS",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "3-CU",
+        "sql_and_design": "6-AS",
+        "software_engineering": "6 - AS",
+        "system_design_and_architecture": "5-AS",
+        "computer_networking": "3-AP",
+        "operating_system": "3-AP"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 103,
+      "source_row_number": 103,
+      "company": "Wipro Limited",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "5-AP",
+        "object_oriented_programming_and_design": "3-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "4-AP",
+        "devops_and_cloud": "4-CU",
+        "sql_and_design": "4-CU",
+        "software_engineering": "4 - AP",
+        "system_design_and_architecture": "3-AP",
+        "computer_networking": "2-CU",
+        "operating_system": "2-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 104,
+      "source_row_number": 104,
+      "company": "Paytm Money",
+      "skill_levels_raw": {
+        "coding": "5-AP",
+        "data_structures_and_algorithms": "6-AS",
+        "object_oriented_programming_and_design": "4-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "7-EV",
+        "devops_and_cloud": "6-AS",
+        "sql_and_design": "7-EV",
+        "software_engineering": "7 - EV",
+        "system_design_and_architecture": "6-CR",
+        "computer_networking": "5-AS",
+        "operating_system": "6-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 105,
+      "source_row_number": 105,
+      "company": "Hexagon Capability Center India",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "6-AP",
+        "object_oriented_programming_and_design": "5-AS",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "6-AS",
+        "devops_and_cloud": "5-AP",
+        "sql_and_design": "5-AP",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "4-AP",
+        "computer_networking": "3-AP",
+        "operating_system": "3-AP"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 106,
+      "source_row_number": 106,
+      "company": "INDmoney Private Limited",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "5-AS",
+        "object_oriented_programming_and_design": "4-AS",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "7-EV",
+        "devops_and_cloud": "7-EV",
+        "sql_and_design": "7-AS",
+        "software_engineering": "8 - EV",
+        "system_design_and_architecture": "5-EV",
+        "computer_networking": "5-EV",
+        "operating_system": "6-EV"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 107,
+      "source_row_number": 107,
+      "company": "Tech Mahindra Limited",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "5-AP",
+        "object_oriented_programming_and_design": "3-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "4-AP",
+        "devops_and_cloud": "4-CU",
+        "sql_and_design": "4-CU",
+        "software_engineering": "5 - AP",
+        "system_design_and_architecture": "3-AP",
+        "computer_networking": "2-CU",
+        "operating_system": "2-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 108,
+      "source_row_number": 108,
+      "company": "Simplilearn (Simplilearn.com; legally Simplilearn Solutions Private Limited)",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "3-CU",
+        "object_oriented_programming_and_design": "2-CU",
+        "aptitude_and_problem_solving": "4-CU",
+        "communication_skills": "6-AS",
+        "ai_native_engineering": "5-AS",
+        "devops_and_cloud": "5-CU",
+        "sql_and_design": "5-AP",
+        "software_engineering": "5 - AP",
+        "system_design_and_architecture": "4-AS",
+        "computer_networking": "4-AS",
+        "operating_system": "4-AS"
+      },
+      "source_metadata": {
+        "processed": false,
+        "processed_at": null,
+        "error_message": "null value in column \"company_id\" of relation \"companies\" violates not-null constraint",
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 109,
+      "source_row_number": 109,
+      "company": "BigBasket",
+      "skill_levels_raw": {
+        "coding": "5-AP",
+        "data_structures_and_algorithms": "6-AS",
+        "object_oriented_programming_and_design": "4-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "6-AS",
+        "sql_and_design": "7-AS",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "6-EV",
+        "computer_networking": "4-AS",
+        "operating_system": "5-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 110,
+      "source_row_number": 110,
+      "company": "Ecom Express",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "5-AP",
+        "object_oriented_programming_and_design": "3-AP",
+        "aptitude_and_problem_solving": "4-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "5-AP",
+        "devops_and_cloud": "4-AP",
+        "sql_and_design": "6-AP",
+        "software_engineering": "6 - AP",
+        "system_design_and_architecture": "4-AP",
+        "computer_networking": "3-CU",
+        "operating_system": "3-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 111,
+      "source_row_number": 111,
+      "company": "Kyndryl Holdings Inc.",
+      "skill_levels_raw": {
+        "coding": "5-AS",
+        "data_structures_and_algorithms": "5-AP",
+        "object_oriented_programming_and_design": "4-AS",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "4-AP",
+        "devops_and_cloud": "4-CU",
+        "sql_and_design": "4-CU",
+        "software_engineering": "6 - AS",
+        "system_design_and_architecture": "5-AS",
+        "computer_networking": "4-AP",
+        "operating_system": "4-AP"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 112,
+      "source_row_number": 112,
+      "company": "One MobiKwik Systems Limited",
+      "skill_levels_raw": {
+        "coding": "5-AP",
+        "data_structures_and_algorithms": "6-AS",
+        "object_oriented_programming_and_design": "4-EV",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "7-EV",
+        "devops_and_cloud": "6-AP",
+        "sql_and_design": "6-AP",
+        "software_engineering": "7 - EV",
+        "system_design_and_architecture": "4-AP",
+        "computer_networking": "4-AS",
+        "operating_system": "4-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 113,
+      "source_row_number": 113,
+      "company": "Shadowfax",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "5-AP",
+        "object_oriented_programming_and_design": "3-AP",
+        "aptitude_and_problem_solving": "4-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "6-AS",
+        "sql_and_design": "6-AS",
+        "software_engineering": "6 - AS",
+        "system_design_and_architecture": "5-EV",
+        "computer_networking": "4-AP",
+        "operating_system": "4-AP"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 114,
+      "source_row_number": 114,
+      "company": "Rupeek",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "5-AS",
+        "object_oriented_programming_and_design": "4-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "6-EV",
+        "devops_and_cloud": "5-AS",
+        "sql_and_design": "5-AP",
+        "software_engineering": "7 - AS",
+        "system_design_and_architecture": "6-CR",
+        "computer_networking": "4-AP",
+        "operating_system": "4-AP"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 115,
+      "source_row_number": 115,
+      "company": "3i Infotech Ltd.",
+      "skill_levels_raw": {
+        "coding": "4-AP",
+        "data_structures_and_algorithms": "4-AP",
+        "object_oriented_programming_and_design": "3-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "3-AP",
+        "devops_and_cloud": "4-CU",
+        "sql_and_design": "5-CU",
+        "software_engineering": "4 - AP",
+        "system_design_and_architecture": "2-CU",
+        "computer_networking": "2-CU",
+        "operating_system": "2-CU"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 116,
+      "source_row_number": 116,
+      "company": "BharatPe",
+      "skill_levels_raw": {
+        "coding": "5-AS",
+        "data_structures_and_algorithms": "6-AS",
+        "object_oriented_programming_and_design": "5-AS",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "5-AP",
+        "ai_native_engineering": "7-EV",
+        "devops_and_cloud": "6-EV",
+        "sql_and_design": "7-EV",
+        "software_engineering": "8 - EV",
+        "system_design_and_architecture": "6-CR",
+        "computer_networking": "7-AS",
+        "operating_system": "7-AS"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-21 04:56:35.6386+00",
+        "error_message": null,
+        "created_at": "2026-10-21 04:56:35.6386+00"
+      }
+    },
+    {
+      "source_id": 117,
+      "source_row_number": 117,
+      "company": "Volvo Group",
+      "skill_levels_raw": {
+        "coding": "5-AP",
+        "data_structures_and_algorithms": "5-AP",
+        "object_oriented_programming_and_design": "6-AP",
+        "aptitude_and_problem_solving": "5-AP",
+        "communication_skills": "6-AP",
+        "ai_native_engineering": "3-CU",
+        "devops_and_cloud": "4-CU",
+        "sql_and_design": "5-AP",
+        "software_engineering": "6-AP",
+        "system_design_and_architecture": "6-AS",
+        "computer_networking": "6-AP",
+        "operating_system": "6-AP"
+      },
+      "source_metadata": {
+        "processed": true,
+        "processed_at": "2026-10-25 10:41:21.191857+00",
+        "error_message": null,
+        "created_at": "2026-10-25 10:41:21.191857+00"
+      }
+    }
+  ]
+}
