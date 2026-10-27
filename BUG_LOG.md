@@ -11,8 +11,8 @@
 | :--- | :--- | :--- | :--- | :--- |
 | **Module 1: JD Analytics** | Samiksha | `ExtractionResult` (`source_type='jd'`) | Contract Verified | 2026-10-27 |
 | **Module 2: Resume Parsing** | Arushi | `ExtractionResult` (`source_type='resume'`) | Contract Verified | 2026-10-27 |
-| **Module 3: Profile Contract & Store** | Aarush | `Profile`, `Skill`, `db/store.py` | Complete & Passing (18 tests) | 2026-10-27 |
-| **Module 4: Talent Check** | Aditya | `TalentCheckResult`, `SkillsetGap` | Benchmark Dataset Verified | 2026-10-27 |
+| **Module 3: Profile Contract & Store** | Aarush | `Profile`, `Skill`, `db/store.py` | Complete & Passing | 2026-10-27 |
+| **Module 4: Talent Check** | Aditya | `TalentCheckResult`, `SkillsetGap` | Merged & Verified (30/30 tests passing) | 2026-10-27 |
 | **Module 5: Skill Matching** | Anjali | `MatchResult`, `MatchedSkill`, `MissingSkill` | Contract Verified | 2026-10-27 |
 
 ---
