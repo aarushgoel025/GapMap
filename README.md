@@ -57,6 +57,14 @@ npm run dev
 ```
 - Frontend UI: http://localhost:5173
 
+### Talent Check API
+
+- `GET /api/talent-check/companies` lists available company benchmarks.
+- `POST /api/talent-check` accepts a `company` and either a `profile` or `profile_id`.
+- `POST /api/talent-check/whatif` accepts the same profile input plus `changes`, a list of `{ "category_code": "COD", "new_level": 8 }` simulations. Simulations do not update the stored profile.
+
+The readiness response includes a 0-100 score, a label, and per-category required and candidate levels. The time-to-ready estimate is zero for candidates already labeled ready; the current model does not estimate learning time.
+
 ---
 
 ## 🐳 Docker Deployment

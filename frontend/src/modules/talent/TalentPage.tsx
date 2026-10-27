@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useCallback, useState, useEffect, useRef } from 'react';
 import { useApp } from '../../context/AppContext';
 import { getCompanies, checkTalent, checkTalentWhatIf } from '../../api';
+import { CATEGORY_CODES } from '../../types';
 import type { TalentCheckResult, CompanyInfo } from '../../types';
 import { Target, ArrowRight, ArrowLeft, Building, Zap } from 'lucide-react';
 
@@ -9,13 +10,15 @@ export const TalentPage: React.FC = () => {
   const [companies, setCompanies] = useState<CompanyInfo[]>([]);
   const [result, setResult] = useState<TalentCheckResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [simulatedSkill, setSimulatedSkill] = useState('');
+  const [simulatedCategory, setSimulatedCategory] = useState('COD');
+  const [simulatedLevel, setSimulatedLevel] = useState(8);
+  const companyRef = useRef(company);
 
   useEffect(() => {
-    getCompanies().then(setCompanies);
-  }, []);
+    companyRef.current = company;
+  }, [company]);
 
-  const runEvaluation = async (compName: string) => {
+  const runEvaluation = useCallback(async (compName: string) => {
     setIsLoading(true);
     try {
       const data = await checkTalent({
@@ -26,20 +29,43 @@ export const TalentPage: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [currentProfile]);
 
   useEffect(() => {
-    runEvaluation(company || 'Stripe');
-  }, [company]);
+    let active = true;
+    const loadCompanies = async () => {
+      const availableCompanies = await getCompanies();
+      if (!active) return;
+
+      setCompanies(availableCompanies);
+      const firstCompany = availableCompanies[0];
+      if (
+        firstCompany &&
+        !availableCompanies.some((item) => item.name === companyRef.current)
+      ) {
+        setCompany(firstCompany.name);
+      }
+    };
+
+    void loadCompanies();
+    return () => {
+      active = false;
+    };
+  }, [setCompany]);
+
+  useEffect(() => {
+    if (!companies.some((item) => item.name === company)) return;
+    void runEvaluation(company);
+  }, [companies, company, runEvaluation]);
 
   const handleWhatIf = async () => {
-    if (!simulatedSkill.trim() || !result) return;
+    if (!result) return;
     setIsLoading(true);
     try {
       const sim = await checkTalentWhatIf({
         company,
         profile: currentProfile || { name: 'Candidate', email: '', skills: [], hackathons: [], internships: [], certifications: [], preferred_roles: [] },
-        additional_skills: [simulatedSkill.trim()],
+        changes: [{ category_code: simulatedCategory, new_level: simulatedLevel }],
       });
       setResult(sim);
     } finally {
@@ -55,7 +81,7 @@ export const TalentPage: React.FC = () => {
         </span>
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-1">Company Talent Readiness Benchmark</h2>
         <p className="text-sm text-slate-500 dark:text-slate-400">
-          Evaluates candidate capability against company-specific hiring bars, estimating weeks-to-readiness.
+          Evaluates candidate capability against company-specific hiring bars and highlights skill gaps.
         </p>
       </div>
 
@@ -69,7 +95,6 @@ export const TalentPage: React.FC = () => {
             key={c.id}
             onClick={() => {
               setCompany(c.name);
-              runEvaluation(c.name);
             }}
             className={`px-3.5 py-1.5 text-xs font-semibold rounded-xl transition-all ${
               company === c.name
@@ -104,7 +129,7 @@ export const TalentPage: React.FC = () => {
               <p className="text-sm font-bold text-white mt-0.5">
                 {result.weeks_to_ready_estimate !== null && result.weeks_to_ready_estimate !== undefined
                   ? `${result.weeks_to_ready_estimate} weeks intensive preparation`
-                  : 'Ready for placement'}
+                  : result.label === 'Ready' ? 'Ready for placement' : 'Estimate unavailable'}
               </p>
             </div>
           </div>
@@ -142,19 +167,35 @@ export const TalentPage: React.FC = () => {
             {/* What-If Simulation Box */}
             <div className="mt-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700">
               <p className="text-xs font-semibold text-slate-800 dark:text-slate-200 mb-2">
-                Simulate "What-If" Skill Acquisition:
+                Simulate a skill-level change:
               </p>
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  value={simulatedSkill}
-                  onChange={(e) => setSimulatedSkill(e.target.value)}
-                  placeholder="e.g. Distributed System Design / Go"
-                  className="flex-1 px-3 py-1.5 text-xs rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900"
-                />
+              <div className="flex flex-wrap gap-2">
+                <select
+                  value={simulatedCategory}
+                  onChange={(e) => setSimulatedCategory(e.target.value)}
+                  className="flex-1 min-w-48 px-3 py-1.5 text-xs rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900"
+                  aria-label="Skill category to simulate"
+                >
+                  {CATEGORY_CODES.filter(({ code }) =>
+                    result.skillset_gap.some((gap) => gap.category_code === code),
+                  ).map(({ code, label }) => (
+                    <option key={code} value={code}>{label}</option>
+                  ))}
+                </select>
+                <label className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300">
+                  Target level
+                  <input
+                    type="number"
+                    min={0}
+                    max={10}
+                    value={simulatedLevel}
+                    onChange={(e) => setSimulatedLevel(Number(e.target.value))}
+                    className="w-16 px-2 py-1.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900"
+                  />
+                </label>
                 <button
                   onClick={handleWhatIf}
-                  disabled={isLoading || !simulatedSkill.trim()}
+                  disabled={isLoading || simulatedLevel < 0 || simulatedLevel > 10}
                   className="px-4 py-1.5 text-xs font-semibold bg-brand-600 text-white rounded-xl hover:bg-brand-500 disabled:opacity-50"
                 >
                   Simulate Score
