@@ -1,0 +1,209 @@
+{
+  "schema_version": "1.0",
+  "source_type": "jd",
+  "source_file": "Microsoft - Data Analyst.pdf",
+  "company": "Microsoft Corporation",
+  "role": "Data Analyst",
+  "skills": [
+    {
+      "skill_name": "SQL",
+      "category_code": "SQL",
+      "evidence": "Write and optimize SQL queries against large production datasets",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": true
+    },
+    {
+      "skill_name": "Data modeling",
+      "category_code": "SQL",
+      "evidence": "Design schemas for telemetry and usage data, and know when to normalize vs. denormalize",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": true
+    },
+    {
+      "skill_name": "Data visualization",
+      "category_code": "SQL",
+      "evidence": "Build dashboards and reporting that stakeholders actually use",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": true
+    },
+    {
+      "skill_name": "Communication",
+      "category_code": "COMM",
+      "evidence": "Communicate insights clearly to non-technical stakeholders and defend your methodology",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": true
+    },
+    {
+      "skill_name": "Statistics",
+      "category_code": "AI",
+      "evidence": "Solid quantitative reasoning — interpreting trends, sampling, probability, and reasoning with data tables under ambiguity",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": true
+    },
+    {
+      "skill_name": "Machine learning",
+      "category_code": "AI",
+      "evidence": "Basic applied statistics/ML literacy: regression vs. classification",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": true
+    },
+    {
+      "skill_name": "Power BI",
+      "category_code": "SQL",
+      "evidence": "Experience with a visualization tool (Power BI or similar)",
+      "confidence": "high",
+      "importance": "nice_to_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": true
+    },
+    {
+      "skill_name": "Query optimization",
+      "category_code": "SQL",
+      "evidence": "Write and optimize SQL queries against large production datasets",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Quantitative reasoning",
+      "category_code": "APTI",
+      "evidence": "Solid quantitative reasoning — interpreting trends, sampling, probability, and reasoning with data tables under ambiguity",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Overfitting",
+      "category_code": "AI",
+      "evidence": "Basic applied statistics/ML literacy: ... what overfitting means",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Stakeholder management",
+      "category_code": "COMM",
+      "evidence": "Communicate insights clearly to non-technical stakeholders and defend your methodology",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Anomaly detection",
+      "category_code": "AI",
+      "evidence": "Detect and explain anomalies in usage or business metrics",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Data analysis",
+      "category_code": "OTHER",
+      "evidence": "turn product and business data into decisions",
+      "confidence": "low",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Dashboard design",
+      "category_code": "SQL",
+      "evidence": "Build dashboards and reporting that stakeholders actually use",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Business metrics",
+      "category_code": "OTHER",
+      "evidence": "Detect and explain anomalies in usage or business metrics",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Requirements clarification",
+      "category_code": "COMM",
+      "evidence": "Comfort with ambiguous or incomplete requirements, and the initiative to clarify them",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    }
+  ],
+  "extras": {
+    "disagreements": [],
+    "models_used": [
+      "gemini",
+      "mistral"
+    ],
+    "models_failed": {}
+  }
+}
