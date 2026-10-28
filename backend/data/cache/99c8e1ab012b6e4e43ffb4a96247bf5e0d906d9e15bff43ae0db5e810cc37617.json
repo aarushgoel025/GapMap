@@ -1,0 +1,311 @@
+{
+  "schema_version": "1.0",
+  "source_type": "jd",
+  "source_file": "Google LLC - Data Scientist.pdf",
+  "company": "Google LLC",
+  "role": "Data Scientist",
+  "skills": [
+    {
+      "skill_name": "SQL",
+      "category_code": "SQL",
+      "evidence": "Write efficient, production-grade SQL against very large datasets",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": true
+    },
+    {
+      "skill_name": "Data modeling",
+      "category_code": "SQL",
+      "evidence": "including schema design and query optimization",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "A/B testing",
+      "category_code": "AI",
+      "evidence": "Design and run experiments (A/B tests) and interpret their results rigorously",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": true
+    },
+    {
+      "skill_name": "Machine learning",
+      "category_code": "AI",
+      "evidence": "Build and evaluate predictive models",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": true
+    },
+    {
+      "skill_name": "Statistics",
+      "category_code": "AI",
+      "evidence": "applying sound statistical judgment",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Communication",
+      "category_code": "COMM",
+      "evidence": "Present findings clearly to both technical and non-technical stakeholders",
+      "confidence": "high",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": true
+    },
+    {
+      "skill_name": "Collaboration",
+      "category_code": "COMM",
+      "evidence": "Partner with engineering and product teams to turn analysis into shipped features",
+      "confidence": "low",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Analytical reasoning",
+      "category_code": "APTI",
+      "evidence": "Solid quantitative and analytical reasoning",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Data visualization",
+      "category_code": "SQL",
+      "evidence": "Experience with a BI/visualization tool",
+      "confidence": "medium",
+      "importance": "nice_to_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": true
+    },
+    {
+      "skill_name": "Schema design",
+      "category_code": "SQL",
+      "evidence": "writing and optimizing complex queries, understanding indexing, and designing a schema for event or telemetry data",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Query optimization",
+      "category_code": "SQL",
+      "evidence": "writing and optimizing complex queries, understanding indexing, and designing a schema for event or telemetry data",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Statistical judgment",
+      "category_code": "AI",
+      "evidence": "Build and evaluate predictive models, applying sound statistical judgment",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Bias-variance tradeoff",
+      "category_code": "AI",
+      "evidence": "Foundational machine learning knowledge: bias-variance tradeoff, regression vs. classification",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Regression",
+      "category_code": "AI",
+      "evidence": "Foundational machine learning knowledge: bias-variance tradeoff, regression vs. classification",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Classification",
+      "category_code": "AI",
+      "evidence": "Foundational machine learning knowledge: bias-variance tradeoff, regression vs. classification",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Gradient descent",
+      "category_code": "AI",
+      "evidence": "Foundational machine learning knowledge: ... how gradient descent works",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Overfitting",
+      "category_code": "AI",
+      "evidence": "Foundational machine learning knowledge: ... how to recognize overfitting",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Quantitative reasoning",
+      "category_code": "APTI",
+      "evidence": "Solid quantitative and analytical reasoning — comfortable interpreting experiment results, probability, and metrics under ambiguity",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Probability",
+      "category_code": "APTI",
+      "evidence": "Solid quantitative and analytical reasoning — comfortable interpreting experiment results, probability, and metrics under ambiguity",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Metrics analysis",
+      "category_code": "APTI",
+      "evidence": "Solid quantitative and analytical reasoning — comfortable interpreting experiment results, probability, and metrics under ambiguity",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Stakeholder management",
+      "category_code": "COMM",
+      "evidence": "Present findings clearly to both technical and non-technical stakeholders",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Data analysis",
+      "category_code": "OTHER",
+      "evidence": "A track record, academic or applied, of turning a messy dataset into a clear, defensible insight",
+      "confidence": "medium",
+      "importance": "must_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Experimentation platforms",
+      "category_code": "OTHER",
+      "evidence": "exposure to experimentation platforms",
+      "confidence": "medium",
+      "importance": "nice_to_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    },
+    {
+      "skill_name": "Applied data projects",
+      "category_code": "OTHER",
+      "evidence": "a portfolio of applied data projects",
+      "confidence": "medium",
+      "importance": "nice_to_have",
+      "level_estimate": null,
+      "source_section": null,
+      "verified_by": [],
+      "stuffing_flag": false,
+      "models_agree": false
+    }
+  ],
+  "extras": {
+    "disagreements": [
+      {
+        "skill": "Data visualization",
+        "gemini_category": "SQL",
+        "mistral_category": "OTHER"
+      }
+    ],
+    "models_used": [
+      "gemini",
+      "mistral"
+    ],
+    "models_failed": {}
+  }
+}
