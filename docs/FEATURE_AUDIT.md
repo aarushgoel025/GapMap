@@ -188,3 +188,4 @@ Follow this sequence during the evaluation presentation:
    - Click **View 4x6 Matrix Heatmap**: display the full non-constant score grid showing how candidate scores vary across roles.
 6. **Show Green Pytest**:
    - Run `python -m pytest -v` in terminal showing **135 passed tests**.
+

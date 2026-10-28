@@ -89,6 +89,7 @@ export interface TalentCheckResult {
   readiness_score: number; // 0-100
   label?: string; // Ready / Almost there / Not yet
   weeks_to_ready_estimate?: number | null;
+  score_delta?: number;
 }
 
 export interface MatchedSkill {

@@ -30,17 +30,12 @@ def _get_profile(request: TalentCheckRequest) -> dict:
     if request.profile is not None:
         return request.profile.model_dump()
 
-    if not request.profile_id:
-        raise HTTPException(
-            status_code=422,
-            detail="Provide either profile or profile_id.",
-        )
-
-    profile = load_profile(request.profile_id)
+    target_id = request.profile_id or "candidate_1_all_rounder"
+    profile = load_profile(target_id)
     if profile is None:
         raise HTTPException(
             status_code=404,
-            detail=f"Profile with id '{request.profile_id}' not found",
+            detail=f"Profile with id '{target_id}' not found",
         )
     return profile
 
@@ -113,4 +108,7 @@ def run_talent_check_whatif(request: WhatIfRequest):
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
 
-    return _format_result(request.company, updated_profile, requirements)
+    res = _format_result(request.company, updated_profile, requirements)
+    base_res = _format_result(request.company, profile, requirements)
+    res["score_delta"] = round(res["readiness_score"] - base_res["readiness_score"], 2)
+    return res

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { fetchSamples, matchCandidateWithJD } from '../../api';
-import type { MatchResult } from '../../types';
+import { useApp } from '../../context/AppContext';
+import { fetchSamples, matchCandidateWithJD, matchSkills } from '../../api';
+import type { MatchResult, Profile } from '../../types';
 import { ScoreRing } from './ScoreRing';
 import { MatchedSkillsTable } from './MatchedSkillsTable';
 import { MissingSkillsList } from './MissingSkillsList';
@@ -16,6 +17,7 @@ export const SkillMatchingPage: React.FC<SkillMatchingPageProps> = ({
   initialJdId,
   onOpenHeatmap,
 }) => {
+  const { currentProfile, parsedResume, selectedJd: globalSelectedJd } = useApp();
   const [candidates, setCandidates] = useState<{ id: string; name: string }[]>([]);
   const [jds, setJds] = useState<{ id: string; company: string; role: string; source_file: string }[]>([]);
   const [selectedCandidate, setSelectedCandidate] = useState<string>(
@@ -32,16 +34,37 @@ export const SkillMatchingPage: React.FC<SkillMatchingPageProps> = ({
   // Load samples list
   useEffect(() => {
     fetchSamples().then((data) => {
-      setCandidates(data.profiles);
-      setJds(data.jds);
-      if (!initialCandidateId && data.profiles.length > 0) {
-        setSelectedCandidate(data.profiles[0].id);
+      const candidateList = [...data.profiles];
+      if (currentProfile?.skills?.length || parsedResume?.skills?.length) {
+        const customName = currentProfile?.name || (parsedResume?.extras as any)?.candidate_name || 'Uploaded Resume';
+        candidateList.unshift({
+          id: 'active_candidate',
+          name: 'Active: ' + customName,
+        });
       }
-      if (!initialJdId && data.jds.length > 0) {
-        setSelectedJd(data.jds[0].id);
+      setCandidates(candidateList);
+
+      const jdList = [...data.jds];
+      if (globalSelectedJd) {
+        const jdSource = 'source_file' in globalSelectedJd ? globalSelectedJd.source_file : globalSelectedJd.filename;
+        const jdRole = 'role' in globalSelectedJd ? globalSelectedJd.role : ('title' in globalSelectedJd ? globalSelectedJd.title : 'Role');
+        jdList.unshift({
+          id: 'active_jd',
+          company: globalSelectedJd.company || 'Active Target JD',
+          role: jdRole || 'Target Role',
+          source_file: jdSource || 'active_jd.pdf',
+        });
+      }
+      setJds(jdList);
+
+      if (!initialCandidateId && candidateList.length > 0) {
+        setSelectedCandidate(candidateList[0].id);
+      }
+      if (!initialJdId && jdList.length > 0) {
+        setSelectedJd(jdList[0].id);
       }
     });
-  }, []);
+  }, [currentProfile, parsedResume, globalSelectedJd, initialCandidateId, initialJdId]);
 
   // Update selection if props change (e.g. from heatmap click)
   useEffect(() => {
@@ -56,16 +79,48 @@ export const SkillMatchingPage: React.FC<SkillMatchingPageProps> = ({
     setLoading(true);
     setError(null);
 
-    matchCandidateWithJD(selectedCandidate, selectedJd)
-      .then((res) => {
-        setMatchResult(res);
-        setLoading(false);
+    const isCustomCandidate = selectedCandidate === 'active_candidate';
+    const isCustomJd = selectedJd === 'active_jd';
+
+    if (isCustomCandidate || isCustomJd) {
+      const extraObj = (parsedResume?.extras || {}) as Record<string, any>;
+      const activeProf: Profile = currentProfile || {
+        name: extraObj.candidate_name || extraObj.name || 'Active Candidate',
+        email: extraObj.email || '',
+        skills: parsedResume?.skills || [],
+        hackathons: [],
+        internships: [],
+        certifications: [],
+        preferred_roles: [],
+      };
+
+      matchSkills({
+        profile: isCustomCandidate ? activeProf : undefined,
+        profile_id: !isCustomCandidate ? selectedCandidate : undefined,
+        jd_id: !isCustomJd ? selectedJd : undefined,
+        jd_skills: isCustomJd && globalSelectedJd && 'skills' in globalSelectedJd ? globalSelectedJd.skills : undefined,
+        jd_source_file: isCustomJd && globalSelectedJd ? ('source_file' in globalSelectedJd ? globalSelectedJd.source_file : globalSelectedJd.filename) : undefined,
       })
-      .catch((err) => {
-        setError(err.message || 'Error executing skill match');
-        setLoading(false);
-      });
-  }, [selectedCandidate, selectedJd]);
+        .then((res) => {
+          setMatchResult(res);
+          setLoading(false);
+        })
+        .catch((err) => {
+          setError(err.message || 'Error executing skill match');
+          setLoading(false);
+        });
+    } else {
+      matchCandidateWithJD(selectedCandidate, selectedJd)
+        .then((res) => {
+          setMatchResult(res);
+          setLoading(false);
+        })
+        .catch((err) => {
+          setError(err.message || 'Error executing skill match');
+          setLoading(false);
+        });
+    }
+  }, [selectedCandidate, selectedJd, currentProfile, parsedResume, globalSelectedJd]);
 
   const activeJd = jds.find((j) => j.id === selectedJd);
 
