@@ -18,16 +18,16 @@ export const ScoreRing: React.FC<ScoreRingProps> = ({
 
   let colorClass = 'text-rose-500';
   let badgeText = 'High Gap';
-  let badgeBg = 'bg-rose-50 text-rose-700 border-rose-200';
+  let badgeBg = 'bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-950/50 dark:text-rose-400 dark:border-rose-900/50';
 
   if (normalizedScore >= 80) {
     colorClass = 'text-emerald-500';
     badgeText = 'Strong Match';
-    badgeBg = 'bg-emerald-50 text-emerald-700 border-emerald-200';
+    badgeBg = 'bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-400 dark:border-emerald-900/50';
   } else if (normalizedScore >= 60) {
     colorClass = 'text-amber-500';
     badgeText = 'Moderate Match';
-    badgeBg = 'bg-amber-50 text-amber-700 border-amber-200';
+    badgeBg = 'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-950/50 dark:text-amber-400 dark:border-amber-900/50';
   }
 
   return (
@@ -41,7 +41,7 @@ export const ScoreRing: React.FC<ScoreRingProps> = ({
             r={radius}
             stroke="currentColor"
             strokeWidth={strokeWidth}
-            className="text-slate-100"
+            className="text-slate-100 dark:text-slate-800"
             fill="transparent"
           />
           {/* Progress circle */}
@@ -61,10 +61,10 @@ export const ScoreRing: React.FC<ScoreRingProps> = ({
 
         {/* Center label */}
         <div className="absolute flex flex-col items-center justify-center text-center">
-          <span className="text-4xl font-extrabold text-slate-800 tracking-tight">
+          <span className="text-4xl font-extrabold text-slate-800 dark:text-white tracking-tight">
             {score.toFixed(1)}
           </span>
-          <span className="text-xs uppercase font-semibold text-slate-400 mt-0.5">
+          <span className="text-xs uppercase font-semibold text-slate-400 dark:text-slate-400 mt-0.5">
             Match Score
           </span>
         </div>

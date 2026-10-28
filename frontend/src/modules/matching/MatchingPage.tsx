@@ -4,15 +4,17 @@ import { SkillMatchingPage } from './SkillMatchingPage';
 import { HeatmapPage } from './HeatmapPage';
 
 export const MatchingPage: React.FC = () => {
-  const { profileId, selectedJd } = useApp();
+  const { currentProfile, parsedResume, selectedJd } = useApp();
   const [currentView, setCurrentView] = useState<'matching' | 'heatmap'>('matching');
-  const [selectedCandidate, setSelectedCandidate] = useState<string | undefined>(profileId || undefined);
+  const [selectedCandidate, setSelectedCandidate] = useState<string | undefined>(
+    (currentProfile?.skills?.length || parsedResume?.skills?.length) ? 'active_candidate' : undefined
+  );
   const [selectedJdId, setSelectedJdId] = useState<string | undefined>(
-    selectedJd ? ('id' in selectedJd ? selectedJd.id : undefined) : undefined
+    selectedJd ? ('id' in selectedJd ? selectedJd.id : 'active_jd') : undefined
   );
 
   return (
-    <div className="space-y-6 animate-fadeIn">
+    <div className="space-y-6 animate-fadeIn pb-12">
       {currentView === 'matching' ? (
         <SkillMatchingPage
           initialCandidateId={selectedCandidate}

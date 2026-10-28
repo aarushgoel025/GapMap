@@ -126,7 +126,7 @@ export const JdPage: React.FC = () => {
       <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <span className="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-brand-100 dark:bg-brand-950 text-brand-700 dark:text-brand-300">
-            Module 1: JD Analytics (Samiksha)
+            Module 1: JD Analytics
           </span>
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-1">
             Job Description & Target Role Analytics

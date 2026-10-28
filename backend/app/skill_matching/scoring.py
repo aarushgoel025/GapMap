@@ -7,6 +7,7 @@ from app.shared.schemas import MatchedSkill, MatchResult, MissingSkill, Skill
 from app.skill_matching.config import (
     MISSING_THRESHOLD,
     PREREQS_PATH,
+    SEMANTIC_THRESHOLD,
     WEIGHT_MUST_HAVE,
     WEIGHT_NICE_TO_HAVE,
     WEIGHT_UNKNOWN,
@@ -42,7 +43,7 @@ def calculate_match(
     jd_skills: list[Skill],
     profile_skills: list[Skill],
     jd_source_file: str = "jd_unknown.pdf",
-    semantic_threshold: float = 0.75,
+    semantic_threshold: float = SEMANTIC_THRESHOLD,
 ) -> MatchResult:
     """Calculates MatchResult including match_score, matched_skills, and ordered missing_skills."""
     if not jd_skills:

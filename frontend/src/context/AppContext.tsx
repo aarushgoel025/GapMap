@@ -19,7 +19,7 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [currentStep, setCurrentStep] = useState<number>(3); // Default to Step 3 (Profile) or Step 1
+  const [currentStep, setCurrentStep] = useState<number>(0); // 0 = Landing Page, 1..5 = Pipeline Stages
   const [selectedJd, setSelectedJd] = useState<SampleJd | ExtractionResult | null>(null);
   const [parsedResume, setParsedResume] = useState<ExtractionResult | null>(null);
   const [profileId, setProfileId] = useState<string | null>(null);

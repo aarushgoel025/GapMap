@@ -324,3 +324,4 @@ def verify_github_profile(
         "verified_skills": working_skills,
         "verified_count": verified_count,
     }
+

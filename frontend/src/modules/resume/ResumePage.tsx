@@ -141,7 +141,7 @@ export const ResumePage: React.FC = () => {
       <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <span className="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-brand-100 dark:bg-brand-950 text-brand-700 dark:text-brand-300">
-            Module 2: Resume Parsing & Privacy Redaction (Arushi)
+            Module 2: Resume Parsing & Privacy Redaction
           </span>
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-1">Extract & Parse Candidate Resume</h2>
           <p className="text-sm text-slate-500 dark:text-slate-400">

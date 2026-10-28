@@ -377,7 +377,7 @@ export const TalentPage: React.FC = () => {
         <div>
           <div className="flex items-center gap-2">
             <span className="px-2.5 py-0.5 text-xs font-bold rounded-full bg-brand-100 dark:bg-brand-950 text-brand-700 dark:text-brand-300">
-              Module 4: Talent Check (Aditya)
+              Module 4: Talent Check
             </span>
             <span className="text-xs text-slate-400">•</span>
             <span className="text-xs font-semibold text-slate-500">Pillar 2: Live What-If Simulator</span>

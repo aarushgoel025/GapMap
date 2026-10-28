@@ -3,11 +3,11 @@ import { useApp } from '../context/AppContext';
 import { Check, FileText, UserCheck, ShieldAlert, Cpu, Sparkles } from 'lucide-react';
 
 const STEPS = [
-  { id: 1, label: 'JD', fullLabel: 'Job Description', icon: FileText, owner: 'Samiksha' },
-  { id: 2, label: 'Resume', fullLabel: 'Resume Parsing', icon: UserCheck, owner: 'Arushi' },
-  { id: 3, label: 'Profile', fullLabel: 'Candidate Profile', icon: Sparkles, owner: 'Aarush (You)' },
-  { id: 4, label: 'Talent Check', fullLabel: 'Talent Readiness', icon: ShieldAlert, owner: 'Aditya' },
-  { id: 5, label: 'Skill Matching', fullLabel: 'Skill Matching', icon: Cpu, owner: 'Anjali' },
+  { id: 1, label: '1. JD', icon: FileText },
+  { id: 2, label: '2. Resume', icon: UserCheck },
+  { id: 3, label: '3. Profile', icon: Sparkles },
+  { id: 4, label: '4. Talent Check', icon: ShieldAlert },
+  { id: 5, label: '5. Skill Matching', icon: Cpu },
 ];
 
 export const Stepper: React.FC = () => {
@@ -50,10 +50,7 @@ export const Stepper: React.FC = () => {
                         : 'text-slate-400 dark:text-slate-500'
                     }`}
                   >
-                    {step.id}. {step.label}
-                  </span>
-                  <span className="hidden sm:block text-[10px] text-slate-400 dark:text-slate-500">
-                    {step.owner}
+                    {step.label}
                   </span>
                 </div>
               </button>
