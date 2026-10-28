@@ -14,8 +14,10 @@ import {
   GraduationCap,
   Briefcase,
   Layers,
-  Award,
   FileText,
+  RotateCcw,
+  User,
+  X,
 } from 'lucide-react';
 
 export const ResumePage: React.FC = () => {
@@ -25,6 +27,9 @@ export const ResumePage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'skills' | 'experience' | 'projects'>('skills');
+
+  // When a resume is parsed, collapse the demo cards and upload box so the screen stays clean
+  const [isPickerOpen, setIsPickerOpen] = useState<boolean>(!parsedResume);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -39,6 +44,7 @@ export const ResumePage: React.FC = () => {
     try {
       const result = await parseResume(resume.filename);
       setParsedResume(result);
+      setIsPickerOpen(false); // Hide demo cards once selected!
     } catch (err: any) {
       setUploadError(err.message || 'Failed to parse sample resume.');
     } finally {
@@ -63,8 +69,9 @@ export const ResumePage: React.FC = () => {
     try {
       const result = await uploadResumeFile(file);
       setParsedResume(result);
+      setIsPickerOpen(false); // Hide upload card once uploaded!
     } catch (err: any) {
-      setUploadError(err.message || 'Failed to parse uploaded resume document.');
+      setUploadError(err.message || 'Failed to parse uploaded resume document. Please verify backend connection.');
     } finally {
       setIsLoading(false);
       if (fileInputRef.current) {
@@ -76,7 +83,7 @@ export const ResumePage: React.FC = () => {
   const stuffedSkillsCount = parsedResume?.skills.filter((s: Skill) => s.stuffing_flag).length || 0;
 
   return (
-    <div className="space-y-6 animate-fadeIn">
+    <div className="space-y-6 animate-fadeIn pb-12">
       {/* Header Banner */}
       <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
@@ -95,70 +102,154 @@ export const ResumePage: React.FC = () => {
         </div>
       </div>
 
-      {/* Upload Zone & Sample Resumes Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-        {/* Real File Upload Card */}
-        <div
-          onClick={() => fileInputRef.current?.click()}
-          className={`lg:col-span-1 p-5 rounded-2xl border-2 border-dashed cursor-pointer transition-all flex flex-col justify-center items-center text-center group ${
-            selectedResumeId === 'custom-upload'
-              ? 'border-brand-500 bg-brand-50/50 dark:bg-brand-950/30 ring-2 ring-brand-500/20'
-              : 'border-slate-300 dark:border-slate-700 hover:border-brand-400 bg-white dark:bg-slate-900'
-          }`}
-        >
-          <input
-            type="file"
-            ref={fileInputRef}
-            onChange={handleFileUpload}
-            accept=".pdf,.docx"
-            className="hidden"
-          />
-          <div className="p-3 rounded-2xl bg-brand-50 dark:bg-brand-950 text-brand-600 group-hover:scale-110 transition-transform mb-3">
-            <UploadCloud className="w-6 h-6" />
-          </div>
-          <h4 className="font-bold text-slate-900 dark:text-white text-sm">Upload Real Resume</h4>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Drag & drop or click to upload (.pdf, .docx)
-          </p>
-          <span className="mt-3 text-[11px] font-semibold text-brand-600 dark:text-brand-400 bg-brand-100/60 dark:bg-brand-900/40 px-2.5 py-1 rounded-lg">
-            Live Local Parser
-          </span>
-        </div>
-
-        {/* Sample Resumes */}
-        <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-3">
-          {resumes.map((res) => {
-            const isSelected = selectedResumeId === res.id;
-            return (
-              <div
-                key={res.id}
-                onClick={() => handleParseSample(res)}
-                className={`p-4 rounded-2xl border cursor-pointer transition-all ${
-                  isSelected
-                    ? 'border-brand-500 bg-brand-50/40 dark:bg-brand-950/20 ring-2 ring-brand-500/30'
-                    : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-brand-300'
-                }`}
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-brand-600">
-                    <FileCode className="w-4 h-4" />
-                  </span>
-                  {isSelected && parsedResume && <CheckCircle className="w-4 h-4 text-brand-600" />}
-                </div>
-                <h4 className="font-bold text-slate-900 dark:text-white text-sm">{res.candidate_name}</h4>
-                <p className="text-xs font-semibold text-brand-600 dark:text-brand-400 mt-0.5">{res.role}</p>
-                <p className="text-[11px] text-slate-400 mt-2 font-mono truncate">{res.filename}</p>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
       {/* Upload Error Banner */}
       {uploadError && (
-        <div className="p-4 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 text-rose-700 dark:text-rose-300 text-sm flex items-center gap-2">
-          <AlertTriangle className="w-4 h-4 text-rose-500 shrink-0" />
-          <span>{uploadError}</span>
+        <div className="p-4 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 text-rose-700 dark:text-rose-300 text-sm flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <AlertTriangle className="w-4 h-4 text-rose-500 shrink-0" />
+            <span>{uploadError}</span>
+          </div>
+          <button
+            onClick={() => setUploadError(null)}
+            className="text-rose-400 hover:text-rose-600 dark:hover:text-rose-200"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+      )}
+
+      {/* Active Selected Resume Banner (Shows when a resume is parsed, with button to switch/browse demos) */}
+      {parsedResume && !isPickerOpen && (
+        <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-brand-200 dark:border-brand-900/60 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-600 text-white flex items-center justify-center shadow-md shrink-0">
+              <User className="w-6 h-6" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                  {(parsedResume.extras as any)?.candidate_name ||
+                    (parsedResume.extras as any)?.name ||
+                    (parsedResume as any).candidate_name ||
+                    'Candidate Profile'}
+                </h3>
+                {parsedResume.role && (
+                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                    {parsedResume.role}
+                  </span>
+                )}
+              </div>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 flex flex-wrap items-center gap-2">
+                <span>
+                  Source: <strong className="font-mono text-slate-700 dark:text-slate-300">{parsedResume.source_file}</strong>
+                </span>
+                <span>•</span>
+                <span className="text-brand-600 dark:text-brand-400 font-semibold">{parsedResume.skills.length} skills parsed</span>
+                {stuffedSkillsCount > 0 ? (
+                  <>
+                    <span>•</span>
+                    <span className="text-amber-600 dark:text-amber-400 font-bold flex items-center gap-1">
+                      <AlertTriangle className="w-3.5 h-3.5" />
+                      {stuffedSkillsCount} Stuffed Skills Flagged
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <span>•</span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-semibold">100% Evidenced</span>
+                  </>
+                )}
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={() => setIsPickerOpen(true)}
+            className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all self-start sm:self-auto cursor-pointer"
+          >
+            <RotateCcw className="w-3.5 h-3.5" />
+            <span>Switch Resume / Upload Another</span>
+          </button>
+        </div>
+      )}
+
+      {/* Resume Picker Section: Upload Real Resume + Demo Resumes Grid (Hides when a resume is active unless opened) */}
+      {isPickerOpen && (
+        <div className="space-y-3 animate-fadeIn">
+          {parsedResume && (
+            <div className="flex justify-between items-center px-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                Select a benchmark resume or upload your custom resume:
+              </span>
+              <button
+                onClick={() => setIsPickerOpen(false)}
+                className="text-xs font-semibold text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 flex items-center gap-1 cursor-pointer"
+              >
+                <span>Close (Keep Current Resume)</span>
+                <X className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+            {/* Real File Upload Card */}
+            <div
+              onClick={() => fileInputRef.current?.click()}
+              className={`lg:col-span-1 p-5 rounded-2xl border-2 border-dashed cursor-pointer transition-all flex flex-col justify-center items-center text-center group ${
+                selectedResumeId === 'custom-upload'
+                  ? 'border-brand-500 bg-brand-50/50 dark:bg-brand-950/30 ring-2 ring-brand-500/20'
+                  : 'border-slate-300 dark:border-slate-700 hover:border-brand-400 bg-white dark:bg-slate-900'
+              }`}
+            >
+              <input
+                type="file"
+                ref={fileInputRef}
+                onChange={handleFileUpload}
+                accept=".pdf,.docx"
+                className="hidden"
+              />
+              <div className="p-3 rounded-2xl bg-brand-50 dark:bg-brand-950 text-brand-600 group-hover:scale-110 transition-transform mb-3">
+                <UploadCloud className="w-6 h-6" />
+              </div>
+              <h4 className="font-bold text-slate-900 dark:text-white text-sm">Upload Real Resume</h4>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                Drag &amp; drop or click to upload (.pdf, .docx)
+              </p>
+              <span className="mt-3 text-[11px] font-semibold text-brand-600 dark:text-brand-400 bg-brand-100/60 dark:bg-brand-900/40 px-2.5 py-1 rounded-lg">
+                Live Local Parser
+              </span>
+            </div>
+
+            {/* Sample Benchmark Resumes */}
+            <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {resumes.map((res) => {
+                const isSelected =
+                  selectedResumeId === res.id ||
+                  (parsedResume && parsedResume.source_file === res.filename);
+                return (
+                  <div
+                    key={res.id}
+                    onClick={() => handleParseSample(res)}
+                    className={`p-4 rounded-2xl border cursor-pointer transition-all ${
+                      isSelected
+                        ? 'border-brand-500 bg-brand-50/40 dark:bg-brand-950/20 ring-2 ring-brand-500/30'
+                        : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-brand-300'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-brand-600">
+                        <FileCode className="w-4 h-4" />
+                      </span>
+                      {isSelected && parsedResume && <CheckCircle className="w-4 h-4 text-brand-600" />}
+                    </div>
+                    <h4 className="font-bold text-slate-900 dark:text-white text-sm">{res.candidate_name}</h4>
+                    <p className="text-xs font-semibold text-brand-600 dark:text-brand-400 mt-0.5">{res.role}</p>
+                    <p className="text-[11px] text-slate-400 mt-2 font-mono truncate">{res.filename}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       )}
 
@@ -174,32 +265,9 @@ export const ResumePage: React.FC = () => {
 
       {/* Extraction Results Display */}
       {parsedResume && !isLoading && (
-        <div className="space-y-4">
-          {/* Summary Banner */}
-          <div className="p-5 rounded-2xl border border-brand-200 dark:border-brand-900 bg-gradient-to-r from-brand-50/70 to-indigo-50/50 dark:from-brand-950/30 dark:to-indigo-950/30 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <div className="flex items-center gap-3">
-              <div className="p-3 bg-brand-600 text-white rounded-xl shadow-glow">
-                <FileText className="w-5 h-5" />
-              </div>
-              <div>
-                <h4 className="font-bold text-slate-900 dark:text-white text-base">
-                  {parsedResume.source_file}
-                </h4>
-                <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
-                  Extracted <span className="font-bold text-brand-600">{parsedResume.skills.length} skills</span>.
-                  {stuffedSkillsCount > 0 ? (
-                    <span className="text-amber-600 dark:text-amber-400 font-semibold ml-1">
-                      ⚠️ {stuffedSkillsCount} skill(s) flagged for stuffing (downgraded confidence).
-                    </span>
-                  ) : (
-                    <span className="text-emerald-600 dark:text-emerald-400 font-semibold ml-1">
-                      All skills backed by project or experience evidence.
-                    </span>
-                  )}
-                </p>
-              </div>
-            </div>
-
+        <div className="space-y-4 animate-fadeIn">
+          {/* Tabs Navigation */}
+          <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setActiveTab('skills')}
@@ -209,7 +277,7 @@ export const ResumePage: React.FC = () => {
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100'
                 }`}
               >
-                Skills ({parsedResume.skills.length})
+                Skills &amp; Stuffing Check ({parsedResume.skills.length})
               </button>
               <button
                 onClick={() => setActiveTab('experience')}
@@ -219,7 +287,7 @@ export const ResumePage: React.FC = () => {
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100'
                 }`}
               >
-                Experience
+                Experience &amp; Internships ({parsedResume.extras?.experience?.length || 0})
               </button>
               <button
                 onClick={() => setActiveTab('projects')}
@@ -229,23 +297,26 @@ export const ResumePage: React.FC = () => {
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100'
                 }`}
               >
-                Projects & Extras
+                Projects &amp; Education
               </button>
             </div>
+            <span className="text-xs text-slate-400 hidden sm:inline">
+              Candidate Resume Data Layer
+            </span>
           </div>
 
-          {/* Tab 1: Skills Table */}
+          {/* 1. Skills & Stuffing Audit Tab */}
           {activeTab === 'skills' && (
             <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
               <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-50 dark:bg-slate-800/60 text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800 uppercase tracking-wider font-semibold">
+                <table className="w-full text-left text-xs text-slate-600 dark:text-slate-300">
+                  <thead className="bg-slate-50 dark:bg-slate-800/60 uppercase font-bold text-slate-400 text-[10px] tracking-wider border-b border-slate-200 dark:border-slate-800">
                     <tr>
-                      <th className="py-3 px-4">Skill</th>
-                      <th className="py-3 px-3">Category</th>
-                      <th className="py-3 px-3">Confidence</th>
-                      <th className="py-3 px-3">Stuffing Check</th>
-                      <th className="py-3 px-4">Supporting Evidence</th>
+                      <th className="px-4 py-3">Skill Name</th>
+                      <th className="px-4 py-3">Category</th>
+                      <th className="px-4 py-3">Confidence</th>
+                      <th className="px-4 py-3">Stuffing Check</th>
+                      <th className="px-4 py-3">Extracted Evidence</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 dark:divide-slate-800 font-medium">
@@ -256,46 +327,44 @@ export const ResumePage: React.FC = () => {
                       return (
                         <tr
                           key={idx}
-                          className={`hover:bg-slate-50/50 dark:hover:bg-slate-800/40 transition-colors ${
-                            isStuffed ? 'bg-amber-50/30 dark:bg-amber-950/10' : ''
+                          className={`hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors ${
+                            isStuffed ? 'bg-amber-50/20 dark:bg-amber-950/10' : ''
                           }`}
                         >
-                          <td className="py-3 px-4 font-bold text-slate-900 dark:text-white">
+                          <td className="px-4 py-3 font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
                             {skill.skill_name}
                           </td>
-                          <td className="py-3 px-3">
-                            <span className="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">
-                              {skill.category_code}
-                            </span>
+                          <td className="px-4 py-3 font-mono text-[11px] text-slate-500">
+                            {skill.category_code}
                           </td>
-                          <td className="py-3 px-3">
+                          <td className="px-4 py-3">
                             <span
-                              className={`px-2 py-0.5 rounded-full text-[11px] font-semibold uppercase ${
+                              className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${
                                 conf === 'high'
-                                  ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300'
+                                  ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
                                   : conf === 'medium'
-                                  ? 'bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300'
-                                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
+                                  ? 'bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300'
+                                  : 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300'
                               }`}
                             >
                               {conf}
                             </span>
                           </td>
-                          <td className="py-3 px-3">
+                          <td className="px-4 py-3">
                             {isStuffed ? (
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-semibold bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300">
-                                <AlertTriangle className="w-3 h-3 text-amber-500" />
+                              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 border border-amber-300 dark:border-amber-800">
+                                <AlertTriangle className="w-3 h-3 text-amber-600" />
                                 Stuffed (No Evidence)
                               </span>
                             ) : (
-                              <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300">
                                 <CheckCircle className="w-3 h-3 text-emerald-500" />
                                 Verified in Text
                               </span>
                             )}
                           </td>
-                          <td className="py-3 px-4 text-slate-500 dark:text-slate-400 italic max-w-md truncate">
-                            {skill.evidence || (isStuffed ? 'Listed in skills list without supporting project mention' : 'None')}
+                          <td className="px-4 py-3 text-slate-500 italic max-w-sm truncate" title={skill.evidence || 'No evidence extracted'}>
+                            {skill.evidence ? `&quot;${skill.evidence}&quot;` : <span className="not-italic text-slate-400">None detected</span>}
                           </td>
                         </tr>
                       );
@@ -306,12 +375,12 @@ export const ResumePage: React.FC = () => {
             </div>
           )}
 
-          {/* Tab 2: Experience */}
+          {/* 2. Experience Tab */}
           {activeTab === 'experience' && (
-            <div className="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4">
-              <h4 className="font-bold text-slate-900 dark:text-white text-base flex items-center gap-2">
-                <Briefcase className="w-5 h-5 text-brand-600" />
-                Work Experience & Internships
+            <div className="p-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+              <h4 className="font-bold text-slate-900 dark:text-white text-sm flex items-center gap-2">
+                <Briefcase className="w-4 h-4 text-brand-600" />
+                Work Experience &amp; Internships
               </h4>
               {parsedResume.extras?.experience && parsedResume.extras.experience.length > 0 ? (
                 <div className="space-y-3">
@@ -322,32 +391,22 @@ export const ResumePage: React.FC = () => {
                     >
                       <div className="flex justify-between items-start">
                         <div>
-                          <h5 className="font-bold text-slate-900 dark:text-white text-sm">
-                            {exp.role || 'Engineer'}
-                          </h5>
-                          <p className="text-xs font-semibold text-brand-600 dark:text-brand-400">
-                            {exp.company || 'Company'}
-                          </p>
+                          <h5 className="font-bold text-slate-900 dark:text-white text-sm">{exp.role || 'Software Role'}</h5>
+                          <p className="text-xs font-semibold text-brand-600 dark:text-brand-400">{exp.company || 'Tech Company'}</p>
                         </div>
-                        {exp.duration && (
-                          <span className="text-[11px] font-mono text-slate-400 bg-slate-200 dark:bg-slate-700 px-2 py-0.5 rounded">
-                            {exp.duration}
-                          </span>
-                        )}
+                        <span className="text-[11px] text-slate-400 font-mono">{exp.duration || 'Past'}</span>
                       </div>
-                      <p className="text-xs text-slate-600 dark:text-slate-300 mt-2">
-                        {exp.summary || exp.description || 'No description provided.'}
-                      </p>
+                      <p className="text-xs text-slate-600 dark:text-slate-400 mt-2">{exp.description || 'No description extracted.'}</p>
                     </div>
                   ))}
                 </div>
               ) : (
-                <p className="text-xs text-slate-400 italic">No formal work experience parsed.</p>
+                <p className="text-xs text-slate-400 italic">No explicit experience entries found in this document.</p>
               )}
             </div>
           )}
 
-          {/* Tab 3: Projects & Extras */}
+          {/* 3. Projects & Education Tab */}
           {activeTab === 'projects' && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Education */}
@@ -364,7 +423,7 @@ export const ResumePage: React.FC = () => {
               {/* Certifications */}
               <div className="p-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3">
                 <h4 className="font-bold text-slate-900 dark:text-white text-sm flex items-center gap-2">
-                  <Award className="w-4 h-4 text-brand-600" />
+                  <FileText className="w-4 h-4 text-brand-600" />
                   Certifications
                 </h4>
                 {parsedResume.extras?.certifications && parsedResume.extras.certifications.length > 0 ? (
@@ -382,7 +441,7 @@ export const ResumePage: React.FC = () => {
               <div className="md:col-span-2 p-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3">
                 <h4 className="font-bold text-slate-900 dark:text-white text-sm flex items-center gap-2">
                   <Layers className="w-4 h-4 text-brand-600" />
-                  Projects & Deliverables
+                  Projects &amp; Deliverables
                 </h4>
                 {parsedResume.extras?.projects && parsedResume.extras.projects.length > 0 ? (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -410,17 +469,17 @@ export const ResumePage: React.FC = () => {
       )}
 
       {/* Stepper Navigation */}
-      <div className="flex justify-between items-center pt-4 border-t border-slate-200 dark:border-slate-800">
+      <div className="flex justify-between items-center pt-6 border-t border-slate-200 dark:border-slate-800">
         <button
           onClick={() => setCurrentStep(1)}
-          className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+          className="flex items-center gap-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-pointer"
         >
-          <ArrowLeft className="w-4 h-4" /> Back to JD Analytics
+          <ArrowLeft className="w-4 h-4" /> Back to Step 1: JD Analytics
         </button>
 
         <button
           onClick={() => setCurrentStep(3)}
-          className="flex items-center gap-2 px-6 py-2.5 text-sm font-semibold text-white bg-slate-900 dark:bg-white dark:text-slate-900 rounded-xl hover:opacity-90 transition-all shadow-md"
+          className="flex items-center gap-2 px-6 py-2.5 text-sm font-semibold text-white bg-slate-900 dark:bg-white dark:text-slate-900 rounded-xl hover:opacity-90 transition-all shadow-md cursor-pointer"
         >
           Proceed to Step 3: Candidate Profile Form
           <ArrowRight className="w-4 h-4" />
