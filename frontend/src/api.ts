@@ -38,69 +38,119 @@ async function handleResponse<T>(res: Response, fallback?: T): Promise<T> {
 // ============================================================================
 
 /**
- * GET /jds - List sample Job Descriptions
+ * GET /api/jd/jds or /api/jds - List sample Job Descriptions
  */
 export async function getJds(): Promise<SampleJd[]> {
   try {
     const res = await fetch(`${API_BASE}/api/jd/jds`);
-    return await handleResponse<SampleJd[]>(res);
+    const data = await handleResponse<any>(res);
+    if (Array.isArray(data)) return data;
+    if (data && Array.isArray(data.files)) {
+      return data.files.map((f: any, idx: number) => ({
+        id: `jd-${idx + 1}`,
+        title: f.title || f.filename.replace(/\.(pdf|docx)$/i, ''),
+        company: f.company || (f.filename.includes(' - ') ? f.filename.split(' - ')[0] : 'Target Company'),
+        filename: f.filename,
+        snippet: f.snippet || `Benchmark Job Description for ${f.filename}`,
+      }));
+    }
+    return data;
   } catch {
-    // Fallback sample JDs
+    // Fallback sample JDs matching Samiksha's real benchmark dataset
     return [
       {
         id: 'jd-1',
-        title: 'Full Stack Engineer (AI Platform)',
-        company: 'Stripe',
-        filename: 'stripe_fullstack_ai.pdf',
-        snippet: 'Seeking experienced TypeScript, Python, and Cloud engineers to build intelligent payment workflows.',
+        title: 'Software Engineer',
+        company: 'Google LLC',
+        filename: 'Google LLC - Software Engineer.pdf',
+        snippet: 'Google LLC Software Engineer requiring C++, Java, Python, Go, and Distributed Systems.',
       },
       {
         id: 'jd-2',
-        title: 'Backend Systems Developer',
-        company: 'Datadog',
-        filename: 'datadog_backend_systems.pdf',
-        snippet: 'Requires strong DSA, System Design, SQL, and Go/Python expertise for high-throughput distributed tracing.',
+        title: 'Data Scientist',
+        company: 'Google LLC',
+        filename: 'Google LLC - Data Scientist.pdf',
+        snippet: 'Google LLC Data Scientist requiring SQL, Machine Learning, A/B Testing, and Python.',
       },
       {
         id: 'jd-3',
-        title: 'Machine Learning Infrastructure Engineer',
-        company: 'OpenAI',
-        filename: 'openai_ml_infra.pdf',
-        snippet: 'Focus on LLM serving, GPU cluster orchestration, Docker, Kubernetes, and Python model pipelines.',
+        title: 'Software Engineer',
+        company: 'Microsoft Corporation',
+        filename: 'Microsoft - Software Engineer.pdf',
+        snippet: 'Microsoft Software Engineer role emphasizing Cloud, C#, TypeScript, and Algorithms.',
+      },
+      {
+        id: 'jd-4',
+        title: 'Data Analyst',
+        company: 'Microsoft Corporation',
+        filename: 'Microsoft - Data Analyst.pdf',
+        snippet: 'Microsoft Data Analyst role focusing on Power BI, SQL, Data Modeling, and Statistics.',
+      },
+      {
+        id: 'jd-5',
+        title: 'Associate Software Engineer',
+        company: 'Oracle Financial Services Software Limited',
+        filename: 'Oracle - Associate Software Engineer.pdf',
+        snippet: 'Oracle Associate Software Engineer role covering Java, SQL, OOP, and Spring.',
+      },
+      {
+        id: 'jd-6',
+        title: 'Application Support Analyst',
+        company: 'Oracle Financial Services Software Limited',
+        filename: 'Oracle - Application Support Analyst.pdf',
+        snippet: 'Oracle Application Support Analyst role focusing on Unix, SQL, Troubleshooting, and ITIL.',
       },
     ];
   }
 }
 
 /**
- * POST /jd/analyze - Analyze JD and extract structured skills & requirements
+ * POST /api/jd/analyze - Analyze JD and extract structured skills & requirements
  */
 export async function analyzeJd(jdIdOrText: string): Promise<ExtractionResult> {
   try {
+    const formData = new FormData();
+    if (jdIdOrText.endsWith('.pdf') || jdIdOrText.endsWith('.docx')) {
+      formData.append('sample', jdIdOrText);
+    } else {
+      formData.append('text', jdIdOrText);
+    }
     const res = await fetch(`${API_BASE}/api/jd/analyze`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ jd_input: jdIdOrText }),
+      body: formData,
     });
     return await handleResponse<ExtractionResult>(res);
   } catch {
     return {
       schema_version: '1.0',
       source_type: 'jd',
-      source_file: jdIdOrText.endsWith('.pdf') ? jdIdOrText : 'sample_jd.pdf',
-      company: 'Stripe',
-      role: 'Full Stack Engineer (AI Platform)',
+      source_file: jdIdOrText.endsWith('.pdf') || jdIdOrText.endsWith('.docx') ? jdIdOrText : 'sample_jd.pdf',
+      company: 'Google LLC',
+      role: 'Software Engineer',
       skills: [
         { skill_name: 'Python', category_code: 'COD', confidence: 'high', importance: 'must_have', level_estimate: 8 },
-        { skill_name: 'TypeScript', category_code: 'COD', confidence: 'high', importance: 'must_have', level_estimate: 7 },
-        { skill_name: 'System Design', category_code: 'SYSD', confidence: 'medium', importance: 'must_have', level_estimate: 8 },
-        { skill_name: 'PostgreSQL', category_code: 'SQL', confidence: 'high', importance: 'must_have', level_estimate: 7 },
-        { skill_name: 'Docker', category_code: 'CLOUD', confidence: 'medium', importance: 'nice_to_have', level_estimate: 6 },
-        { skill_name: 'Data Structures', category_code: 'DSA', confidence: 'high', importance: 'must_have', level_estimate: 8 },
+        { skill_name: 'Distributed Systems', category_code: 'SYSD', confidence: 'high', importance: 'must_have', level_estimate: 8 },
+        { skill_name: 'Algorithms', category_code: 'DSA', confidence: 'high', importance: 'must_have', level_estimate: 8 },
+        { skill_name: 'SQL', category_code: 'SQL', confidence: 'high', importance: 'must_have', level_estimate: 7 },
+        { skill_name: 'Cloud Infrastructure', category_code: 'CLOUD', confidence: 'medium', importance: 'nice_to_have', level_estimate: 7 },
+        { skill_name: 'Clean Code & OOP', category_code: 'OOD', confidence: 'high', importance: 'must_have', level_estimate: 8 },
       ],
       extras: {},
     };
   }
+}
+
+/**
+ * POST /api/jd/analyze - Upload and analyze a custom .pdf or .docx Job Description
+ */
+export async function uploadJdFile(file: File): Promise<ExtractionResult> {
+  const formData = new FormData();
+  formData.append('file', file);
+  const res = await fetch(`${API_BASE}/api/jd/analyze`, {
+    method: 'POST',
+    body: formData,
+  });
+  return await handleResponse<ExtractionResult>(res);
 }
 
 // ============================================================================

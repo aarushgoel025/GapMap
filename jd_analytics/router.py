@@ -1,8 +1,11 @@
-from fastapi import APIRouter
+import sys
+from pathlib import Path
 
-router = APIRouter(prefix="/api/jd", tags=["jd_analytics"])
+# Ensure backend directory is in sys.path
+_backend_dir = Path(__file__).resolve().parent / "backend"
+if str(_backend_dir) not in sys.path:
+    sys.path.insert(0, str(_backend_dir))
 
+from app.jd_analytics.router import router
 
-@router.get("/status")
-def status():
-    return {"module": "jd_analytics", "status": "initialized"}
+__all__ = ["router"]

@@ -9,7 +9,7 @@
 
 | Module | Owner | Contract Schema | Status | Last Checked |
 | :--- | :--- | :--- | :--- | :--- |
-| **Module 1: JD Analytics** | Samiksha | `ExtractionResult` (`source_type='jd'`) | Contract Verified | 2026-10-27 |
+| **Module 1: JD Analytics** | Samiksha | `ExtractionResult` (`source_type='jd'`) | Merged & Verified (135/135 tests passing) | 2026-10-28 |
 | **Module 2: Resume Parsing** | Arushi | `ExtractionResult` (`source_type='resume'`) | Merged & Verified (61/61 tests passing) | 2026-10-28 |
 | **Module 3: Profile Contract & Store** | Aarush | `Profile`, `Skill`, `db/store.py` | Complete & Passing | 2026-10-27 |
 | **Module 4: Talent Check** | Aditya | `TalentCheckResult`, `SkillsetGap` | Merged & Verified (30/30 tests passing) | 2026-10-27 |
@@ -51,6 +51,8 @@
   - Integrated full UI with `ScoreRing`, `MatchedSkillsTable`, `MissingSkillsList` (ranked by prerequisites and score impact), candidate/JD selectors, and interactive 4x6 Matrix Heatmap page.
   - Resolved circular import in `backend/app/__init__.py` and bridged import namespaces (`app.db`, `app.shared`, `app.skill_matching`).
   - All 52 backend tests passing, frontend builds cleanly in 2.3s.
+- **Status**: ✅ Resolved.
+
 ### Issue #005: Resume Parsing, Privacy Redaction & Stuffing Detection (Module 2)
 - **Severity**: Medium
 - **Component**: `resume_parsing` (`parser.py`, `privacy.py`, `sections.py`, `stuffing.py`, `ai_extractor.py`, `router.py`) / `frontend/src/modules/resume/ResumePage.tsx`
@@ -65,10 +67,23 @@
   - All 61 tests passing; frontend built cleanly with 0 errors.
 - **Status**: ✅ Resolved & Verified (61/61 tests passing).
 
+### Issue #006: JD Analytics Integration & Dual-Model AI Extraction (Module 1)
+- **Severity**: High
+- **Component**: `backend/app/jd_analytics` (`pipeline.py`, `router.py`) / `shared` (`docreader.py`, `llm.py`, `schemas.py`) / `frontend/src/modules/jd/JdPage.tsx`
+- **Description**: Module 1 (Samiksha's work on branch `feature/jd-analytics`, commit `2d211c55b83afd7bf649cac6831e47a891c1ca30`) needed to be pulled and fully integrated into the GapMap project.
+- **Resolution**:
+  - Resolved 3-way merge conflicts across `backend/app/shared/docreader.py`, `backend/app/shared/llm.py`, and `backend/app/shared/schemas.py`.
+  - Linked root `jd_analytics/router.py` directly to `backend/app/jd_analytics/router.py` ensuring all endpoints (`GET /api/jds`, `GET /api/jd/jds`, `GET /api/jd/status`, `POST /api/jd/analyze`) are properly registered with `main.py`.
+  - Preserved dual-model parallel extraction (`Gemini` + `Mistral`) with automatic category conflict resolution, confidence downgrading, and disagreement auditing.
+  - Integrated 6 pre-cached benchmark JD files (Google LLC, Microsoft Corporation, Oracle Financial Services in `.pdf` and `.docx` format) with SHA-256 caching in `backend/data/cache/` for instant offline testing and live demos.
+  - Unified `analyze_jd` endpoint to support multipart file uploads (`.pdf`, `.docx`), sample filenames, and raw pasted text.
+  - Implemented comprehensive frontend UI in `JdPage.tsx` with sample selector, drag-and-drop upload, raw text input, dual-model agreement badges, and category breakdown.
+  - All 135 tests passing across the backend suite; frontend TypeScript builds in 2.89s with 0 errors.
+- **Status**: ✅ Resolved & Verified (135/135 tests passing).
+
 ---
 
 ## 🔄 Daily Stand-up Notes
 - **Yesterday**: Created repository structure, schemas v1.0, database store with JSON fallback, profile endpoints, and app shell.
-- **Today**: Merged Aditya's Talent Check (Module 4), integrated Anjali's Skill Matching & 4x6 Matrix Heatmap (Module 5), pulled and fully integrated Arushi's Resume Parsing, Privacy Redaction, and Stuffing Detection (Module 2). Achieved 61/61 passing backend tests and 0-error frontend build.
-- **Next**: Coordinate with Samiksha (JD Analytics) and Arushi (Resume Parsing) to merge remaining modules.
-
+- **Today**: Merged Aditya's Talent Check (Module 4), integrated Anjali's Skill Matching & 4x6 Matrix Heatmap (Module 5), pulled and integrated Arushi's Resume Parsing (Module 2), and pulled and fully integrated Samiksha's JD Analytics (Module 1). Achieved 135/135 passing tests and 0-error frontend build.
+- **Next**: Finalize end-to-end integration walkthrough and prepare presentation demo.
