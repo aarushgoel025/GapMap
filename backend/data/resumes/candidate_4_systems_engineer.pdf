@@ -1,0 +1,32 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1077 >>
+stream
+BT /F1 11 Tf 72 740 Td 14 TL (Marcus Vance - Systems & Cloud Infrastructure Engineer) Tj T* (Email: marcus.vance@example.com | GitHub: https://github.com/marcusvance-ops) Tj T* () Tj T* (Education) Tj T* (B.S. in Computer Systems Engineering, Metro Tech, 2022) Tj T* () Tj T* (Skills) Tj T* (Linux, Operating Systems, Computer Networks, Docker, Kubernetes, Distributed Systems, Python, Go, CI/CD, Quantum Computing, Blockchain) Tj T* () Tj T* (Experience) Tj T* (Infrastructure & Systems Engineer at CloudCore Networks \(2022 - Present\)) Tj T* (- Architected high-availability Linux server infrastructure and tuned Linux kernel network parameters.) Tj T* (- Deployed microservices on Docker containers with automated CI/CD pipelines in Go and Python.) Tj T* (- Configured TCP/IP networking, DNS, load balancers, and distributed systems monitoring.) Tj T* () Tj T* (Projects) Tj T* (High-Throughput Distributed Cache: Implemented low-latency caching system in Go and Linux.) Tj T* (Infrastructure Automation Toolkit: Automated Linux provisioning scripts using Python.) Tj T* ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000001370 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1440
+%%EOF

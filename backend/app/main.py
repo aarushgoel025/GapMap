@@ -17,8 +17,8 @@ from fastapi.responses import JSONResponse
 # Import routers from all modules
 from profile.router import router as profile_router
 from jd_analytics.router import router as jd_router
-from resume_parsing.router import router as resume_router
-from talent_check.router import router as talent_check_router
+from resume_parsing.router import router as resume_router, list_sample_resumes
+from talent_check.router import router as talent_check_router, get_companies
 from app.skill_matching.router import router as skill_matching_router
 
 app = FastAPI(
@@ -91,6 +91,21 @@ def legacy_matching_status():
     return {"module": "skill_matching", "status": "initialized"}
 
 app.include_router(legacy_matching_router)
+
+
+# ---------------------------------------------------------------------------
+# Direct /api Aliases from Specification Table
+# ---------------------------------------------------------------------------
+@app.get("/api/companies", tags=["talent_check"])
+def api_companies():
+    """Alias for GET /api/companies (contract table section 7 & 14)."""
+    return get_companies()
+
+
+@app.get("/api/resumes", tags=["resume_parsing"])
+def api_resumes():
+    """Alias for GET /api/resumes (contract table section 7 & 12)."""
+    return list_sample_resumes()
 
 
 # ---------------------------------------------------------------------------

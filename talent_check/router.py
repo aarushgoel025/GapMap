@@ -59,11 +59,12 @@ def _get_company_requirements(company: str) -> dict[str, int]:
 
 def _format_result(company: str, profile: dict, requirements: dict[str, int]) -> dict:
     result = readiness(profile, requirements)
+    total_missing = sum(max(0, gap["required_level"] - gap["candidate_level"]) for gap in result["skillset_gaps"])
     return {
         "company": company,
         "readiness_score": result["readiness_score"],
         "label": result["label"],
-        "weeks_to_ready_estimate": 0 if result["label"] == "Ready" else None,
+        "weeks_to_ready_estimate": 0 if result["label"] == "Ready" else total_missing,
         "skillset_gap": [
             {
                 "category_code": gap["category_code"],
