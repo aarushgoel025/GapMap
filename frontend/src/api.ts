@@ -139,6 +139,20 @@ export async function getResumes(): Promise<SampleResume[]> {
 }
 
 /**
+ * POST /resume/parse - Upload real PDF or DOCX file to parse
+ */
+export async function uploadResumeFile(file: File): Promise<ExtractionResult> {
+  const formData = new FormData();
+  formData.append('file', file);
+
+  const res = await fetch(`${API_BASE}/api/resume/parse`, {
+    method: 'POST',
+    body: formData,
+  });
+  return await handleResponse<ExtractionResult>(res);
+}
+
+/**
  * POST /resume/parse - Parse resume document into structured extraction result
  */
 export async function parseResume(resumeIdOrFile: string): Promise<ExtractionResult> {

@@ -39,13 +39,17 @@ def _deterministic_local_embed(texts: list[str], dim: int = 256) -> np.ndarray:
     return vectors
 
 
+_API_AVAILABLE = True
+
+
 def embed_texts(texts: list[str]) -> np.ndarray:
     """Embed a list of text strings using Gemini Embeddings API if configured, else local fallback."""
+    global _API_AVAILABLE
     if not texts:
         return np.empty((0, 256), dtype=np.float32)
 
     api_key = os.environ.get("GEMINI_API_KEY")
-    if api_key:
+    if api_key and _API_AVAILABLE:
         try:
             import requests
 
@@ -56,7 +60,7 @@ def embed_texts(texts: list[str]) -> np.ndarray:
                     for t in texts
                 ]
             }
-            res = requests.post(url, json=requests_body, timeout=10)
+            res = requests.post(url, json=requests_body, timeout=2.0)
             if res.status_code == 200:
                 data = res.json()
                 embeddings = [e["values"] for e in data.get("embeddings", [])]
@@ -65,8 +69,10 @@ def embed_texts(texts: list[str]) -> np.ndarray:
                 norms = np.linalg.norm(arr, axis=1, keepdims=True)
                 norms[norms < 1e-6] = 1.0
                 return arr / norms
+            else:
+                _API_AVAILABLE = False
         except Exception:
-            pass  # Fallback to local on network/quota error
+            _API_AVAILABLE = False  # Fallback to local on network/quota error
 
     return _deterministic_local_embed(texts)
 
