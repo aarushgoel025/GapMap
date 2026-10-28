@@ -36,22 +36,20 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Sync parsedResume into currentProfile when available
   useEffect(() => {
     if (parsedResume && parsedResume.skills && parsedResume.skills.length > 0) {
-      setCurrentProfile((prev) => {
-        if (prev && prev.skills && prev.skills.length > 0) return prev;
-        const extraObj = (parsedResume.extras || {}) as Record<string, any>;
-        return {
-          profile_id: prev?.profile_id || 'active-parsed-resume',
-          name: extraObj.candidate_name || extraObj.name || prev?.name || 'Active Candidate',
-          email: extraObj.email || prev?.email || '',
-          education: extraObj.education || prev?.education || '',
-          skills: parsedResume.skills,
-          hackathons: prev?.hackathons || [],
-          internships: prev?.internships || [],
-          certifications: extraObj.certifications || prev?.certifications || [],
-          preferred_roles: parsedResume.role ? [parsedResume.role] : prev?.preferred_roles || [],
-          cv_file: parsedResume.source_file || prev?.cv_file,
-        };
-      });
+      const extraObj = (parsedResume.extras || {}) as Record<string, any>;
+      setCurrentProfile((prev) => ({
+        profile_id: prev?.profile_id && prev.profile_id !== 'active-parsed-resume' ? prev.profile_id : 'active-parsed-resume',
+        name: extraObj.candidate_name || extraObj.name || (prev?.name && prev.name !== 'Active Candidate' ? prev.name : 'Active Candidate'),
+        email: extraObj.email || prev?.email || '',
+        education: extraObj.education || prev?.education || '',
+        github_url: extraObj.github_url || prev?.github_url || '',
+        skills: parsedResume.skills,
+        hackathons: prev?.hackathons || [],
+        internships: prev?.internships || [],
+        certifications: extraObj.certifications || prev?.certifications || [],
+        preferred_roles: parsedResume.role ? [parsedResume.role] : prev?.preferred_roles || [],
+        cv_file: parsedResume.source_file || prev?.cv_file,
+      }));
     }
   }, [parsedResume]);
 

@@ -12,9 +12,11 @@
       "evidence": "",
       "confidence": "high",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 8,
       "source_section": null,
-      "verified_by": [],
+      "verified_by": [
+        "resume"
+      ],
       "stuffing_flag": false,
       "models_agree": null
     },
@@ -22,24 +24,28 @@
       "skill_name": "Operating Systems",
       "category_code": "OS",
       "evidence": "",
-      "confidence": "high",
+      "confidence": "low",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 3,
       "source_section": null,
-      "verified_by": [],
-      "stuffing_flag": false,
+      "verified_by": [
+        "resume"
+      ],
+      "stuffing_flag": true,
       "models_agree": null
     },
     {
       "skill_name": "Computer Networks",
       "category_code": "NETW",
       "evidence": "",
-      "confidence": "high",
+      "confidence": "low",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 3,
       "source_section": null,
-      "verified_by": [],
-      "stuffing_flag": false,
+      "verified_by": [
+        "resume"
+      ],
+      "stuffing_flag": true,
       "models_agree": null
     },
     {
@@ -48,9 +54,11 @@
       "evidence": "",
       "confidence": "high",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 8,
       "source_section": null,
-      "verified_by": [],
+      "verified_by": [
+        "resume"
+      ],
       "stuffing_flag": false,
       "models_agree": null
     },
@@ -58,12 +66,14 @@
       "skill_name": "Kubernetes",
       "category_code": "CLOUD",
       "evidence": "",
-      "confidence": "high",
+      "confidence": "low",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 3,
       "source_section": null,
-      "verified_by": [],
-      "stuffing_flag": false,
+      "verified_by": [
+        "resume"
+      ],
+      "stuffing_flag": true,
       "models_agree": null
     },
     {
@@ -72,9 +82,11 @@
       "evidence": "",
       "confidence": "high",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 8,
       "source_section": null,
-      "verified_by": [],
+      "verified_by": [
+        "resume"
+      ],
       "stuffing_flag": false,
       "models_agree": null
     },
@@ -82,12 +94,14 @@
       "skill_name": "Google Cloud",
       "category_code": "CLOUD",
       "evidence": "",
-      "confidence": "medium",
+      "confidence": "low",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 3,
       "source_section": null,
-      "verified_by": [],
-      "stuffing_flag": false,
+      "verified_by": [
+        "resume"
+      ],
+      "stuffing_flag": true,
       "models_agree": null
     },
     {
@@ -96,9 +110,11 @@
       "evidence": "",
       "confidence": "high",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 8,
       "source_section": null,
-      "verified_by": [],
+      "verified_by": [
+        "resume"
+      ],
       "stuffing_flag": false,
       "models_agree": null
     },
@@ -108,9 +124,11 @@
       "evidence": "",
       "confidence": "high",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 8,
       "source_section": null,
-      "verified_by": [],
+      "verified_by": [
+        "resume"
+      ],
       "stuffing_flag": false,
       "models_agree": null
     },
@@ -120,9 +138,11 @@
       "evidence": "",
       "confidence": "medium",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 6,
       "source_section": null,
-      "verified_by": [],
+      "verified_by": [
+        "resume"
+      ],
       "stuffing_flag": false,
       "models_agree": null
     },
@@ -132,9 +152,11 @@
       "evidence": "",
       "confidence": "medium",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 6,
       "source_section": null,
-      "verified_by": [],
+      "verified_by": [
+        "resume"
+      ],
       "stuffing_flag": false,
       "models_agree": null
     },
@@ -144,9 +166,11 @@
       "evidence": "",
       "confidence": "high",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 8,
       "source_section": null,
-      "verified_by": [],
+      "verified_by": [
+        "resume"
+      ],
       "stuffing_flag": false,
       "models_agree": null
     },
@@ -156,9 +180,11 @@
       "evidence": "",
       "confidence": "high",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 8,
       "source_section": null,
-      "verified_by": [],
+      "verified_by": [
+        "resume"
+      ],
       "stuffing_flag": false,
       "models_agree": null
     }

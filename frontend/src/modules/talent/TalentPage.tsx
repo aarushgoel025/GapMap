@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect, useRef, useMemo } from 'react';
 import { useApp } from '../../context/AppContext';
-import { getCompanies, checkTalent, checkTalentWhatIf } from '../../api';
+import { getCompanies, checkTalent, checkTalentWhatIf, verifyGithub } from '../../api';
 import type { TalentCheckResult, CompanyInfo, Profile } from '../../types';
 import {
   Target,
@@ -19,6 +19,8 @@ import {
   Sparkles,
   ChevronDown,
   ChevronUp,
+  GitBranch,
+  RefreshCw,
 } from 'lucide-react';
 
 const CATEGORY_NAMES: Record<string, string> = {
@@ -54,7 +56,9 @@ const TOP_COMPANIES = [
 ];
 
 export const TalentPage: React.FC = () => {
-  const { company, setCompany, currentProfile, parsedResume, setCurrentStep, selectedJd } = useApp();
+  const { company, setCompany, currentProfile, setCurrentProfile, parsedResume, setParsedResume, setCurrentStep, selectedJd } = useApp();
+  const [isVerifyingGithub, setIsVerifyingGithub] = useState(false);
+  const [githubSuccessMsg, setGithubSuccessMsg] = useState<string | null>(null);
 
   const [companies, setCompanies] = useState<CompanyInfo[]>([]);
   const [selectedCandidateId, setSelectedCandidateId] = useState<string>('active_resume');
@@ -108,6 +112,49 @@ export const TalentPage: React.FC = () => {
 
     return null;
   }, [selectedCandidateId, currentProfile, parsedResume]);
+
+  const handleVerifyActiveGithub = async () => {
+    const ghUrl =
+      (effectiveProfile as any)?.github_url ||
+      ((parsedResume?.extras || {}) as any)?.github_url ||
+      'aarushgoel025';
+
+    setIsVerifyingGithub(true);
+    setGithubSuccessMsg(null);
+    try {
+      const res = await verifyGithub(ghUrl, effectiveProfile?.skills || []);
+      if (res && res.verified_skills) {
+        const updatedSkills = res.verified_skills;
+        if (parsedResume) {
+          setParsedResume({
+            ...parsedResume,
+            skills: updatedSkills,
+            extras: { ...parsedResume.extras, github_url: ghUrl, github_verified: true, github_data: res },
+          });
+        }
+        if (currentProfile) {
+          setCurrentProfile({
+            ...currentProfile,
+            skills: updatedSkills,
+            github_url: ghUrl,
+          });
+        }
+        setGithubSuccessMsg(`GitHub verified for ${res.github_user || ghUrl}: ${res.verified_count || updatedSkills.length} skills verified with 1.2x multi-source bonus!`);
+        if (company) {
+          const updatedProf: Profile = {
+            ...(effectiveProfile || ({} as any)),
+            skills: updatedSkills,
+            github_url: ghUrl,
+          };
+          await runEvaluation(company, 'active_resume', updatedProf);
+        }
+      }
+    } catch (err: any) {
+      console.error('GitHub check error:', err);
+    } finally {
+      setIsVerifyingGithub(false);
+    }
+  };
 
   // Load companies list on mount
   useEffect(() => {
@@ -393,6 +440,56 @@ export const TalentPage: React.FC = () => {
             );
           })}
         </div>
+
+        {/* Candidate GitHub status banner */}
+        {selectedCandidateId === 'active_resume' && effectiveProfile && (
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 text-xs mt-3">
+            <div className="flex flex-wrap items-center gap-2 text-slate-600 dark:text-slate-300">
+              <GitBranch className="w-4 h-4 text-slate-800 dark:text-white shrink-0" />
+              <span>
+                <strong>Candidate GitHub:</strong>{' '}
+                <span className="font-mono text-brand-600 dark:text-brand-400">
+                  {(effectiveProfile as any)?.github_url || ((parsedResume?.extras || {}) as any)?.github_url || 'aarushgoel025'}
+                </span>
+              </span>
+              {((effectiveProfile as any)?.skills || []).some((s: any) => s.verified_by?.includes('github')) ? (
+                <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold text-[10px] flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3 text-emerald-500" />
+                  GitHub Multi-Source Verified (1.2x Active)
+                </span>
+              ) : (
+                <span className="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 text-[10px] font-semibold">
+                  Pending GitHub Check
+                </span>
+              )}
+            </div>
+
+            <button
+              onClick={handleVerifyActiveGithub}
+              disabled={isVerifyingGithub}
+              className="px-3.5 py-1.5 rounded-lg bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90 font-semibold text-xs flex items-center gap-1.5 transition-all shadow-sm cursor-pointer disabled:opacity-50 shrink-0"
+            >
+              {isVerifyingGithub ? (
+                <>
+                  <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                  <span>Verifying GitHub...</span>
+                </>
+              ) : (
+                <>
+                  <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                  <span>Run Live GitHub Audit &amp; Boost Score</span>
+                </>
+              )}
+            </button>
+          </div>
+        )}
+
+        {githubSuccessMsg && (
+          <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 text-xs flex items-center gap-2 mt-2">
+            <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+            <span>{githubSuccessMsg}</span>
+          </div>
+        )}
       </div>
 
       {/* Searchable Company Selector (Replaces the 163-pill button wall) */}

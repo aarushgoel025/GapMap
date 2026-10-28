@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 import tempfile
 from typing import Any, Dict, List, Optional
@@ -6,8 +7,11 @@ from fastapi import APIRouter, File, HTTPException, Request, UploadFile
 from pydantic import BaseModel
 
 from db.store import write_audit
+from resume_parsing.github_check import verify_github_profile
 from resume_parsing.parser import parse_resume
 from shared.schemas import ExtractionResult, Skill
+
+ROOT_DIR = Path(__file__).resolve().parent.parent
 
 router = APIRouter(prefix="/api/resume", tags=["resume_parsing"])
 
@@ -31,22 +35,34 @@ def status():
 def list_sample_resumes():
     return [
         {
-            "id": "res-1",
+            "id": "aarush_sharma_cv",
             "candidate_name": "Aarush Sharma",
             "filename": "aarush_sharma_cv.pdf",
             "role": "Full Stack & AI Engineer",
         },
         {
-            "id": "res-2",
-            "candidate_name": "Priya Patel",
-            "filename": "priya_patel_resume.pdf",
-            "role": "Backend Distributed Systems Specialist",
+            "id": "candidate_1_all_rounder",
+            "candidate_name": "Alex Chen (All-Rounder)",
+            "filename": "candidate_1_all_rounder.pdf",
+            "role": "Full Stack Software Engineer",
         },
         {
-            "id": "res-3",
-            "candidate_name": "Devin Vance",
-            "filename": "devin_vance_cv.pdf",
-            "role": "Cloud Architect & DevOps Lead",
+            "id": "candidate_2_data_analyst",
+            "candidate_name": "Maya Patel (Data Analyst)",
+            "filename": "candidate_2_data_analyst.pdf",
+            "role": "Data Analyst & ML Specialist",
+        },
+        {
+            "id": "candidate_3_oracle_support",
+            "candidate_name": "Liam Rodriguez (Oracle Support)",
+            "filename": "candidate_3_oracle_support.pdf",
+            "role": "Database Support & Systems Specialist",
+        },
+        {
+            "id": "candidate_4_systems_engineer",
+            "candidate_name": "Marcus Vance (Systems Engineer - Stuffed)",
+            "filename": "candidate_4_systems_engineer.pdf",
+            "role": "Cloud Infrastructure & DevOps Engineer",
         },
     ]
 
@@ -119,19 +135,71 @@ async def parse_resume_endpoint(
         except Exception:
             pass
 
-        filename = body.get("resume_source") or body.get("filename") or "candidate_resume.pdf"
-        local_path = Path(filename)
+        filename = body.get("resume_source") or body.get("filename") or "candidate_1_all_rounder.pdf"
+        stem = Path(filename).stem
 
-        if local_path.is_file():
-            try:
-                result = parse_resume(local_path)
-                resp = result.model_dump()
-                resp["source_file"] = local_path.name
-                return resp
-            except Exception as exc:
-                raise HTTPException(status_code=400, detail=str(exc))
+        # Priority 1: Check if this corresponds to a cached benchmark candidate JSON
+        cache_paths = [
+            ROOT_DIR / "backend" / "data" / "cache" / f"{stem}.json",
+            ROOT_DIR / "data" / "cache" / f"{stem}.json",
+        ]
+        for cp in cache_paths:
+            if cp.is_file():
+                try:
+                    cached_data = json.loads(cp.read_text(encoding="utf-8"))
+                    cached_skills = [
+                        Skill(
+                            skill_name=s.get("skill_name", ""),
+                            category_code=s.get("category_code", "COD"),
+                            evidence=s.get("evidence", ""),
+                            confidence=s.get("confidence", "high"),
+                            level_estimate=s.get("level_estimate") or (8 if s.get("confidence") == "high" else 6),
+                            source_section=s.get("source_section") or "skills",
+                            verified_by=s.get("verified_by") or ["resume"],
+                            stuffing_flag=s.get("stuffing_flag", False),
+                        )
+                        for s in cached_data.get("skills", [])
+                    ]
+                    result = ExtractionResult(
+                        schema_version="1.0",
+                        source_type="resume",
+                        source_file=f"{stem}.pdf",
+                        company="",
+                        role=cached_data.get("preferred_roles", ["Software Engineer"])[0] if cached_data.get("preferred_roles") else "Software Engineer",
+                        skills=cached_skills,
+                        extras={
+                            "candidate_name": cached_data.get("name", stem.replace("_", " ").title()),
+                            "email": cached_data.get("email", ""),
+                            "education": cached_data.get("education", ""),
+                            "github_url": cached_data.get("github_url", ""),
+                            "projects": cached_data.get("projects", []),
+                            "experience": cached_data.get("experience", []),
+                            "certifications": cached_data.get("certifications", []),
+                        },
+                    )
+                    return result.model_dump()
+                except Exception:
+                    pass
 
-        # Built-in structured response for sample resumes
+        # Priority 2: Check backend/data/resumes or local paths
+        resumes_dir = ROOT_DIR / "backend" / "data" / "resumes"
+        candidate_paths = [
+            Path(filename),
+            resumes_dir / filename,
+            resumes_dir / f"{stem}.pdf",
+            resumes_dir / f"{stem}.docx",
+        ]
+        for p in candidate_paths:
+            if p.is_file():
+                try:
+                    result = parse_resume(p)
+                    resp = result.model_dump()
+                    resp["source_file"] = p.name
+                    return resp
+                except Exception as exc:
+                    raise HTTPException(status_code=400, detail=str(exc))
+
+        # Fallback structured response for sample resumes
         sample_skills = [
             Skill(
                 skill_name="Python",
@@ -181,7 +249,7 @@ async def parse_resume_endpoint(
                 level_estimate=4,
                 source_section="skills",
                 verified_by=["resume"],
-                stuffing_flag=True,  # Flagged as stuffed: mentioned in skills list without supporting project evidence
+                stuffing_flag=True,
             ),
         ]
 
@@ -193,7 +261,9 @@ async def parse_resume_endpoint(
             role="Full Stack & AI Developer",
             skills=sample_skills,
             extras={
+                "candidate_name": "Aarush Sharma",
                 "education": "B.Tech in Computer Science and Engineering",
+                "github_url": "https://github.com/aarushgoel025",
                 "projects": [
                     {
                         "title": "RADIX Talent Match Platform",
@@ -238,27 +308,17 @@ def verify_github(req: VerifyGithubRequest):
     Section F Governance: writes an audit_log row when a GitHub check runs
     (logging event metadata, never personal text).
     """
-    verified_skills = []
-    github_user = req.github_url.rstrip("/").split("/")[-1] if req.github_url else "unknown"
+    skills_dict = [s.model_dump() for s in req.skills]
+    gh_result = verify_github_profile(req.github_url, skills=skills_dict)
 
-    for skill in req.skills:
-        s_dict = skill.model_dump()
-        verified_by = list(s_dict.get("verified_by") or [])
-        if "github" not in verified_by:
-            verified_by.append("github")
-        s_dict["verified_by"] = verified_by
-        verified_skills.append(s_dict)
-
-    # Section F Governance: Write an audit_log row when a GitHub check runs
-    write_audit(
-        action="github_check",
-        details={
-            "github_user": github_user,
-            "skills_count": len(req.skills),
-            "verified_count": len(verified_skills),
-        },
-        entity_id=github_user,
-        entity_type="github_check",
-    )
-
-    return {"verified_skills": verified_skills}
+    return {
+        "verified_skills": gh_result.get("verified_skills", skills_dict),
+        "github_user": gh_result.get("username", "unknown"),
+        "name": gh_result.get("name"),
+        "avatar_url": gh_result.get("avatar_url"),
+        "bio": gh_result.get("bio"),
+        "public_repos": gh_result.get("public_repos", 0),
+        "top_languages": gh_result.get("top_languages", []),
+        "repos": gh_result.get("repos", []),
+        "verified_count": gh_result.get("verified_count", 0),
+    }

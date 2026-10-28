@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useApp } from '../../context/AppContext';
-import { getResumes, parseResume, uploadResumeFile } from '../../api';
+import { getResumes, parseResume, uploadResumeFile, verifyGithub } from '../../api';
+import type { GitHubVerificationResponse } from '../../api';
 import type { SampleResume, Skill } from '../../types';
 import {
   FileCode,
@@ -18,6 +19,10 @@ import {
   RotateCcw,
   User,
   X,
+  GitBranch,
+  ExternalLink,
+  Sparkles,
+  
 } from 'lucide-react';
 
 export const ResumePage: React.FC = () => {
@@ -27,9 +32,57 @@ export const ResumePage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'skills' | 'experience' | 'projects'>('skills');
+  const [githubUrl, setGithubUrl] = useState<string>('');
+  const [githubConsent, setGithubConsent] = useState<boolean>(true);
+  const [isVerifyingGithub, setIsVerifyingGithub] = useState<boolean>(false);
+  const [githubResult, setGithubResult] = useState<GitHubVerificationResponse | null>(null);
+  const [githubError, setGithubError] = useState<string | null>(null);
 
   // When a resume is parsed, collapse the demo cards and upload box so the screen stays clean
   const [isPickerOpen, setIsPickerOpen] = useState<boolean>(!parsedResume);
+
+  useEffect(() => {
+    if (parsedResume) {
+      const extraObj = (parsedResume.extras || {}) as Record<string, any>;
+      const gh = extraObj.github_url || '';
+      if (gh && !githubUrl) {
+        setGithubUrl(gh);
+      }
+    }
+  }, [parsedResume]);
+
+  const handleVerifyGithub = async () => {
+    if (!githubUrl.trim()) {
+      setGithubError('Please enter a GitHub profile username or URL');
+      return;
+    }
+    if (!githubConsent) {
+      setGithubError('Please consent to checking public GitHub repositories');
+      return;
+    }
+    setIsVerifyingGithub(true);
+    setGithubError(null);
+    try {
+      const res = await verifyGithub(githubUrl.trim(), parsedResume?.skills || []);
+      setGithubResult(res);
+      if (res && res.verified_skills && parsedResume) {
+        setParsedResume({
+          ...parsedResume,
+          skills: res.verified_skills,
+          extras: {
+            ...parsedResume.extras,
+            github_url: githubUrl.trim(),
+            github_verified: true,
+            github_data: res,
+          },
+        });
+      }
+    } catch (err: any) {
+      setGithubError(err.message || 'Failed to verify GitHub profile');
+    } finally {
+      setIsVerifyingGithub(false);
+    }
+  };
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -465,6 +518,167 @@ export const ResumePage: React.FC = () => {
               </div>
             </div>
           )}
+
+          {/* Evidence Engine: GitHub Repository Verification */}
+          <div className="p-5 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 text-white rounded-2xl border border-slate-800 shadow-xl space-y-4">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+              <div className="flex items-center gap-3">
+                <div className="p-2.5 rounded-xl bg-white/10 text-white">
+                  <GitBranch className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-sm text-white flex items-center gap-2">
+                    Evidence Engine: GitHub Repository Verification
+                    <span className="text-[10px] bg-brand-500/20 text-brand-300 border border-brand-500/30 px-2 py-0.5 rounded-full font-semibold">
+                      1.2x Multi-Source Boost
+                    </span>
+                  </h4>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    Live audit of public repos &amp; languages to verify practical code evidence and clear false stuffing flags.
+                  </p>
+                </div>
+              </div>
+
+              {parsedResume.extras?.github_url && (
+                <span className="text-xs text-emerald-400 font-mono bg-emerald-950/60 border border-emerald-800/60 px-2.5 py-1 rounded-lg flex items-center gap-1.5">
+                  <CheckCircle className="w-3.5 h-3.5" />
+                  Auto-detected from resume
+                </span>
+              )}
+            </div>
+
+            {/* Input row */}
+            <div className="flex flex-col sm:flex-row gap-2">
+              <div className="relative flex-1">
+                <GitBranch className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  value={githubUrl}
+                  onChange={(e) => setGithubUrl(e.target.value)}
+                  placeholder="e.g. aarushgoel025 or https://github.com/aarushgoel025"
+                  className="w-full pl-9 pr-3 py-2 text-xs rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500/40"
+                />
+              </div>
+              <button
+                onClick={handleVerifyGithub}
+                disabled={isVerifyingGithub || !githubUrl.trim()}
+                className="px-5 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 disabled:opacity-50 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer"
+              >
+                {isVerifyingGithub ? (
+                  <>
+                    <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                    <span>Verifying Repositories...</span>
+                  </>
+                ) : (
+                  <>
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>Verify with GitHub</span>
+                  </>
+                )}
+              </button>
+            </div>
+
+            {/* Consent Checkbox */}
+            <label className="flex items-center gap-2 text-[11px] text-slate-400 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={githubConsent}
+                onChange={(e) => setGithubConsent(e.target.checked)}
+                className="rounded border-slate-700 bg-white/5 text-brand-500 focus:ring-brand-500/30"
+              />
+              <span>
+                I consent to querying public GitHub repository metadata and languages (Section F Governance audit logged).
+              </span>
+            </label>
+
+            {/* GitHub Error */}
+            {githubError && (
+              <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4 text-rose-400 shrink-0" />
+                <span>{githubError}</span>
+              </div>
+            )}
+
+            {/* GitHub Verified Result Card */}
+            {githubResult && (
+              <div className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-3 animate-fadeIn">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    {githubResult.avatar_url ? (
+                      <img
+                        src={githubResult.avatar_url}
+                        alt="Avatar"
+                        className="w-10 h-10 rounded-full border border-white/20"
+                      />
+                    ) : (
+                      <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center font-bold text-sm">
+                        {githubResult.github_user?.[0]?.toUpperCase() || 'GH'}
+                      </div>
+                    )}
+                    <div>
+                      <h5 className="font-bold text-xs text-white flex items-center gap-2">
+                        {githubResult.name || githubResult.github_user}
+                        <span className="text-[10px] text-slate-400 font-mono">@{githubResult.github_user}</span>
+                      </h5>
+                      {githubResult.bio && <p className="text-[11px] text-slate-300 mt-0.5 line-clamp-1">{githubResult.bio}</p>}
+                    </div>
+                  </div>
+                  <span className="px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[11px] font-semibold flex items-center gap-1.5">
+                    <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
+                    Verified ({githubResult.verified_count || 0} skills)
+                  </span>
+                </div>
+
+                {/* Top Languages */}
+                {githubResult.top_languages && githubResult.top_languages.length > 0 && (
+                  <div>
+                    <span className="text-[10px] font-semibold uppercase text-slate-400 tracking-wider">
+                      Detected Repository Languages:
+                    </span>
+                    <div className="flex flex-wrap gap-1.5 mt-1">
+                      {githubResult.top_languages.map((lang, idx) => (
+                        <span
+                          key={idx}
+                          className="px-2 py-0.5 rounded-md bg-white/10 text-white text-[11px] font-mono"
+                        >
+                          {lang}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Repos preview */}
+                {githubResult.repos && githubResult.repos.length > 0 && (
+                  <div>
+                    <span className="text-[10px] font-semibold uppercase text-slate-400 tracking-wider">
+                      Recent Public Repositories Inspected:
+                    </span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mt-1.5">
+                      {githubResult.repos.slice(0, 3).map((repo, idx) => (
+                        <a
+                          key={idx}
+                          href={repo.html_url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="p-2.5 rounded-lg bg-black/30 hover:bg-black/50 border border-white/5 transition-colors block text-left"
+                        >
+                          <div className="flex items-center justify-between text-xs font-semibold text-brand-300">
+                            <span className="truncate">{repo.name}</span>
+                            <ExternalLink className="w-3 h-3 text-slate-400" />
+                          </div>
+                          <div className="text-[10px] text-slate-400 mt-1 flex items-center gap-2">
+                            <span className="text-emerald-400">{repo.language}</span>
+                            {repo.stars > 0 && <span>★ {repo.stars}</span>}
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       )}
 

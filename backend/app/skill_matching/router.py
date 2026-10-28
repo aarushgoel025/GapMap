@@ -119,7 +119,17 @@ def get_match_matrix() -> MatrixResponse:
     if not raw_profiles or not raw_jds:
         raise HTTPException(status_code=404, detail="Sample profiles or JDs not found in storage")
 
-    profiles = [_as_profile(p) for p in raw_profiles]
+    sample_ids = [
+        "candidate_1_all_rounder",
+        "candidate_2_data_analyst",
+        "candidate_3_oracle_support",
+        "candidate_4_systems_engineer",
+    ]
+    sample_candidates = [p for p in raw_profiles if p.get("profile_id") in sample_ids]
+    if len(sample_candidates) == 4:
+        profiles = [_as_profile(next(p for p in sample_candidates if p.get("profile_id") == sid)) for sid in sample_ids]
+    else:
+        profiles = [_as_profile(p) for p in raw_profiles[:4]]
     jds = [_as_jd(j) for j in raw_jds]
 
     resumes_meta = [
@@ -156,7 +166,17 @@ def get_samples() -> dict[str, Any]:
     """Helper endpoint listing available sample profiles and JDs for UI selector."""
     raw_profiles = list_profiles()
     raw_jds = list_jds()
-    profiles = [_as_profile(p) for p in raw_profiles]
+    sample_ids = [
+        "candidate_1_all_rounder",
+        "candidate_2_data_analyst",
+        "candidate_3_oracle_support",
+        "candidate_4_systems_engineer",
+    ]
+    sample_candidates = [p for p in raw_profiles if p.get("profile_id") in sample_ids]
+    if len(sample_candidates) == 4:
+        profiles = [_as_profile(next(p for p in sample_candidates if p.get("profile_id") == sid)) for sid in sample_ids]
+    else:
+        profiles = [_as_profile(p) for p in raw_profiles[:4]]
     jds = [_as_jd(j) for j in raw_jds]
     return {
         "profiles": [{"id": p.profile_id or p.name, "name": p.name} for p in profiles],

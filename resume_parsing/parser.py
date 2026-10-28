@@ -60,6 +60,23 @@ SKILL_CATEGORIES = {
     "networking": "NETW",
     "operating systems": "OS",
     "linux": "OS",
+    "rest apis": "SWE",
+    "rest api": "SWE",
+    "microservices": "SYSD",
+    "distributed systems": "SYSD",
+    "oracle": "SQL",
+    "dbms": "SQL",
+    "spring boot": "SWE",
+    "spring": "SWE",
+    "statistics": "APTI",
+    "bigquery": "CLOUD",
+    "gcp": "CLOUD",
+    "google cloud": "CLOUD",
+    "terraform": "CLOUD",
+    "go": "COD",
+    "golang": "COD",
+    "bash": "OS",
+    "shell": "OS",
 }
 
 
@@ -94,7 +111,7 @@ def _find_evidence(
 
 
 
-def _extract_extras(sections: dict[str, str]) -> dict[str, Any]:
+def _extract_extras(sections: dict[str, str], raw_text: str = "") -> dict[str, Any]:
     """Extract basic resume section content, including internship details."""
     certifications = [
         line.strip(" •\t-")
@@ -188,7 +205,19 @@ def _extract_extras(sections: dict[str, str]) -> dict[str, Any]:
             }
         )
 
+    candidate_name = ""
+    for line in raw_text.splitlines():
+        line_clean = line.strip()
+        if line_clean and not any(kw in line_clean.lower() for kw in ["curriculum vitae", "resume", "page ", "http", "email:", "phone:"]):
+            candidate_name = re.split(r"\s+[-–—|]\s+", line_clean)[0].strip()
+            break
+
+    gh_match = re.search(r"(?:https?://)?(?:www\.)?github\.com/([A-Za-z0-9_-]+)", raw_text, re.IGNORECASE)
+    github_url = f"https://github.com/{gh_match.group(1)}" if gh_match else ""
+
     return {
+        "candidate_name": candidate_name,
+        "github_url": github_url,
         "education": sections.get("education", "").strip(),
         "projects": projects,
         "experience": experience,
@@ -261,18 +290,26 @@ def parse_resume(path: str | Path) -> ExtractionResult:
         if confidence not in {"high", "medium", "low"}:
             confidence = "medium"
 
+        is_stuffed = bool(getattr(check, "stuffing_flag", False))
+        if is_stuffed:
+            level_est = 4
+        elif confidence == "high":
+            level_est = 8
+        elif confidence == "medium":
+            level_est = 6
+        else:
+            level_est = 5
+
         skills.append(
             Skill(
                 skill_name=name,
                 category_code=SKILL_CATEGORIES[name],
                 evidence=evidence,
                 confidence=confidence,
-                level_estimate=None,
+                level_estimate=level_est,
                 source_section=evidence_section or "skills",
                 verified_by=["resume"],
-                stuffing_flag=bool(
-                    getattr(check, "stuffing_flag", False)
-                ),
+                stuffing_flag=is_stuffed,
             )
         )
 
@@ -280,5 +317,5 @@ def parse_resume(path: str | Path) -> ExtractionResult:
         source_type="resume",
         source_file=resume_path.name,
         skills=skills,
-        extras=_extract_extras(sections),
+        extras=_extract_extras(sections, raw_text),
     )

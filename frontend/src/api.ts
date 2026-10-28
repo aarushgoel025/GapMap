@@ -291,7 +291,26 @@ export async function parseResume(resumeIdOrFile: string): Promise<ExtractionRes
 /**
  * POST /resume/verify-github - Verify extracted skills against GitHub repositories
  */
-export async function verifyGithub(githubUrl: string, skills: Skill[]): Promise<{ verified_skills: Skill[] }> {
+export interface GitHubVerificationResponse {
+  verified_skills: Skill[];
+  github_user?: string;
+  name?: string;
+  avatar_url?: string;
+  bio?: string;
+  public_repos?: number;
+  top_languages?: string[];
+  repos?: Array<{
+    name: string;
+    language: string;
+    topics: string[];
+    description: string;
+    stars: number;
+    html_url: string;
+  }>;
+  verified_count?: number;
+}
+
+export async function verifyGithub(githubUrl: string, skills: Skill[]): Promise<GitHubVerificationResponse> {
   try {
     const res = await fetch(`${API_BASE}/api/resume/verify-github`, {
       method: 'POST',

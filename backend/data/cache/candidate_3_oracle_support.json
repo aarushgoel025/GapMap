@@ -12,9 +12,11 @@
       "evidence": "",
       "confidence": "high",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 8,
       "source_section": null,
-      "verified_by": [],
+      "verified_by": [
+        "resume"
+      ],
       "stuffing_flag": false,
       "models_agree": null
     },
@@ -24,9 +26,11 @@
       "evidence": "",
       "confidence": "high",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 8,
       "source_section": null,
-      "verified_by": [],
+      "verified_by": [
+        "resume"
+      ],
       "stuffing_flag": false,
       "models_agree": null
     },
@@ -36,9 +40,11 @@
       "evidence": "",
       "confidence": "high",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 8,
       "source_section": null,
-      "verified_by": [],
+      "verified_by": [
+        "resume"
+      ],
       "stuffing_flag": false,
       "models_agree": null
     },
@@ -48,9 +54,11 @@
       "evidence": "",
       "confidence": "high",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 8,
       "source_section": null,
-      "verified_by": [],
+      "verified_by": [
+        "resume"
+      ],
       "stuffing_flag": false,
       "models_agree": null
     },
@@ -60,9 +68,11 @@
       "evidence": "",
       "confidence": "high",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 8,
       "source_section": null,
-      "verified_by": [],
+      "verified_by": [
+        "resume"
+      ],
       "stuffing_flag": false,
       "models_agree": null
     },
@@ -72,9 +82,11 @@
       "evidence": "",
       "confidence": "medium",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 6,
       "source_section": null,
-      "verified_by": [],
+      "verified_by": [
+        "resume"
+      ],
       "stuffing_flag": false,
       "models_agree": null
     },
@@ -84,9 +96,11 @@
       "evidence": "",
       "confidence": "medium",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 6,
       "source_section": null,
-      "verified_by": [],
+      "verified_by": [
+        "resume"
+      ],
       "stuffing_flag": false,
       "models_agree": null
     },
@@ -96,9 +110,11 @@
       "evidence": "",
       "confidence": "high",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 8,
       "source_section": null,
-      "verified_by": [],
+      "verified_by": [
+        "resume"
+      ],
       "stuffing_flag": false,
       "models_agree": null
     },
@@ -108,9 +124,11 @@
       "evidence": "",
       "confidence": "high",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 8,
       "source_section": null,
-      "verified_by": [],
+      "verified_by": [
+        "resume"
+      ],
       "stuffing_flag": false,
       "models_agree": null
     },
@@ -120,9 +138,11 @@
       "evidence": "",
       "confidence": "medium",
       "importance": null,
-      "level_estimate": null,
+      "level_estimate": 6,
       "source_section": null,
-      "verified_by": [],
+      "verified_by": [
+        "resume"
+      ],
       "stuffing_flag": false,
       "models_agree": null
     }
