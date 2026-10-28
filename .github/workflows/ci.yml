@@ -35,7 +35,7 @@ jobs:
 
       - name: Execute pytest test suite
         env:
-          PYTHONPATH: .
+          PYTHONPATH: .:backend
         run: |
           pytest -v
 

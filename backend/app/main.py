@@ -19,7 +19,7 @@ from profile.router import router as profile_router
 from jd_analytics.router import router as jd_router
 from resume_parsing.router import router as resume_router
 from talent_check.router import router as talent_check_router
-from skill_matching.router import router as skill_matching_router
+from app.skill_matching.router import router as skill_matching_router
 
 app = FastAPI(
     title="GapMap API",
