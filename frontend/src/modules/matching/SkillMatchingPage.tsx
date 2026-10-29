@@ -321,15 +321,115 @@ export const SkillMatchingPage: React.FC<SkillMatchingPageProps> = ({
                 </div>
               </div>
 
-              {/* Explanatory summary text */}
-              <div className="mt-4 p-3.5 bg-slate-50 dark:bg-slate-800/60 rounded-xl text-xs text-slate-600 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60 w-full space-y-1.5">
-                <div className="font-bold text-slate-800 dark:text-slate-100 flex items-center gap-1.5">
-                  <span>🧮</span>
-                  <span>Deterministic Scoring Breakdown:</span>
+              {/* Highlighted Deterministic Scoring Breakdown */}
+              <div className="mt-4 p-4 rounded-2xl bg-gradient-to-b from-slate-800/90 via-slate-900/90 to-slate-950/90 border border-indigo-500/40 shadow-glow-sm w-full space-y-3.5 text-left">
+                {/* Header */}
+                <div className="flex items-center justify-between border-b border-slate-800/80 pb-2.5">
+                  <div className="flex items-center gap-2">
+                    <div className="w-6 h-6 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xs font-bold">
+                      🧮
+                    </div>
+                    <span className="text-xs font-extrabold uppercase tracking-wider text-indigo-300">
+                      Deterministic Scoring Formula
+                    </span>
+                  </div>
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-950/80 text-emerald-300 border border-emerald-800/60 font-semibold font-mono">
+                    Auditable &amp; Non-Random
+                  </span>
                 </div>
-                <p className="text-[11px] leading-relaxed text-slate-500 dark:text-slate-400">
-                  Calculated as weighted sum of credits (Must-Have = 2.0, Nice-to-Have = 1.0) divided by total JD requirement weight. Exact matches = 1.0, Aliases = 0.9, Semantic = 0.8 × Cosine. Gaps are ordered by prerequisite dependencies.
-                </p>
+
+                {/* Visual Mathematical Formula Display */}
+                <div className="p-3 rounded-xl bg-slate-950/80 border border-indigo-500/20 text-center space-y-1">
+                  <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
+                    Mathematical Definition
+                  </div>
+                  <div className="flex items-center justify-center gap-2 font-mono text-xs sm:text-sm font-black text-white pt-1">
+                    <span className="text-indigo-400 font-bold">Match Score</span>
+                    <span className="text-slate-400">=</span>
+                    <div className="inline-flex flex-col items-center">
+                      <span className="px-2 py-0.5 text-emerald-400 border-b border-slate-600">
+                        ∑ (Credit<sub>i</sub> × Weight<sub>i</sub>)
+                      </span>
+                      <span className="px-2 py-0.5 text-amber-400">
+                        ∑ Weight<sub>i</sub>
+                      </span>
+                    </div>
+                    <span className="text-slate-400">×</span>
+                    <span className="text-indigo-400 font-bold">100%</span>
+                  </div>
+                </div>
+
+                {/* Parameters Grid */}
+                <div className="grid grid-cols-2 gap-2 text-[11px]">
+                  {/* Left: Importance Weights */}
+                  <div className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1.5">
+                    <div className="font-bold text-slate-300 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                      <span>Weights (W<sub>i</sub>)</span>
+                    </div>
+                    <div className="space-y-1 text-slate-400 font-mono text-[10px]">
+                      <div className="flex justify-between items-center">
+                        <span>Must-Have:</span>
+                        <span className="font-bold text-rose-400 bg-rose-950/40 px-1.5 py-0.5 rounded border border-rose-900/40">2.0 pts</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span>Nice-to-Have:</span>
+                        <span className="font-bold text-slate-300 bg-slate-800 px-1.5 py-0.5 rounded">1.0 pt</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right: Layer Credits */}
+                  <div className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1.5">
+                    <div className="font-bold text-slate-300 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                      <span>Credits (C<sub>i</sub>)</span>
+                    </div>
+                    <div className="space-y-1 text-slate-400 font-mono text-[10px]">
+                      <div className="flex justify-between items-center">
+                        <span>L1 Exact:</span>
+                        <span className="font-bold text-emerald-400">1.00 credit</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span>L2 Alias:</span>
+                        <span className="font-bold text-blue-400">0.90 credit</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span>L3 Semantic:</span>
+                        <span className="font-bold text-purple-400">0.80 × Cos</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Live Evaluation Snapshot */}
+                <div className="p-2.5 rounded-xl bg-indigo-950/30 border border-indigo-900/50 flex flex-wrap items-center justify-between gap-2 text-[11px]">
+                  <div className="text-slate-300">
+                    <span className="text-slate-400">Layer Matches: </span>
+                    <span className="text-emerald-400 font-bold font-mono">
+                      {matchResult.matched_skills.filter((m) => m.match_type === 'exact').length} Exact
+                    </span>
+                    <span className="text-slate-500"> • </span>
+                    <span className="text-blue-400 font-bold font-mono">
+                      {matchResult.matched_skills.filter((m) => m.match_type === 'alias').length} Alias
+                    </span>
+                    <span className="text-slate-500"> • </span>
+                    <span className="text-purple-400 font-bold font-mono">
+                      {matchResult.matched_skills.filter((m) => m.match_type === 'semantic').length} Semantic
+                    </span>
+                  </div>
+                  <div className="font-mono font-bold text-indigo-300">
+                    Result: {matchResult.match_score.toFixed(1)}%
+                  </div>
+                </div>
+
+                {/* Prerequisite Note */}
+                <div className="text-[10px] text-slate-400 leading-tight flex items-start gap-1.5 pt-0.5">
+                  <span className="text-amber-400 font-bold">⚡</span>
+                  <span>
+                    <strong>Prerequisite Order:</strong> Unmet skills (C<sub>i</sub> &lt; 0.50) are ranked by dependency tree first (learn prereqs first), then descending by score impact.
+                  </span>
+                </div>
               </div>
             </div>
           </div>
