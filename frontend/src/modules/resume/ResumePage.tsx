@@ -375,17 +375,28 @@ export const ResumePage: React.FC = () => {
                   <tbody className="divide-y divide-slate-100 dark:divide-slate-800 font-medium">
                     {parsedResume.skills.map((skill: Skill, idx: number) => {
                       const isStuffed = Boolean(skill.stuffing_flag);
+                      const hasGithub = Boolean(skill.verified_by && skill.verified_by.includes('github'));
                       const conf = (skill.confidence || 'medium').toLowerCase();
 
                       return (
                         <tr
                           key={idx}
                           className={`hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors ${
-                            isStuffed ? 'bg-amber-50/20 dark:bg-amber-950/10' : ''
+                            isStuffed
+                              ? 'bg-amber-50/20 dark:bg-amber-950/10'
+                              : hasGithub
+                              ? 'bg-purple-50/30 dark:bg-purple-950/20'
+                              : ''
                           }`}
                         >
-                          <td className="px-4 py-3 font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
-                            {skill.skill_name}
+                          <td className="px-4 py-3 font-bold text-slate-900 dark:text-white flex items-center gap-1.5 flex-wrap">
+                            <span>{skill.skill_name}</span>
+                            {hasGithub && (
+                              <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-bold bg-purple-100 text-purple-800 dark:bg-purple-900/60 dark:text-purple-200 border border-purple-300 dark:border-purple-700">
+                                <GitBranch className="w-2.5 h-2.5 text-purple-600 dark:text-purple-400" />
+                                GitHub
+                              </span>
+                            )}
                           </td>
                           <td className="px-4 py-3 font-mono text-[11px] text-slate-500">
                             {skill.category_code}
@@ -409,6 +420,11 @@ export const ResumePage: React.FC = () => {
                                 <AlertTriangle className="w-3 h-3 text-amber-600" />
                                 Stuffed (No Evidence)
                               </span>
+                            ) : hasGithub ? (
+                              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-purple-100 text-purple-900 dark:bg-purple-950/80 dark:text-purple-300 border border-purple-300 dark:border-purple-800 shadow-xs">
+                                <GitBranch className="w-3 h-3 text-purple-600 dark:text-purple-400" />
+                                Verified via GitHub (1.2x Boost)
+                              </span>
                             ) : (
                               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300">
                                 <CheckCircle className="w-3 h-3 text-emerald-500" />
@@ -417,7 +433,7 @@ export const ResumePage: React.FC = () => {
                             )}
                           </td>
                           <td className="px-4 py-3 text-slate-500 italic max-w-sm truncate" title={skill.evidence || 'No evidence extracted'}>
-                            {skill.evidence ? `&quot;${skill.evidence}&quot;` : <span className="not-italic text-slate-400">None detected</span>}
+                            {skill.evidence ? `"${skill.evidence}"` : <span className="not-italic text-slate-400">None detected</span>}
                           </td>
                         </tr>
                       );
