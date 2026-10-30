@@ -417,33 +417,130 @@ export async function verifyGithub(githubUrl: string, skills: Skill[]): Promise<
       };
     });
 
+    const skillSynonyms: Record<string, string[]> = {
+      python: ['python', 'py', 'python3'],
+      javascript: ['javascript', 'js', 'ecmascript'],
+      typescript: ['typescript', 'ts'],
+      java: ['java'],
+      'c++': ['c++', 'cpp', 'cplusplus'],
+      'c#': ['c#', 'csharp', 'c-sharp'],
+      c: ['c'],
+      go: ['go', 'golang'],
+      rust: ['rust'],
+      html: ['html', 'html5'],
+      css: ['css', 'css3'],
+      sql: ['sql', 'mysql', 'postgresql', 'postgres', 'sqlite', 'tsql', 'plsql', 'plpgsql'],
+      mysql: ['mysql'],
+      postgresql: ['postgresql', 'postgres'],
+      mongodb: ['mongodb', 'mongo'],
+      redis: ['redis'],
+      docker: ['docker', 'dockerfile', 'container', 'containers'],
+      kubernetes: ['kubernetes', 'k8s'],
+      fastapi: ['fastapi'],
+      react: ['react', 'reactjs'],
+      nextjs: ['nextjs', 'next.js'],
+      django: ['django'],
+      flask: ['flask'],
+      nodejs: ['node', 'nodejs', 'node.js'],
+      git: ['git', 'github'],
+      aws: ['aws', 'amazon-web-services'],
+      linux: ['linux', 'ubuntu', 'debian', 'unix'],
+      'machine learning': ['machine-learning', 'ml', 'deep-learning', 'pytorch', 'tensorflow'],
+      'data structures': ['data-structures', 'algorithms', 'leetcode', 'dsa'],
+    };
+
+    const falseFriends: Record<string, string[]> = {
+      java: ['javascript'],
+      c: ['c++', 'c#', 'css', 'html', 'react'],
+      r: ['rust', 'ruby'],
+      go: ['google'],
+    };
+
+    const matchSkillToRepos = (skillName: string) => {
+      const parts = skillName
+        .toLowerCase()
+        .split(/[/&,]+/)
+        .map((p) => p.trim())
+        .filter(Boolean);
+      const searchParts = parts.length > 0 ? parts : [skillName.trim().toLowerCase()];
+
+      for (const repo of repos) {
+        const rName = (repo.name || '').toLowerCase();
+        const rLang = (repo.language || '').toLowerCase();
+        const rTopics = new Set<string>((repo.topics || []).map((t: string) => t.toLowerCase()));
+        const rDesc = (repo.description || '').toLowerCase();
+        const nameTokens = new Set<string>(rName.split(/[-_.]+/));
+
+        for (const part of searchParts) {
+          if (falseFriends[part] && falseFriends[part].includes(rLang)) {
+            continue;
+          }
+
+          // 1. Primary Language Match
+          if (rLang) {
+            if (part === rLang) {
+              return {
+                repo,
+                evidence: `Verified primary repository language '${repo.language}' in '${repo.name}'`,
+              };
+            }
+            const syns = skillSynonyms[part];
+            if (syns && syns.includes(rLang)) {
+              return {
+                repo,
+                evidence: `Verified primary repository language '${repo.language}' in '${repo.name}'`,
+              };
+            }
+          }
+
+          // 2. Topic Tags Match
+          const targetSyns = skillSynonyms[part] || [part, part.replace(/\s+/g, '-'), part.replace(/\s+/g, '')];
+          for (const syn of targetSyns) {
+            if (rTopics.has(syn)) {
+              return {
+                repo,
+                evidence: `Verified repository topic tag '${syn}' in '${repo.name}'`,
+              };
+            }
+          }
+
+          // 3. Repository Name Tokens
+          for (const syn of targetSyns) {
+            if (syn.length >= 3 && nameTokens.has(syn)) {
+              return {
+                repo,
+                evidence: `Verified repository '${repo.name}'`,
+              };
+            }
+          }
+
+          // 4. Whole-word match in description
+          for (const syn of targetSyns) {
+            if (syn.length >= 3) {
+              const escaped = syn.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+              const regex = new RegExp(`\\b${escaped}\\b`, 'i');
+              if (regex.test(rDesc)) {
+                if (part === 'java' && /\bjavascript\b/i.test(rDesc) && !/\bjava\b(?!\s*script)/i.test(rDesc)) {
+                  continue;
+                }
+                return {
+                  repo,
+                  evidence: `Verified in description of '${repo.name}' (${syn})`,
+                };
+              }
+            }
+          }
+        }
+      }
+
+      return null;
+    };
+
     let verifiedCount = 0;
     const verifiedSkills = skills.map((s) => {
-      const sName = s.skill_name.toLowerCase();
-      let isMatched = false;
-      let matchedRepoName = '';
+      const match = matchSkillToRepos(s.skill_name);
 
-      for (const kw of detectedKeywords) {
-        if (kw === sName || kw.includes(sName) || sName.includes(kw)) {
-          isMatched = true;
-          break;
-        }
-      }
-
-      for (const r of repos) {
-        if (r.language && (r.language.toLowerCase().includes(sName) || sName.includes(r.language.toLowerCase()))) {
-          isMatched = true;
-          matchedRepoName = r.name;
-          break;
-        }
-        if (r.name && (r.name.toLowerCase().includes(sName) || sName.includes(r.name.toLowerCase()))) {
-          isMatched = true;
-          matchedRepoName = r.name;
-          break;
-        }
-      }
-
-      if (isMatched) {
+      if (match) {
         verifiedCount++;
         const currentVerified = Array.isArray(s.verified_by) ? s.verified_by : [];
         return {
@@ -452,7 +549,7 @@ export async function verifyGithub(githubUrl: string, skills: Skill[]): Promise<
           stuffing_flag: false,
           confidence: (s.confidence === 'low' ? 'medium' : 'high') as Confidence,
           level_estimate: Math.max(s.level_estimate || 0, 8),
-          evidence: `Verified via GitHub repository '${matchedRepoName || repos[0]?.name || 'public repo'}'`,
+          evidence: match.evidence,
         };
       }
       return s;
@@ -473,14 +570,10 @@ export async function verifyGithub(githubUrl: string, skills: Skill[]): Promise<
     console.error('[verifyGithub] Client fallback error:', err);
     return {
       github_user: githubUrl.split('/').pop() || 'developer',
-      name: 'Verified Developer',
-      verified_skills: skills.map((s) => ({
-        ...s,
-        verified_by: [...(s.verified_by || []), 'github'],
-        stuffing_flag: false,
-      })),
-      verified_count: skills.length,
-      top_languages: ['Python', 'TypeScript', 'SQL'],
+      name: 'Developer',
+      verified_skills: skills,
+      verified_count: 0,
+      top_languages: [],
     };
   }
 }

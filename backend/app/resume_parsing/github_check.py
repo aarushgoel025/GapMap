@@ -99,6 +99,47 @@ GITHUB_SKILL_MAP: Dict[str, Dict[str, Any]] = {
 }
 
 
+# Canonical skill synonyms for matching resume skills against repo languages/topics
+SKILL_SYNONYMS: Dict[str, set[str]] = {
+    "python": {"python", "py", "python3"},
+    "javascript": {"javascript", "js", "ecmascript"},
+    "typescript": {"typescript", "ts"},
+    "java": {"java"},
+    "c++": {"c++", "cpp", "cplusplus"},
+    "c#": {"c#", "csharp", "c-sharp"},
+    "c": {"c"},
+    "go": {"go", "golang"},
+    "rust": {"rust"},
+    "html": {"html", "html5"},
+    "css": {"css", "css3"},
+    "sql": {"sql", "mysql", "postgresql", "postgres", "sqlite", "tsql", "plsql", "plpgsql"},
+    "mysql": {"mysql"},
+    "postgresql": {"postgresql", "postgres"},
+    "mongodb": {"mongodb", "mongo"},
+    "redis": {"redis"},
+    "docker": {"docker", "dockerfile", "container", "containers"},
+    "kubernetes": {"kubernetes", "k8s"},
+    "fastapi": {"fastapi"},
+    "react": {"react", "reactjs"},
+    "nextjs": {"nextjs", "next.js"},
+    "django": {"django"},
+    "flask": {"flask"},
+    "nodejs": {"node", "nodejs", "node.js"},
+    "git": {"git", "github"},
+    "aws": {"aws", "amazon-web-services"},
+    "linux": {"linux", "ubuntu", "debian", "unix"},
+    "machine learning": {"machine-learning", "ml", "deep-learning", "pytorch", "tensorflow"},
+    "data structures": {"data-structures", "algorithms", "leetcode", "dsa"},
+}
+
+FALSE_FRIEND_SUBSTRINGS: Dict[str, List[str]] = {
+    "java": ["javascript"],
+    "c": ["c++", "c#", "css", "html", "react"],
+    "r": ["rust", "ruby"],
+    "go": ["google"],
+}
+
+
 def extract_github_username(github_input: str) -> str:
     """Extract clean GitHub username from URL or handle."""
     if not github_input:
@@ -114,9 +155,69 @@ def extract_github_username(github_input: str) -> str:
 
 
 def get_cache_file(username: str) -> Path:
-    base = Path(__file__).resolve().parent.parent / "data" / "cache"
+    for candidate in [
+        Path.cwd() / "data" / "cache",
+        Path(__file__).resolve().parent.parent / "data" / "cache",
+        Path(__file__).resolve().parent.parent.parent / "data" / "cache",
+        Path(__file__).resolve().parent.parent.parent.parent / "data" / "cache",
+    ]:
+        if (candidate / f"github_{username.lower()}.json").is_file():
+            return candidate / f"github_{username.lower()}.json"
+
+    base = Path.cwd() / "data" / "cache"
     base.mkdir(parents=True, exist_ok=True)
     return base / f"github_{username.lower()}.json"
+
+
+def match_skill_against_repos(skill_name: str, repos: List[Dict[str, Any]]) -> tuple[Optional[Dict[str, Any]], Optional[str]]:
+    """
+    Strictly verify whether a skill claimed on a resume is substantiated by public repositories.
+    Uses language equality/aliases, topic tags, repository name tokens, or explicit description matches.
+    Prevents false substring matches (e.g. 'java' matching 'javascript', 'or' matching 'oracle', 'in' matching 'linux').
+    """
+    parts = [p.strip().lower() for p in re.split(r"[/&,]+", skill_name) if p.strip()]
+    if not parts:
+        parts = [skill_name.strip().lower()]
+
+    for repo in repos:
+        r_name = (repo.get("name") or "").strip().lower()
+        r_lang = (repo.get("language") or "").strip().lower()
+        r_topics = {t.strip().lower() for t in (repo.get("topics") or [])}
+        r_desc = (repo.get("description") or "").strip().lower()
+        name_tokens = set(re.split(r"[-_.]+", r_name))
+
+        for part in parts:
+            # Prevent false-friend language matches (e.g., Java matching JavaScript)
+            if part in FALSE_FRIEND_SUBSTRINGS:
+                if any(ff == r_lang for ff in FALSE_FRIEND_SUBSTRINGS[part]):
+                    continue
+
+            # 1. Primary Language Match
+            if r_lang:
+                if part == r_lang:
+                    return repo, f"Verified primary repository language '{repo.get('language')}' in '{repo.get('name')}'"
+                if part in SKILL_SYNONYMS and r_lang in SKILL_SYNONYMS[part]:
+                    return repo, f"Verified primary repository language '{repo.get('language')}' in '{repo.get('name')}'"
+
+            # 2. Topic Tags Match
+            target_syns = SKILL_SYNONYMS.get(part, {part, part.replace(" ", "-"), part.replace(" ", "")})
+            matched_topics = target_syns.intersection(r_topics)
+            if matched_topics:
+                return repo, f"Verified repository topic tag '{list(matched_topics)[0]}' in '{repo.get('name')}'"
+
+            # 3. Repository Name Token Match
+            matched_name = target_syns.intersection(name_tokens)
+            if matched_name and len(list(matched_name)[0]) >= 3:
+                return repo, f"Verified repository '{repo.get('name')}'"
+
+            # 4. Whole-word match in description for verified technical terms
+            for syn in target_syns:
+                if len(syn) >= 3 and re.search(r"\b" + re.escape(syn) + r"\b", r_desc, re.IGNORECASE):
+                    if part == "java" and not re.search(r"\bjava\b(?!\s*script)", r_desc, re.IGNORECASE):
+                        continue
+                    return repo, f"Verified in description of '{repo.get('name')}' ({syn})"
+
+    return None, None
 
 
 def verify_github_profile(
@@ -182,22 +283,29 @@ def verify_github_profile(
             )
             if r_res.status_code == 200:
                 repos = r_res.json()
-        except Exception as e:
-            # Network or timeout failure: fallback to user handle
+        except Exception:
+            # If network error, attempt to keep any existing cache
+            if not repos and cache_file.is_file():
+                try:
+                    cached_result = json.loads(cache_file.read_text(encoding="utf-8"))
+                    user_data = cached_result.get("user", {})
+                    repos = cached_result.get("repos", [])
+                except Exception:
+                    pass
             user_data = user_data or {"login": username, "public_repos": 0}
             repos = repos or []
 
-    # Cache response data
-    try:
-        cache_file.write_text(
-            json.dumps({"user": user_data, "repos": repos}, indent=2),
-            encoding="utf-8",
-        )
-    except Exception:
-        pass
+    # Cache response data only if we received repos
+    if repos:
+        try:
+            cache_file.write_text(
+                json.dumps({"user": user_data, "repos": repos}, indent=2),
+                encoding="utf-8",
+            )
+        except Exception:
+            pass
 
-    # Extract languages and keywords across repositories
-    detected_keywords: set[str] = set()
+    # Extract languages across repositories
     repo_summaries: List[Dict[str, Any]] = []
     top_languages: Dict[str, int] = {}
 
@@ -205,18 +313,9 @@ def verify_github_profile(
         name = repo.get("name", "")
         lang = repo.get("language")
         topics = repo.get("topics") or []
-        desc = (repo.get("description") or "").lower()
 
         if lang:
-            detected_keywords.add(lang.lower())
             top_languages[lang] = top_languages.get(lang, 0) + 1
-
-        for topic in topics:
-            detected_keywords.add(topic.lower())
-
-        # Check description words
-        for token in re.findall(r"\b[a-zA-Z0-9+#.-]+\b", desc):
-            detected_keywords.add(token.lower())
 
         repo_summaries.append({
             "name": name,
@@ -230,36 +329,18 @@ def verify_github_profile(
     # Cross-reference with candidate skills
     working_skills = [dict(s) for s in (skills or [])]
     verified_count = 0
-    existing_skill_names = {s.get("skill_name", "").lower() for s in working_skills}
 
     for s in working_skills:
-        s_name = s.get("skill_name", "").lower()
-        s_cat = s.get("category_code", "")
+        s_name = s.get("skill_name", "")
+        matching_repo, match_evidence = match_skill_against_repos(s_name, repos)
 
-        # Check for direct or keyword match in detected keywords
-        is_matched = False
-        matching_repo = None
-
-        for kw in detected_keywords:
-            if kw in s_name or s_name in kw:
-                is_matched = True
-                break
-
-        # Check if any repo specifically used this language
-        for repo in repo_summaries:
-            r_lang = (repo.get("language") or "").lower()
-            if r_lang and (r_lang in s_name or s_name in r_lang):
-                is_matched = True
-                matching_repo = repo
-                break
-
-        if is_matched:
+        if matching_repo and match_evidence:
             verified_by = list(s.get("verified_by") or [])
             if "github" not in verified_by:
                 verified_by.append("github")
             s["verified_by"] = verified_by
 
-            # Clear stuffing flag since real code repositories prove practical use!
+            # Clear stuffing flag since real code repositories prove practical use
             s["stuffing_flag"] = False
 
             # Elevate confidence
@@ -273,29 +354,33 @@ def verify_github_profile(
             if curr_est is None or curr_est < 7:
                 s["level_estimate"] = 7 if s.get("confidence") == "medium" else 8
 
-            repo_name = matching_repo["name"] if matching_repo else (repo_summaries[0]["name"] if repo_summaries else "public repo")
-            repo_lang = matching_repo["language"] if matching_repo else "code"
-            s["evidence"] = f"Verified in public GitHub repository '{repo_name}' ({repo_lang})."
+            s["evidence"] = match_evidence
             verified_count += 1
 
-    # Also discover new verified skills from the candidate's GitHub repositories!
-    for kw, mapping in GITHUB_SKILL_MAP.items():
-        if kw in detected_keywords:
-            canonical_name = mapping["name"]
-            cat_code = mapping["code"]
-            if canonical_name.lower() not in existing_skill_names:
-                working_skills.append({
-                    "skill_name": canonical_name,
-                    "category_code": cat_code,
-                    "evidence": f"Demonstrated in public GitHub repository ({kw}).",
-                    "confidence": "high",
-                    "level_estimate": 7,
-                    "source_section": "github",
-                    "verified_by": ["github"],
-                    "stuffing_flag": False,
-                })
-                existing_skill_names.add(canonical_name.lower())
-                verified_count += 1
+    # If candidate had no skills, populate discovered skills directly from GitHub
+    if not working_skills:
+        existing_skill_names = set()
+        for kw, mapping in GITHUB_SKILL_MAP.items():
+            for repo in repos:
+                r_lang = (repo.get("language") or "").strip().lower()
+                r_topics = {t.strip().lower() for t in (repo.get("topics") or [])}
+                if kw == r_lang or kw in r_topics:
+                    canonical_name = mapping["name"]
+                    cat_code = mapping["code"]
+                    if canonical_name.lower() not in existing_skill_names:
+                        working_skills.append({
+                            "skill_name": canonical_name,
+                            "category_code": cat_code,
+                            "evidence": f"Demonstrated in public GitHub repository '{repo.get('name')}' ({kw}).",
+                            "confidence": "high",
+                            "level_estimate": 7,
+                            "source_section": "github",
+                            "verified_by": ["github"],
+                            "stuffing_flag": False,
+                        })
+                        existing_skill_names.add(canonical_name.lower())
+                        verified_count += 1
+                    break
 
     # Section F Governance: Write audit row (logging event metadata, never personal text)
     try:

@@ -22,6 +22,7 @@ htmlcov/
 # Local data & logs
 *.log
 data/cache/
+backend/app/data/
 backend/data/profiles/*.json
 !backend/data/profiles/.gitkeep
 !backend/data/profiles/candidate_*.json
