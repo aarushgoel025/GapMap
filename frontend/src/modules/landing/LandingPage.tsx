@@ -18,6 +18,7 @@ import {
   Terminal,
   FileCheck,
   Search,
+  ShieldCheck,
 } from 'lucide-react';
 
 interface LandingPageProps {
@@ -167,6 +168,85 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStartPipeline }) => 
     },
   ];
 
+  const FOUR_USPS = [
+    {
+      number: '01',
+      pillar: 'Pillar 1',
+      title: 'Proof-Backed Skills & Anti-Stuffing',
+      subtitle: 'The Evidence Engine',
+      badge: 'Verbatim Citations',
+      icon: ShieldCheck,
+      color: 'from-amber-500 to-orange-500',
+      tagColor: 'bg-amber-950/80 text-amber-300 border-amber-800/80',
+      demoLine: 'Do not just claim it. Prove it.',
+      description:
+        'Every skill comes with an exact quote snippet from the resume and a confidence level. We flag keyword stuffing—skills listed in a summary but never used in any real project or job—and slash their score impact by 50%.',
+      highlights: [
+        'Verbatim resume quote citations for every claimed competency',
+        'Word-boundary regex (\\b) keyword stuffing detection with 50% penalty',
+        'Optional GitHub API check verifying skills from real public code repositories',
+      ],
+      videoTime: 'Video: 4:00 – 6:30',
+    },
+    {
+      number: '02',
+      pillar: 'Pillar 2',
+      title: 'What-If Simulator & Impact-Ranked Gaps',
+      subtitle: 'Dynamic Career Planning',
+      badge: '117+ Corporate Profiles',
+      icon: Sliders,
+      color: 'from-cyan-500 to-blue-500',
+      tagColor: 'bg-cyan-950/80 text-cyan-300 border-cyan-800/80',
+      demoLine: 'Interactive live slider deltas & prerequisite DAG',
+      description:
+        'Talent Check explains readiness scores with the contribution of each of the 12 skillsets. Interactive sliders let candidates try: "What if my SQL level was 6?" to see live score deltas and weeks-to-ready estimates.',
+      highlights: [
+        'Live score sliders updating candidate readiness against corporate hiring bars',
+        'Topological prerequisite sorting (e.g. Learn Docker before Kubernetes)',
+        'Score-impact ranking revealing which missing skill unlocks the most points',
+      ],
+      videoTime: 'Video: 9:00 – 11:30',
+    },
+    {
+      number: '03',
+      pillar: 'Pillar 3',
+      title: 'Smarter 3-Layer Matching (SkillBridge-Style)',
+      subtitle: 'Deterministic Scoring Math',
+      badge: '100% Explainable',
+      icon: Layers,
+      color: 'from-purple-500 to-indigo-500',
+      tagColor: 'bg-purple-950/80 text-purple-300 border-purple-800/80',
+      demoLine: 'Exact (1.0) ➔ Alias (0.9) ➔ Semantic (0.8 × Cosine)',
+      description:
+        'Skill matching cascades across 3 deterministic tiers: exact name, alias/family (ReactJS = React, Postgres = SQL), and local embedding vector similarity. Every match explicitly states which layer found it, eliminating math hallucination.',
+      highlights: [
+        'Layer 1 Exact Match (1.0 weight credit)',
+        'Layer 2 Curated Alias / Family Match (0.9 weight credit)',
+        'Layer 3 Semantic Cosine Vector Similarity (0.8 × Cosine credit)',
+      ],
+      videoTime: 'Video: 11:30 – 14:00',
+    },
+    {
+      number: '04',
+      pillar: 'Pillar 4',
+      title: 'Trustworthy AI Consensus Pipeline',
+      subtitle: 'Multi-LLM Architecture',
+      badge: 'Gemini 2.5 + Mistral',
+      icon: Zap,
+      color: 'from-emerald-500 to-teal-500',
+      tagColor: 'bg-emerald-950/80 text-emerald-300 border-emerald-800/80',
+      demoLine: 'Two LLMs read each document; consensus settles disagreements',
+      description:
+        'Two distinct models, Gemini 2.5 Flash and Mistral, analyze documents in parallel with a deterministic merge resolver. Every output is validated by Pydantic v2 with auto-retry, backed by 135 unit tests and full Section F audit logs.',
+      highlights: [
+        'Dual-LLM parallel consensus eliminating single-model hallucinations',
+        'Pydantic v2 auto-correcting feedback retry loop on schema discrepancies',
+        'SHA-256 caching for instant sub-second repeat runs & offline resilience',
+      ],
+      videoTime: 'Video: 1:30 – 4:00',
+    },
+  ];
+
   return (
     <div className="space-y-16 animate-fadeIn pb-16">
       {/* 1. Hero Section */}
@@ -225,10 +305,17 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStartPipeline }) => 
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
             <a
+              href="#our-usps"
+              className="w-full sm:w-auto px-6 py-4 rounded-2xl bg-amber-950/40 hover:bg-amber-900/60 text-amber-300 font-bold text-sm border border-amber-800/60 transition-colors flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <span>Explore 4 USPs</span>
+              <Sparkles className="w-4 h-4 text-amber-400" />
+            </a>
+            <a
               href="#talencia-systems"
               className="w-full sm:w-auto px-6 py-4 rounded-2xl bg-slate-800/80 hover:bg-slate-800 text-slate-200 font-bold text-sm border border-slate-700 transition-colors flex items-center justify-center gap-2 cursor-pointer"
             >
-              <span>View the 8 Talencia Systems</span>
+              <span>The 8 Systems</span>
               <Layers className="w-4 h-4 text-slate-400" />
             </a>
           </div>
@@ -280,7 +367,127 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStartPipeline }) => 
         </div>
       </section>
 
-      {/* 3. The 8 Talencia Systems */}
+      {/* 3. The 4 USPs / Pillars: What Makes Us Different */}
+      <section id="our-usps" className="space-y-8 scroll-mt-24">
+        <div className="text-center space-y-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-amber-950/80 text-amber-300 border border-amber-800/80 uppercase tracking-wider shadow-xs">
+            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+            <span>Our USP • What Makes Us Different</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
+            The 4 Pillars That Set GapMap Apart
+          </h2>
+          <p className="text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            Most teams build: upload resume, get an ATS score, see missing keywords. Public projects already do that. We stand out with four foundational pillars engineered for truth, explainability, and actionable career advancement.
+          </p>
+        </div>
+
+        {/* 4 USP Cards Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {FOUR_USPS.map((usp) => {
+            const Icon = usp.icon;
+            return (
+              <div
+                key={usp.number}
+                className="group relative bg-slate-900/90 border border-slate-800 hover:border-slate-700 rounded-3xl p-6 sm:p-7 transition-all duration-300 flex flex-col justify-between space-y-5 shadow-xl hover:shadow-2xl backdrop-blur-sm overflow-hidden"
+              >
+                {/* Accent top gradient bar */}
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${usp.color}`} />
+
+                <div className="space-y-4">
+                  {/* Top Bar with Number, Pillar Badge & Tag */}
+                  <div className="flex items-center justify-between gap-2 flex-wrap">
+                    <div className="flex items-center gap-2.5">
+                      <div className={`w-8 h-8 rounded-xl bg-gradient-to-tr ${usp.color} text-white font-black text-xs flex items-center justify-center shadow-xs`}>
+                        {usp.number}
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                          {usp.pillar}
+                        </span>
+                        <span className="text-lg font-black text-white tracking-tight">
+                          {usp.title}
+                        </span>
+                      </div>
+                    </div>
+                    <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full border ${usp.tagColor}`}>
+                      {usp.badge}
+                    </span>
+                  </div>
+
+                  {/* Demo Quote / Motto Line */}
+                  <div className="px-3.5 py-2 rounded-xl bg-slate-950/70 border border-slate-800/80 flex items-center justify-between text-xs">
+                    <span className="italic font-semibold text-slate-200">
+                      "{usp.demoLine}"
+                    </span>
+                    <span className="text-[10px] font-mono text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
+                      {usp.videoTime}
+                    </span>
+                  </div>
+
+                  {/* Core Description */}
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    {usp.description}
+                  </p>
+
+                  {/* Highlight bullets */}
+                  <div className="space-y-2 pt-1">
+                    {usp.highlights.map((item, hIdx) => (
+                      <div key={hIdx} className="flex items-start gap-2 text-xs text-slate-300">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Subtitle Footer */}
+                <div className="pt-3 border-t border-slate-800/70 flex items-center justify-between text-xs text-slate-400">
+                  <div className="flex items-center gap-1.5 font-medium text-slate-300">
+                    <Icon className="w-4 h-4 text-brand-400" />
+                    <span>{usp.subtitle}</span>
+                  </div>
+                  <span className="text-[10px] uppercase font-bold tracking-wider text-brand-400">
+                    Active in Pipeline
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Standout Feature & Formula Callout Banner */}
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-brand-950/40 to-slate-900 border border-brand-800/50 p-5 sm:p-6 shadow-lg">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div className="space-y-1.5 max-w-2xl">
+              <div className="flex items-center gap-2 text-xs font-bold text-brand-400 uppercase tracking-wide">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Our Standout Feature</span>
+              </div>
+              <p className="text-sm font-semibold text-white leading-relaxed">
+                "GapMap replaces black-box ATS keyword guessing with proof-backed evidence verification, an interactive 12-domain What-If corporate readiness simulator, and prerequisite-sorted learning pathways."
+              </p>
+            </div>
+
+            {/* Formula Pill */}
+            <div className="p-3.5 bg-slate-950/80 rounded-xl border border-slate-800 text-left min-w-[270px]">
+              <div className="text-[11px] font-bold text-slate-300 mb-1 flex items-center gap-1.5">
+                <BarChart3 className="w-3.5 h-3.5 text-indigo-400" />
+                <span>Deterministic Scoring Engine</span>
+              </div>
+              <div className="text-[11px] font-mono text-emerald-400">
+                Score = Σ(w · c) / Σ(w) × 100
+              </div>
+              <div className="text-[10px] text-slate-400 mt-1">
+                Must-Have: 2.0x • Nice-to-Have: 1.0x<br />
+                Exact: 1.0 • Alias: 0.9 • AI: 0.8 × Cosine
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. The 8 Talencia Systems */}
       <section id="talencia-systems" className="space-y-8 scroll-mt-24">
         <div className="text-center space-y-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-emerald-950 text-emerald-300 border border-emerald-800/60 uppercase tracking-wider">

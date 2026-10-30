@@ -15,6 +15,7 @@ import {
   Layers,
   Play,
 } from 'lucide-react';
+import { API_BASE } from './api';
 
 const MainLayout: React.FC = () => {
   const { currentStep, setCurrentStep, company, parsedResume, selectedJd } = useApp();
@@ -129,7 +130,9 @@ const MainLayout: React.FC = () => {
       {/* Footer */}
       <footer className="mt-16 border-t border-slate-200 dark:border-slate-800 py-6 text-center text-xs text-slate-500 dark:text-slate-400">
         <p>GapMap ATS & Skill Gap Engine • Multi-tier Benchmark & Verification Pipeline</p>
-        <p className="mt-1 text-[11px] text-slate-400">Connected to FastAPI Backend at http://localhost:8000</p>
+        <p className="mt-1 text-[11px] text-slate-400">
+          Connected to FastAPI Backend at <code className="font-mono text-slate-500 dark:text-slate-400">{API_BASE}</code>
+        </p>
       </footer>
     </div>
   );

@@ -11,7 +11,7 @@ import type {
   Skill,
 } from './types';
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+export const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
 
 async function handleResponse<T>(res: Response, fallback?: T): Promise<T> {
   if (!res.ok) {

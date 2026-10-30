@@ -1,0 +1,323 @@
+=== PAGE 1 ===
+RADIX Talent Match Hackathon · Solution Document
+R A D I X
+Talent Match Hackathon
+Solution Document Template
+Submission format: one Google Drive folder link containing this document (PDF), the demo
+video, and the code.
+Team Name [Team Name]
+Team Members & Roles [Name – role – email, for each of the five members; mark the
+Scrum Master]
+Google Drive Folder Link [Link — Anyone with the link, Viewer]
+Demo Video (15 min) [Demo_Video.mp4 in the Drive folder]
+Date of Submission [DD/MM/YYYY]
+Deadline: Wednesday, 28 October 2026, 4:00 PM IST
+Page 1
+
+=== PAGE 2 ===
+RADIX Talent Match Hackathon · Solution Document
+Table of Contents
+How to Submit
+How Your Solution Will Be Evaluated
+Submission Details
+1. Problem & Solution Summary
+2. What Makes Our Solution Different
+3. Team & Roles
+4. Shared Data Contract
+5. How Each Piece Works
+6. Integrated Flow & Tech Stack
+7. Quality Evidence
+8. Results on Sample Data
+9. How to Run Our Code
+10. Definition of Done
+11. Challenge, Learnings, Limitations & Next Steps
+12. Demo Video (15 Minutes)
+13. Declarations
+Page 2
+
+=== PAGE 3 ===
+RADIX Talent Match Hackathon · Solution Document
+How to Submit
+Each team submits one Google Drive folder link containing this document (as PDF), a 15-minute
+demo video and the code, by Wednesday, 28 October 2026, 4:00 PM IST. Keep answers short
+— a few lines, a table or a screenshot per section is enough. Evidence beats description:
+wherever you can show a number, a screenshot or a JSON sample, do that instead of
+explaining.
+1. Create one folder in Google Drive named TeamName_RADIX_TalentMatch.
+2. Upload into it:
+– Solution_Document.pdf — this template, completed and exported to PDF
+– Demo_Video.mp4 — the 15-minute video (Section 12)
+– Code.zip — your whole project folder, zipped, with a README.md at the top level
+(see Section 9). Do not include API keys.
+– Screenshots (optional)
+3. Share the folder: Share → General access → "Anyone with the link" → Viewer. Copy the
+link.
+4. Test the link in an incognito / private browser window. If it asks for permission, it is not
+shared correctly.
+5. Paste the link in Submission Details below, and send it through the submission channel
+your coordinator shares. The Scrum Master submits once for the whole team.
+Rules
+• The deadline is 4:00 PM IST on Wednesday, 28 October 2026. Nothing added or
+changed in the folder after that is considered; file timestamps will be checked.
+• A link that does not open for the evaluators will not be evaluated.
+• One folder per team.
+How Your Solution Will Be Evaluated
+Read this before you fill in the rest. Each area below points to the sections where evaluators look
+for evidence. Only what can be seen in this document, the demo video or the code is scored.
+Area What evaluators look for Evidence Weight
+in
+Innovation & value A clear candidate problem, a specific one- Sec. 1, 2 20%
+line difference, and features beyond the brief
+that are explained and visible in the demo.
+Build & architecture All five pieces working as one automated Sec. 3, 4, 34%
+flow, a complete and validated data contract, 5, 6, 10
+and well-reasoned design decisions.
+Quality & results Measured extraction accuracy, honest Sec. 7, 8 32%
+robustness testing, and results that differ
+across candidates and match their expected
+fit.
+Reproducibility & Code that runs from the README, a specific Sec. 9, 11, 14%
+presentation retrospective with honest limitations, and a 12
+live demo with every member presenting.
+Total 100%
+Page 3
+
+=== PAGE 4 ===
+RADIX Talent Match Hackathon · Solution Document
+Must pass before scoring: the Drive link opens, all files are submitted on time, and
+Declarations (Section 13) are complete.
+Tip
+A smaller tool with honest, measured results scores higher than a bigger tool with no
+evidence that it works.
+Submission Details
+Team Name [Team Name]
+Google Drive Folder Link [Link — Anyone with the link, Viewer]
+Date of Submission [DD/MM/YYYY]
+Role Member Name Email
+1. JD Analytics
+2. Resume Parsing
+3. Profile Builder
+4. Talent Check
+5. Skill Matching
+Scrum Master (one of the five)
+1. Problem & Solution Summary
+In half a page, answer:
+• What problem does a candidate face when deciding whether they are ready for a specific
+job?
+• What does your tool do, in one or two sentences?
+• Our one-line difference: complete the sentence "Unlike a simple keyword matcher, our
+tool …"
+• What is the one thing your team is most proud of in the build?
+[Write your answer here]
+Page 4
+
+=== PAGE 5 ===
+RADIX Talent Match Hackathon · Solution Document
+2. What Makes Our Solution Different
+This is where your team shows off. List 2–4 features, ideas or engineering choices you built that
+go beyond what the brief asked for, and that you think make your tool special. For each one, say
+what it is, how it works, why it matters to a candidate, and where evaluators can see it.
+Examples of the kind of thing that belongs here
+Gap list that suggests what to learn next for each missing skill
+Evidence shown for every matched skill, so the candidate can see why it matched
+Weighting skills by how strongly the JD stresses them, instead of treating all skills equally
+Checking that every JSON hand-off is validated before the next piece runs
+# Feature / How it works (1–2 Why it helps the Where to see it
+innovation lines) candidate (video time /
+screenshot)
+1
+2
+3
+4
+Our standout feature: if an evaluator remembers only one thing about your tool, what should it
+be? Answer in one or two sentences.
+[Write your answer here]
+Screenshots (optional): paste one screenshot per feature listed above.
+[Insert screenshots here]
+3. Team & Roles
+What each member built, and its final status from the milestone checklist.
+Role What I Built (one line) Status (Done /
+Partial / Not Done)
+1. JD Analytics
+2. Resume Parsing
+3. Profile Builder
+4. Talent Check
+5. Skill Matching
+Page 5
+
+=== PAGE 6 ===
+RADIX Talent Match Hackathon · Solution Document
+Scrum Master note: How the team kept on schedule and cleared blockers (2–3 lines). Attach a
+screenshot of the milestone checklist Summary sheet.
+[Write your answer here]
+4. Shared Data Contract
+Paste the final JSON your team agreed for the skill object, candidate profile, Talent Check result
+and Skill Matching result.
+[Paste schemas here]
+Changes from the brief’s proposed schema
+Field / object changed What we changed Why
+How we enforced the contract
+How did you make sure every piece produces and accepts the agreed JSON? For example a
+Pydantic model, a JSON Schema check, or a test that passes one sample through all five pieces.
+Paste one example of a validation catching a bad payload, if you have one.
+[Write your answer here]
+Page 6
+
+=== PAGE 7 ===
+RADIX Talent Match Hackathon · Solution Document
+5. How Each Piece Works
+Each role owner writes 4–6 lines on their piece: the approach, whether it uses an LLM /
+LangChain or plain code (and why), and one sample output.
+Role Approach (LLM or plain code, and Sample Output (screenshot
+why) or JSON)
+1. JD Analytics [Include the prompt or the key part of it]
+2. Resume [How do you handle different resume
+Parsing layouts?]
+3. Profile Builder
+4. Talent Check [Also state how "ready" is defined:
+threshold, weighted score, etc.]
+5. Skill Matching [Also state how the match score and
+gap list are produced, and how
+differently-worded skills are matched]
+Key design decisions
+List the 3–5 decisions that most shaped your tool. At minimum, include how "ready" is defined in
+Talent Check and how fuzzy matching works in Skill Matching.
+Decision Options we considered What we chose, and why
+How "ready" is defined
+(Talent Check)
+How skills are matched
+(Skill Matching)
+6. Integrated Flow & Tech Stack
+Show the five pieces wired into one flow: Pick a JD → Parse a resume → Build / update profile
+→ Run Talent Check → Run Skill Matching. A simple diagram or a screenshot of the UI at each
+step is enough.
+[Insert diagram or screenshots here]
+Page 7
+
+=== PAGE 8 ===
+RADIX Talent Match Hackathon · Solution Document
+Layer What we used
+Language Python
+Frontend React
+Storage [Supabase / JSON — say which]
+LLM model(s) [Name and version, e.g. the exact model string]
+Libraries [LangChain, Pydantic, PDF/DOCX parsers, matching libraries,
+etc.]
+Speed & cost (approx.) [Time for one full run of the flow; number of LLM calls per run]
+7. Quality Evidence
+This section shows that your tool gives correct answers, not just answers.
+7a. Extraction accuracy (JD Analytics & Resume Parsing)
+Before running your tool, a team member reads 2 JDs and 2 resumes by hand and writes down
+the correct skill list for each. This is your "ground truth". Then compare the tool’s output against
+it.
+• Correct = skills the tool extracted that are also on the hand-written list
+• Precision = Correct ÷ Extracted — how many of the tool’s skills were right
+• Recall = Correct ÷ Ground truth — how many real skills the tool caught
+Document Ground- Extracted by Correct Precision Recall
+truth skills tool
+JD: [ ]
+JD: [ ]
+Resume: [ ]
+Resume: [ ]
+In 2 lines: what did the tool miss or get wrong, and what did you change because of it?
+[Write your answer here]
+Page 8
+
+=== PAGE 9 ===
+RADIX Talent Match Hackathon · Solution Document
+7b. Robustness tests
+Try each scenario and record what happened. "Fail" is an acceptable answer — say what went
+wrong.
+Scenario What happened Pass / Partial
+/ Fail
+Same resume in PDF and DOCX — same
+skills extracted?
+Same JD run twice — stable output?
+A messy or two-column resume layout
+A scanned (image-only) PDF
+A skill outside the 12 categories — tagged
+OTHER?
+Same skill worded differently in JD and
+resume (e.g. "Postgres" vs "SQL
+databases") — matched?
+8. Results on Sample Data
+Run your tool on the four sample candidates. To let evaluators compare teams fairly, every team
+uses the same company and JDs below. You may add more columns for other JDs.
+Candidate Expected fit (from Talent Skill Skill Match Matches
+the brief) Check Match (0– (0–100) — expected
+readiness 100) — Oracle FSS fit? (Y / N)
+(0–100) — Google Associate
+Google SWE SWE
+LLC
+Ananya Rao Strong for SWE-
+heavy roles, weaker
+for data roles
+Karthik Strong for Data
+Subramania Scientist / Data
+m Analyst, weaker for
+pure SWE
+Priya Menon Best for Oracle FSS
+roles, weaker for
+Google / Microsoft
+Rohan Competitive across
+Verma nearly every role
+Page 9
+
+=== PAGE 10 ===
+RADIX Talent Match Hackathon · Solution Document
+For each "N", or anything surprising, explain in 2–3 lines why your tool disagrees with the stated
+fit. Is it a bug, a scoring choice, or does the resume really say something different?
+[Write your answer here]
+9. How to Run Our Code
+Evaluators should be able to run your tool from Code.zip using only these steps. Put the same
+steps in README.md.
+Prerequisites [Python version, Node version, anything to install]
+Setup commands [e.g. pip install -r requirements.txt; npm install]
+Environment variables [Names only, e.g. LLM_API_KEY — never paste real keys]
+Start command(s) [Backend and frontend]
+Sample data location [Where the JDs, resumes and
+talent_check_company_skillsets.json live in the zip]
+10. Definition of Done
+☐ All 5 pieces run on their own against at least 2 sample JDs / resumes
+☐ The 5 pieces are wired into one end-to-end flow for at least one company / JD / candidate
+☐ Talent Check and Skill Matching give visibly different results for different candidates
+☐ Extraction accuracy measured on at least 2 JDs and 2 resumes (Section 7a)
+☐ Code runs from the README steps on a clean machine (Section 9)
+11. Challenge, Learnings, Limitations & Next Steps
+One challenge we [The problem (e.g. pieces not working together at integration),
+faced what you tried, and how you solved it]
+What we learned [2–3 lines — technical or teamwork]
+Known limitations [What your tool does not handle well yet. Being honest here
+counts in your favour.]
+Next steps [What you would improve with more time]
+Page 10
+
+=== PAGE 11 ===
+RADIX Talent Match Hackathon · Solution Document
+12. Demo Video (15 Minutes)
+Every member presents their own piece on camera. Show the working tool, not only slides.
+Videos longer than 15:00 are cut at 15:00. Upload the video file to your team’s Google Drive
+folder as Demo_Video.mp4.
+Time Presenter What to Show
+0:00 – 1:30 Scrum Master Team introduction, the problem, the integrated flow
+at a glance, and what makes your solution different
+1:30 – 4:00 Role 1 — JD Analytics Upload a JD and show the extracted skill list;
+mention your precision / recall
+4:00 – 6:30 Role 2 — Resume Upload a resume and show the extracted skills and
+Parsing details; show one messy-layout case
+6:30 – 9:00 Role 3 — Profile Builder Profile pre-filled from the resume, edited and saved
+9:00 – 11:30 Role 4 — Talent Check Readiness score and per-skillset gaps for a
+selected company; explain how "ready" is defined
+11:30 – Role 5 — Skill Matching Match score with matched and missing skills; a
+14:00 second candidate to show different results
+14:00 – Scrum Master One challenge faced, how it was solved, known
+15:00 limitations, and next steps
+Video File Name [e.g. Demo_Video.mp4]
+13. Declarations
+AI tools used [LLMs used inside the tool, and any coding assistants used to
+build it — and for what]
+Data [Confirm only the supplied sample JDs, resumes and company
+data were used]
+Originality [Confirm the work is the team’s own]
+Page 11
+

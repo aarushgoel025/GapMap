@@ -1,3 +1,4 @@
+import os
 import sys
 from pathlib import Path
 
@@ -28,15 +29,38 @@ app = FastAPI(
 )
 
 # ---------------------------------------------------------------------------
-# CORS Configuration
+# CORS Configuration (Production & Development friendly)
 # ---------------------------------------------------------------------------
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+cors_origins_env = os.environ.get("CORS_ORIGINS", "")
+allowed_origins = [
+    origin.strip() for origin in cors_origins_env.split(",") if origin.strip()
+]
+if not allowed_origins:
+    allowed_origins = [
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ]
+
+# If CORS_ORIGINS is "*", allow all origins (allow_credentials=False for wildcard standard)
+if allowed_origins == ["*"]:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=False,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+else:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=allowed_origins,
+        allow_origin_regex=r"https:\/\/.*\.vercel\.app",
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
 # ---------------------------------------------------------------------------
 # Global Error Handlers (returning {detail: message})
