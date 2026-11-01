@@ -132,7 +132,7 @@ export const JdPage: React.FC = () => {
             Job Description & Target Role Analytics
           </h2>
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">
-            Extract competencies, importance levels, and evidence quotes via parallel Gemini & Mistral LLM analysis.
+            Extract competencies, importance levels, and evidence quotes via parallel Gemini 3.8 & Mistral LLM analysis.
           </p>
         </div>
 

@@ -231,13 +231,13 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStartPipeline }) => 
       pillar: 'Pillar 4',
       title: 'Trustworthy AI Consensus Pipeline',
       subtitle: 'Multi-LLM Architecture',
-      badge: 'Gemini 2.5 + Mistral',
+      badge: 'Gemini 3.8 + Mistral',
       icon: Zap,
       color: 'from-emerald-500 to-teal-500',
       tagColor: 'bg-emerald-950/80 text-emerald-300 border-emerald-800/80',
       demoLine: 'Two LLMs read each document; consensus settles disagreements',
       description:
-        'Two distinct models, Gemini 2.5 Flash and Mistral, analyze documents in parallel with a deterministic merge resolver. Every output is validated by Pydantic v2 with auto-retry, backed by 135 unit tests and full Section F audit logs.',
+        'Two distinct models, Gemini 3.8 Flash and Mistral, analyze documents in parallel with a deterministic merge resolver. Every output is validated by Pydantic v2 with auto-retry, backed by 135 unit tests and full Section F audit logs.',
       highlights: [
         'Dual-LLM parallel consensus eliminating single-model hallucinations',
         'Pydantic v2 auto-correcting feedback retry loop on schema discrepancies',

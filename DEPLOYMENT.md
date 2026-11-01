@@ -17,7 +17,7 @@ This guide covers deploying **GapMap** to production:
                                            ▼
                       ┌──────────────────────────────────────────┐
                       │             Vercel (Frontend)            │
-                      │        https://gapmap.vercel.app         │
+                      │        https://gap-map-eight.vercel.app         │
                       └────────────────────┬─────────────────────┘
                                            │
                             API Calls via  │  VITE_API_BASE_URL
@@ -27,7 +27,7 @@ This guide covers deploying **GapMap** to production:
                       │      https://gapmap-api.onrender.com     │
                       │                                          │
                       │   - FastAPI + Uvicorn                    │
-                      │   - Gemini 2.5 + Mistral Consensus       │
+                      │   - Gemini 3.8 + Mistral Consensus       │
                       │   - 3-Layer ATS Scoring Engine           │
                       │   - Supabase / JSON Store                │
                       └──────────────────────────────────────────┘
@@ -68,7 +68,7 @@ Render provides a native Python web service that runs FastAPI with zero hassle.
    | :--- | :--- | :--- |
    | `PYTHON_VERSION` | `3.11.9` | Recommended Python version |
    | `GEMINI_API_KEY` | `AIzaSy...` | Your Google AI Studio API key |
-   | `GEMINI_MODEL` | `gemini-2.5-flash` | Default Gemini model |
+   | `GEMINI_MODEL` | `gemini-3.8-flash` | Default Gemini model |
    | `MISTRAL_API_KEY`| `...` | Your Mistral API key |
    | `MISTRAL_MODEL` | `mistral-small-latest` | Default Mistral model |
    | `CORS_ORIGINS` | `*` | Allows calls from your Vercel URL |
@@ -103,14 +103,14 @@ Render provides a native Python web service that runs FastAPI with zero hassle.
 
 6. Click **Deploy**.
 7. In ~30-45 seconds, Vercel will build and deploy your app, giving you a live URL like:
-   `https://gapmap.vercel.app`
+   `https://gap-map-eight.vercel.app`
 
 ---
 
 ## ✅ Step 4: Verification Checklist
 
 Once both services are deployed:
-1. Open your Vercel URL: `https://gapmap.vercel.app`
+1. Open your Vercel URL: `https://gap-map-eight.vercel.app`
 2. Scroll to the footer: Verify that it says `Connected to FastAPI Backend at https://gapmap-api-xxxx.onrender.com`.
 3. Click **"Launch Pipeline"**:
    - Run **Step 1 (JD Analytics)**: Check that the sample JDs load instantly from cache.

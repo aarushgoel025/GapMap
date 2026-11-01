@@ -2,6 +2,7 @@
 
 ### 🏆 WINNER — RADIX Talent Match Hackathon 2026 🥇
 > **Built end-to-end by a team of five** | Scrum Master & Lead: **Aarush**  
+> **Live Demo**: 🌐 **[gap-map-eight.vercel.app](https://gap-map-eight.vercel.app)**
 > **Tagline**: *Know your gap. Prove your skills.*  
 > **Status**: 🏆 **1st Place / Hackathon Winner** • ✅ **135/135 Pytest Tests Passing** • **Zero TypeScript Build Errors** • **Docker Ready**
 
@@ -14,7 +15,7 @@
 [![React 19](https://img.shields.io/badge/React-19.3-61dafb?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178c6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Dual LLM](https://img.shields.io/badge/AI-Gemini%202.5%20%2B%20Mistral-orange?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
+[![Dual LLM](https://img.shields.io/badge/AI-Gemini%203.8%20%2B%20Mistral-orange?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
 [![Supabase](https://img.shields.io/badge/Database-Supabase%20%2B%20JSON%20Fallback-3ecf8e?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
 
 ---
@@ -73,7 +74,7 @@ Traditional Applicant Tracking Systems (ATS) rely on shallow keyword matching. T
 - **4×6 Differentiation Heatmap Matrix**: Proves candidates score differently across diverse roles (e.g., Alex Chen scores 83.3% on Microsoft Full Stack, but 40.8% on Google Cloud Architect).
 
 ### 🤝 Pillar 4: Trustworthy AI Pipeline (What Talencia Taught Us)
-- **Dual-LLM Parallel Consensus**: Queries Google Gemini 2.5 and Mistral AI simultaneously using `ThreadPoolExecutor`. Consensual skills are tagged `models_agree = True`; category disputes are logged in `extras.disagreements`.
+- **Dual-LLM Parallel Consensus**: Queries Google Gemini 3.8 and Mistral AI simultaneously using `ThreadPoolExecutor`. Consensual skills are tagged `models_agree = True`; category disputes are logged in `extras.disagreements`.
 - **Fault-Tolerant Pydantic Contracts**: Strict validation on all inputs/outputs with an automated 3-retry self-correction loop that reflects validation error traces back to the model.
 - **SHA-256 Content-Addressed Caching**: Instantaneous offline demo execution with zero API latency.
 - **100% Test Automation**: 135 automated unit and integration tests passing in ~7.3 seconds.
@@ -87,7 +88,7 @@ Traditional Applicant Tracking Systems (ATS) rely on shallow keyword matching. T
 | **01** | **Parameter Discovery** | Unified 12-Skill Taxonomy | Enforced across all Pydantic schemas (`COD`, `DSA`, `OOD`, `APTI`, `COMM`, `AI`, `CLOUD`, `SQL`, `SWE`, `SYSD`, `NETW`, `OS` + `OTHER`) and 117+ corporate hiring bars in `talent_check_company_skillsets.json`. | ✅ Complete |
 | **02** | **Database Normalization** | 3NF Relational Persistence | Relational Supabase PostgreSQL schema (`profiles`, `profile_skills`, `jd_documents`, `talent_check_runs`, `audit_log`) with seamless zero-config local JSON fallback in `backend/data/` for offline resilience. | ✅ Complete |
 | **03** | **Test Automation** | Metadata-Driven Verification | **135 automated pytest tests** covering dual-model consensus, caching mechanics, PII masking, anti-stuffing regex edge cases, and matrix variance. | ✅ Complete |
-| **04** | **Agentic Research** | Multi-Agent Consensus | Asynchronous parallel dispatch to Google Gemini 2.5 and Mistral AI via thread pools. Automatically lowers confidence on unilateral claims and audits category disputes. | ✅ Complete |
+| **04** | **Agentic Research** | Multi-Agent Consensus | Asynchronous parallel dispatch to Google Gemini 3.8 and Mistral AI via thread pools. Automatically lowers confidence on unilateral claims and audits category disputes. | ✅ Complete |
 | **05** | **Agentic Ecosystem** | Self-Healing Data Contracts | Pydantic v2 validation pipeline with up to 3 automatic retry feedback loops that send schema error traces back to the LLM for real-time prompt correction. | ✅ Complete |
 | **06** | **DevOps & Cloud** | Containerization & CI/CD | Multi-stage `backend/Dockerfile`, `frontend/Dockerfile`, `docker-compose.yml`, and GitHub Actions CI workflow running pytest on every push. | ✅ Complete |
 | **07** | **Vector DBs & ML** | Deterministic Semantic Match | Local vector embedding index with cosine similarity calculations and offline circuit breakers, eliminating external embedding API costs and latency. | ✅ Complete |
@@ -148,7 +149,7 @@ flowchart LR
 | :--- | :--- |
 | **Frontend** | React 19, TypeScript, Vite, Tailwind CSS (Dark Bluish Slate Theme), Lucide Icons |
 | **Backend API** | Python 3.11 / 3.14, FastAPI, Pydantic v2, Uvicorn, AnyIO |
-| **AI & LLM** | Google Gemini 2.5 (`google-genai`), Mistral AI (`mistralai`), ThreadPoolExecutor |
+| **AI & LLM** | Google Gemini 3.8 (`google-genai`), Mistral AI (`mistralai`), ThreadPoolExecutor |
 | **Storage & DB** | Supabase PostgreSQL, Local JSON Fallback Store (`backend/data/`), Section F Audit Trail |
 | **Vector Engine** | Local NumPy 256-dim embeddings with cosine similarity matrix calculation |
 | **DevOps & QA** | Docker, Docker Compose, Pytest (135 tests), GitHub Actions CI |

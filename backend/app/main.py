@@ -37,11 +37,16 @@ allowed_origins = [
 ]
 if not allowed_origins:
     allowed_origins = [
+        "https://gap-map-eight.vercel.app",
         "http://localhost:5173",
         "http://127.0.0.1:5173",
         "http://localhost:3000",
         "http://127.0.0.1:3000",
     ]
+else:
+    # Ensure production Vercel frontend is always explicitly included
+    if "https://gap-map-eight.vercel.app" not in allowed_origins and "*" not in allowed_origins:
+        allowed_origins.append("https://gap-map-eight.vercel.app")
 
 # If CORS_ORIGINS is "*", allow all origins (allow_credentials=False for wildcard standard)
 if allowed_origins == ["*"]:
