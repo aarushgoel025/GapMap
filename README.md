@@ -1,11 +1,13 @@
 # GapMap: Evidence-Driven ATS & Skill Gap Intelligence Engine
 
-> **RADIX Talent Match Hackathon** | Team Lead: **Aarush**  
+### 🏆 WINNER — RADIX Talent Match Hackathon 2026 🥇
+> **Built end-to-end by a team of five** | Scrum Master & Lead: **Aarush**  
 > **Tagline**: *Know your gap. Prove your skills.*  
-> **Status**: ✅ **135/135 Pytest Tests Passing** • **Zero TypeScript Build Errors** • **Docker Ready**
+> **Status**: 🏆 **1st Place / Hackathon Winner** • ✅ **135/135 Pytest Tests Passing** • **Zero TypeScript Build Errors** • **Docker Ready**
 
 ---
 
+[![Hackathon Winner](https://img.shields.io/badge/RADIX%20Hackathon-WINNER%20%F0%9F%8F%86-gold?style=for-the-badge&logo=trophy&logoColor=black)](https://github.com/aarushgoel025/GapMap)
 [![Pytest Tests](https://img.shields.io/badge/pytest-135%20passed-emerald?style=for-the-badge&logo=pytest&logoColor=white)](https://github.com/aarushgoel025/GapMap)
 [![Python](https://img.shields.io/badge/python-3.11%20%7C%203.14-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-teal?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
@@ -292,8 +294,8 @@ Follow this sequence during evaluation to showcase all 4 Pillars:
 
 ---
 
-## 📜 License & Acknowledgments
+## 📜 Honors, License & Acknowledgments
 
-- Built for the **RADIX Talent Match Hackathon** under the **Talencia Global Systems** specification.
-- Architecture and 3-layer matching concept inspired by the public SkillBridge design, with custom in-house implementation.
-- Authored by Team Lead **Aarush** and the GapMap Team.
+- 🏆 **1st Place Winner** at the **RADIX Talent Match Hackathon 2026** under the **Talencia Global Systems** specification.
+- Architecture and 3-layer matching concept inspired by the public SkillBridge design, with custom production-grade in-house implementation.
+- Built end-to-end with passion by Team Lead **Aarush** and the GapMap Team.
